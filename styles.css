@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.word {
+    font-size: 2rem;
+}
+
+.options {
+    display: none;
+    margin-top: 20px;
+}
+
+.option-group {
+    margin-bottom: 10px;
+}
+
+.option {
+    font-size: 1rem;
+    padding: 10px 20px;
+    margin: 0 5px;
+}
+
+#checkBtn {
+    display: none;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#checkBtn:hover {
+    background-color: #0056b3;
+}
