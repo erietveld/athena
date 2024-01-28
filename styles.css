@@ -15,26 +15,47 @@ body {
 }
 
 .options {
-    display: none;
     margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap; /* Allow flex items to wrap */
+    justify-content: center;
 }
 
 .option-group {
     margin-bottom: 10px;
+    flex: 1 0 calc(33.33% - 10px); /* Verdeel de ruimte in drie kolommen en laat een beetje ruimte tussen de elementen */
 }
 
 .option {
+    display: block;
     font-size: 1rem;
     padding: 10px 20px;
-    margin: 0 5px;
+    margin: 5px auto; /* Center buttons horizontally */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.option.selected {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.option.correct {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.option.incorrect {
+    background-color: #dc3545; /* Red color for incorrect answer */
+    color: #fff;
 }
 
 #checkBtn {
-    display: none;
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 1rem;
-    background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -43,4 +64,8 @@ body {
 
 #checkBtn:hover {
     background-color: #0056b3;
+}
+
+#extraOptions {
+    display: none;
 }
