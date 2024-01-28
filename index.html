@@ -9,8 +9,8 @@
 <body>
     <div class="container">
         <h1 class="word">Grieks woord hier</h1>
-        <div class="options">
-            <div class="option-group">
+        <div class="options" id="firstGroup">
+            <div class="option-group" >
                 <button class="option" data-type="nom">Nom</button>
                 <button class="option" data-type="gen">Gen</button>
                 <button class="option" data-type="dat">Dat</button>
@@ -27,7 +27,7 @@
             </div>
         </div>
         <button id="extraOptionBtn">Nog een optie</button>
-        <div class="options" id="extraOptions"  data-type="tweede">
+        <div class="options" id="extraOptions">
             <div class="option-group">
                 <button class="option" data-type="nom">Nom</button>
                 <button class="option" data-type="gen">Gen</button>
@@ -44,7 +44,7 @@
                 <button class="option" data-type="n">N</button>
             </div>
         </div>
-        <button id="checkBtn" disabled>Controleren</button>
+        <button id="checkBtn" disabled type="button">Controleren</button>
     </div>
 </div>
     <script src="questions.js"></script>
