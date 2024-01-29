@@ -1,9 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
     const wordElement = document.querySelector('.word');
     const checkBtn = document.getElementById('checkBtn');
+    const extraOptionBtn = document.getElementById('extraOptionBtn');
     const firstGroup = document.getElementById('firstGroup');
     const secondGroup = document.getElementById('extraOptions');
     const optionGroups = document.querySelectorAll('.option-group');
+    const extraOptions = document.getElementById('extraOptions');
+
     /*
         const questions = [
             { word: 'woord1', answer: ['nom ev m','nom mv f'] },
@@ -12,17 +15,10 @@ document.addEventListener('DOMContentLoaded', function () {
         ];*/
 
     let selectedAnswers = [];
-
-    // Selecteer de extra optie-knop
-    const extraOptionBtn = document.getElementById('extraOptionBtn');
-
-    // Selecteer het extra optieblok
-    const extraOptions = document.getElementById('extraOptions');
     var tweedeOptie = false;
- 
+
     // Voeg een event listener toe om te luisteren naar klikgebeurtenissen op de extra optie-knop
     extraOptionBtn.addEventListener('click', function () {
-
         if (extraOptions && !tweedeOptie) {
             setSecondBlock();
         }
@@ -35,14 +31,15 @@ document.addEventListener('DOMContentLoaded', function () {
     function setSecondBlock() {
         // Toon het extra optieblok
         extraOptions.style.display = 'flex';
+        extraOptionBtn.style.display = 'flex';
         tweedeOptie = true;
-        extraOptionBtn.innerText = "Toch maar 1 optie";
+        extraOptionBtn.innerText = "Toch maar 1 optie?";
     }
 
     function resetSecondBlock() {
         extraOptions.style.display = 'none';
         tweedeOptie = false;
-        extraOptionBtn.innerText = "Nog een optie";
+        extraOptionBtn.innerText = "Nog een optie?";
 
         const extraOptionButtons = extraOptions.querySelectorAll('.option');
         extraOptionButtons.forEach(button => {
@@ -57,13 +54,13 @@ document.addEventListener('DOMContentLoaded', function () {
         wordElement.textContent = question.word;
         selectedAnswers = [];
         resetButtons(); // Reset button classes
-        checkBtn.disabled = true;
+        //checkBtn.disabled = true;
         // checkBtn.style.display = 'none'; // Hide the "Check" button
     }
-    function verifyTwoAnswers(correctAnswer){        
+    function verifyTwoAnswers(correctAnswer) {
         const firstAnswer = selectedAnswers.slice(0, 3).join(" ");
         const secondAnswer = selectedAnswers.slice(3).join(" ");
-        if ((correctAnswer[1] == firstAnswer) || (correctAnswer[0] == secondAnswer)){
+        if ((correctAnswer[1] == firstAnswer) || (correctAnswer[0] == secondAnswer)) {
             verifyOneOptionGroup(firstGroup, correctAnswer[1].split(" "));
             verifyOneOptionGroup(secondGroup, correctAnswer[0].split(" "));
         }
@@ -75,39 +72,39 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function checkAnswer() {
-        const currentWord = wordElement.textContent;  
+        const currentWord = wordElement.textContent;
         const correctAnswer = questions.find(question => question.word === currentWord)?.answers;
         console.log('Correct Answer: ', correctAnswer);
         const correctFirstAnswer = correctAnswer[0].split(" ");
-      //  console.log('Correct AnswerA: ', correctFirstAnswer);
+        //  console.log('Correct AnswerA: ', correctFirstAnswer);
         const selectedAnswersString = selectedAnswers.join(' ');
         console.log('Selected Answer: ', selectedAnswersString);
         if (correctAnswer.length == 2) {
             verifyTwoAnswers(correctAnswer);
-            return;
         }
+        else {
+            verifyOneOptionGroup(firstGroup, correctFirstAnswer);
 
-        verifyOneOptionGroup(firstGroup, correctFirstAnswer);
-
-        if ((selectedAnswers.length > 3) && (correctAnswer.length == 1)){
-            secondGroup.querySelectorAll('.option-group').forEach((optionGroup, index)  => {
-                // Loop over alle opties binnen de huidige optiegroep
-                optionGroup.querySelectorAll('.option').forEach(option => {
-                    option.classList.add('incorrect');
-                    fullAnswerCorrect = false; 
+            if ((selectedAnswers.length > 3) && (correctAnswer.length == 1)) {
+                secondGroup.querySelectorAll('.option-group').forEach((optionGroup, index) => {
+                    // Loop over alle opties binnen de huidige optiegroep
+                    optionGroup.querySelectorAll('.option').forEach(option => {
+                        option.classList.add('incorrect');
+                        fullAnswerCorrect = false;
+                    });
                 });
-            });
+            }
         }
 
-       // resetButtonsAfterTimeout(); // Reset button classes after 2 seconds
+        resetButtonsAfterTimeout(); // Reset button classes after 2 seconds
     }
 
-    function verifyOneOptionGroup(optionGroup, answerGroep){
+    function verifyOneOptionGroup(optionGroup, answerGroep) {
         console.log("answerGroep" + answerGroep);
         console.log("optionGroup" + optionGroup);
         var fullAnswerCorrect = true;
         // Loop over elke optiegroep binnen de eerste groep
-        optionGroup.querySelectorAll('.option-group').forEach((optionGroup, index)  => {
+        optionGroup.querySelectorAll('.option-group').forEach((optionGroup, index) => {
             // Loop over alle opties binnen de huidige optiegroep
             const correctSingleAnswer = answerGroep[index];
             var hasMadeSelection = (optionGroup.querySelectorAll('.option.selected').length > 0);
@@ -121,19 +118,28 @@ document.addEventListener('DOMContentLoaded', function () {
                     option.classList.add('correct');
                 } else if (isSelected && !isCorrect) {
                     option.classList.add('incorrect');
-                    fullAnswerCorrect = false; 
+                    fullAnswerCorrect = false;
                 }
                 else if (!isSelected && isCorrect) {
-                    fullAnswerCorrect = false; 
+                    fullAnswerCorrect = false;
                     option.classList.add('correct');
                 }
-                else if (!hasMadeSelection && !isCorrect){
+                else if (!hasMadeSelection && !isCorrect) {
                     option.classList.add('incorrect');
                 }
             });
         });
 
 
+    }
+
+    function resetButtonsAfterTimeout() {
+        extraOptionBtn.style.display = 'none';
+        checkBtn.style.display = 'none';
+        setTimeout(() => {
+            resetButtons(); // Reset button classes after 2 seconds
+            showQuestion();
+        }, 2000);
     }
 
     function resetButtons() {
@@ -144,13 +150,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
         resetSecondBlock();
-    }
-
-    function resetButtonsAfterTimeout() {
-        setTimeout(() => {
-            resetButtons(); // Reset button classes after 2 seconds
-            showQuestion();
-        }, 2000);
     }
 
     function selectOption(event) {
@@ -175,12 +174,19 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateCheckButtonVisibility() {
         // Check if all three answers are selected
         // checkBtn.style.display = 'none';
-      //  console.log("Updating checkbutotn visiblity");
-        checkBtn.disabled = true;
+        //  console.log("Updating checkbutotn visiblity");
+        // checkBtn.disabled = true;
         if ((selectedAnswers.length === 3 && !tweedeOptie) ||
             (selectedAnswers.length === 6 && tweedeOptie)) {
-            checkBtn.disabled = false;
+            //checkBtn.disabled = false;
+            extraOptionBtn.style.display = 'flex';
+            checkBtn.classList.add('active');
             checkBtn.style.display = 'flex'; // Display the "Check" button
+        }
+        else {
+            checkBtn.classList.remove('active');
+            //extraOptionBtn.style.display = 'none';
+            checkBtn.style.display = 'none';
         }
     }
 

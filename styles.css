@@ -4,6 +4,31 @@ body {
     padding: 0;
 }
 
+button {
+    display: inline-block; /* Change from flex to inline-block */
+    padding: 10px 20px; /* Add padding */
+    margin: 5px 10px; /* Add margin */
+
+    border: none; /* Remove border */
+    border-radius: 5px; /* Add border radius */
+    cursor: pointer;
+    width: 90%; /* Adjust width to your preference */
+}
+
+/* Add a class for the secondary button */
+.action-button {
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    background-color: #5e5b5b; /* Secondary button background color */
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    display: none;
+}
+
+
 .container {
     max-width: 600px;
     margin: 50px auto;
@@ -53,13 +78,11 @@ body {
 }
 
 #checkBtn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
+
+}
+#checkBtn.active {
+    background-color: #789cc3;
 }
 
 #checkBtn:hover {
@@ -67,5 +90,9 @@ body {
 }
 
 #extraOptions {
+    display: none;
+}
+
+#extraOptionBtn{
     display: none;
 }
