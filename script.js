@@ -98,15 +98,15 @@ const questions = [
             }
         }
         const nrOfIncorrect = document.querySelectorAll('button[class*="incorrect"]');
-        
-        if (nrOfIncorrect.length>0){
-           // console.log("incorrect");
-            score --;
-            if (score<-1){
+
+        if (nrOfIncorrect.length > 0) {
+            // console.log("incorrect");
+            score--;
+            if (score < -1) {
                 score = -1;
             }
         }
-        else{
+        else {
             //console.log("correct");
             score++;
         }
@@ -115,8 +115,8 @@ const questions = [
     }
 
     function verifyOneOptionGroup(optionGroup, answerGroep) {
-     
-     
+
+
         // Loop over elke optiegroep binnen de eerste groep
         optionGroup.querySelectorAll('.option-group').forEach((optionGroup, index) => {
             // Loop over alle opties binnen de huidige optiegroep
@@ -275,6 +275,7 @@ const questions = [
                     if (!checkedNV.includes(parts[0])) return false;
                     // Check second part  
                     if (!checkedCard.includes(parts[1])) return false;
+                    return true;
                 });
 
                 // Remove question if no answers
@@ -286,7 +287,7 @@ const questions = [
             // Filter out null values
             filteredQuestions = filteredQuestions.filter(q => q);
 
-              // console.log("FilterQ: " + filteredQuestions);
+            // console.log("FilterQ: " + filteredQuestions);
             qbank = filteredQuestions;
             showQuestion();
         }
@@ -319,7 +320,7 @@ const questions = [
 
     const baseCode = 127872;
     const emoticons = [
-        "128512", 
+        "128512",
         "129392",
         "128641",
         "128515",
@@ -333,29 +334,60 @@ const questions = [
         "128571",
         "128585",
         "128640",
-      ];
-    function updateScoring(){
-            if (score <0 ) return;
+    ];
+    function updateScoring() {
+        if (score < 0) return;
 
-            const emoticonIndex = Math.floor(score / 3);
-            const repeats = score % 3;
-          
-            let codedEmoticon;
+        const emoticonIndex = Math.floor(score / 3);
+        const repeats = score % 3;
 
-            if(emoticonIndex >= emoticons.length) {
-              codedEmoticon = baseCode + (emoticonIndex - emoticons.length); 
-            } else {
-              codedEmoticon = emoticons[emoticonIndex];
-            }
+        let codedEmoticon;
 
-            let emoticonHtml = '';
-           
-            for(let i = -1; i < repeats; i++) {
-              emoticonHtml += "&#" + codedEmoticon + ";";
-            }
-          
-            document.getElementById("emoticon").innerHTML = emoticonHtml;
+        if (emoticonIndex >= emoticons.length) {
+            codedEmoticon = baseCode + (emoticonIndex - emoticons.length);
+        } else {
+            codedEmoticon = emoticons[emoticonIndex];
+        }
+
+        let emoticonHtml = '';
+
+        for (let i = -1; i < repeats; i++) {
+            emoticonHtml += "&#" + codedEmoticon + ";";
+        }
+
+        document.getElementById("emoticon").innerHTML = emoticonHtml;
     }
+
+    registerSwipeEvent();
+    function registerSwipeEvent() {
+        const div = document.querySelector('mySidenav');
+
+        div.addEventListener('touchstart', handleTouchStart);
+        div.addEventListener('touchmove', handleTouchMove);
+        div.addEventListener('touchend', handleTouchEnd);
+        div.addEventListener('mousedown', handleTouchStart);
+        div.addEventListener('mousemove', handleTouchMove);
+        div.addEventListener('mouseup', handleTouchEnd);
+
+        let startX;
+
+        function handleTouchStart(e) {
+            startX = e.touches[0].clientX;
+            console.log("Start Touch" + startX);
+        }
+        function handleTouchMove(e) {
+            if (!startX) return;
+            let currentX = e.touches[0].clientX;
+
+            if (currentX < startX) {
+                // swipe left
+                closeNav();
+            }
+        }
+        function handleTouchEnd() {
+            startX = null;
+        }
+    };
 });
 
 function openNav() {
