@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const extraOptions = document.getElementById('extraOptions');
 
     /*
-        const questions = [
-            { word: 'woord1', answer: ['nom ev m','nom mv f'] },
-            { word: 'woord2', answer: ['gen mv f']},
-            // Add more questions if needed
-        ];*/
+const questions = [
+    { word: "ὁ", cat: "lidwoord", answers: ["nom ev m"] },
+    { word: "ἔργον", cat: "ἔργον", answers: ["nom ev n", "acc ev n"] },
+         ];*/
 
     let selectedAnswers = [];
+    let score = 0;
     var tweedeOptie = false;
 
     // Voeg een event listener toe om te luisteren naar klikgebeurtenissen op de extra optie-knop
@@ -49,13 +49,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function showQuestion() {
-        const randomIndex = Math.floor(Math.random() * questions.length);
-        const question = questions[randomIndex];
+        if (qbank.length == 0) {
+            wordElement.textContent = "Geen vragen gevonden, maak een keuze uit het menu."
+            return;
+        }
+        const randomIndex = Math.floor(Math.random() * qbank.length);
+        const question = qbank[randomIndex];
         wordElement.textContent = question.word;
         selectedAnswers = [];
-        resetButtons(); // Reset button classes
-        //checkBtn.disabled = true;
-        // checkBtn.style.display = 'none'; // Hide the "Check" button
+        resetButtons();
     }
     function verifyTwoAnswers(correctAnswer) {
         const firstAnswer = selectedAnswers.slice(0, 3).join(" ");
@@ -73,12 +75,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function checkAnswer() {
         const currentWord = wordElement.textContent;
-        const correctAnswer = questions.find(question => question.word === currentWord)?.answers;
-        console.log('Correct Answer: ', correctAnswer);
+        const correctAnswer = qbank.find(question => question.word === currentWord)?.answers;
+        //console.log('Correct Answer: ', correctAnswer);
         const correctFirstAnswer = correctAnswer[0].split(" ");
         //  console.log('Correct AnswerA: ', correctFirstAnswer);
         const selectedAnswersString = selectedAnswers.join(' ');
-        console.log('Selected Answer: ', selectedAnswersString);
+        //console.log('Selected Answer: ', selectedAnswersString);
         if (correctAnswer.length == 2) {
             verifyTwoAnswers(correctAnswer);
         }
@@ -95,14 +97,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
         }
-
+        const nrOfIncorrect = document.querySelectorAll('button[class*="incorrect"]');
+        if (nrOfIncorrect.length>0){
+            console.log("incorrect");
+            score = 0;
+        }
+        else{
+            console.log("correct");
+            score++;
+        }
+        updateScoring();
         resetButtonsAfterTimeout(); // Reset button classes after 2 seconds
     }
 
     function verifyOneOptionGroup(optionGroup, answerGroep) {
-        console.log("answerGroep" + answerGroep);
-        console.log("optionGroup" + optionGroup);
-        var fullAnswerCorrect = true;
+     
+     
         // Loop over elke optiegroep binnen de eerste groep
         optionGroup.querySelectorAll('.option-group').forEach((optionGroup, index) => {
             // Loop over alle opties binnen de huidige optiegroep
@@ -118,10 +128,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     option.classList.add('correct');
                 } else if (isSelected && !isCorrect) {
                     option.classList.add('incorrect');
-                    fullAnswerCorrect = false;
                 }
                 else if (!isSelected && isCorrect) {
-                    fullAnswerCorrect = false;
                     option.classList.add('correct');
                 }
                 else if (!hasMadeSelection && !isCorrect) {
@@ -129,8 +137,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         });
-
-
     }
 
     function resetButtonsAfterTimeout() {
@@ -196,6 +202,175 @@ document.addEventListener('DOMContentLoaded', function () {
 
     checkBtn.addEventListener('click', checkAnswer);
 
+
+    function populateMenuItems() {
+        // Get reference to menu div
+        const menuWords = document.getElementById("menuWords");
+        const menuNaamval = document.getElementById("menuNaamval");
+        const menuCard = document.getElementById("menuCard");
+        const menuGeslacht = document.getElementById("menuGeslacht");
+
+        // Flatten all answers into one array
+        const allAnswers = questions.flatMap(q => q.answers);
+
+        // Get unique values by splitting on space and taking the parts
+        const naamvals = [...new Set(
+            allAnswers.map(a => a.split(" ")[0])
+        )];
+
+        const cardinaliteit = [...new Set(
+            allAnswers.map(a => a.split(" ")[1])
+        )];
+        const geslacht = [...new Set(
+            allAnswers.map(a => a.split(" ")[2])
+        )];
+
+        // Get unique category values
+        const categories = [...new Set(questions.map(q => q.cat))];
+        addCheckbox(categories, menuWords);
+        addCheckbox(naamvals, menuNaamval);
+        addCheckbox(cardinaliteit, menuCard);
+        addCheckbox(geslacht, menuGeslacht);
+
+        // Get checkboxes inside menuWords
+        const wordCB = menuWords.querySelectorAll('input[type="checkbox"]');
+        const naamvalsCB = menuNaamval.querySelectorAll('input[type="checkbox"]');
+        const cardinaliteitCB = menuCard.querySelectorAll('input[type="checkbox"]');
+        const geslachtCB = menuGeslacht.querySelectorAll('input[type="checkbox"]');
+        
+        // Add change listener
+        const checkboxes = document.getElementById("mySidenav").querySelectorAll("input[type='checkbox']");
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', filterWoordQuestions);
+        });
+
+        // Filter questions function
+        function filterWoordQuestions() {
+
+            // Get checked values
+            const checkedCats = [];
+            wordCB.forEach(cb => {
+                if (cb.checked) checkedCats.push(cb.value);
+            });
+            const checkedNV = [];
+            naamvalsCB.forEach(cb => {
+                if (cb.checked) checkedNV.push(cb.value);
+            });
+            const checkedCard = [];
+            cardinaliteitCB.forEach(cb => {
+                if (cb.checked) checkedCard.push(cb.value);
+            });
+            const checkedGeslacht = [];
+            geslachtCB.forEach(cb => {
+                if (cb.checked) checkedGeslacht.push(cb.value);
+            });
+
+            var filteredQuestions = JSON.parse(JSON.stringify(questions));
+
+            // Filter questions by checked cats
+            filteredQuestions = filteredQuestions.filter(q => {
+                return checkedCats.includes(q.cat);
+            });
+
+            // Filter answer
+            filteredQuestions = filteredQuestions.map(q => {
+                q.answers = q.answers.filter(a => {
+                    // Split answer
+                    const parts = a.split(" ");
+                    // Check first part
+                    if (!checkedNV.includes(parts[0])) return false;
+                    // Check second part  
+                    if (!checkedCard.includes(parts[1])) return false;
+                    // Check third part
+                    if (!checkedGeslacht.includes(parts[2])) return false;
+                    return true;
+                });
+
+                // Remove question if no answers
+                if (q.answers.length === 0) return null;
+                return q;
+
+            });
+
+            // Filter out null values
+            filteredQuestions = filteredQuestions.filter(q => q);
+
+              // console.log("FilterQ: " + filteredQuestions);
+            qbank = filteredQuestions;
+            showQuestion();
+        }
+    }
+    function addCheckbox(list, div) {
+        // Loop through categories and add checkbox for each
+        list.forEach(cat => {
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.value = cat;
+            checkbox.id = cat;
+            checkbox.checked = true;
+
+            const label = document.createElement("label");
+            label.htmlFor = cat;
+            label.textContent = cat;
+
+            div.appendChild(checkbox);
+            div.appendChild(label);
+            div.appendChild(document.createElement("br"));
+        });
+    }
+
     // Initial setup
+    populateMenuItems();
+    //Since the are all checked by default set qbank to questions
+    var qbank = questions;
+
     showQuestion();
+
+    const baseCode = 127872;
+    const emoticons = [
+        "128512", 
+        "128515", 
+        "129392",
+        "128641",
+        "128520",
+        "128540",
+        "128558",
+        "128580",
+        "129312",
+        "128007",
+        "129327",
+        "128568",
+        "128571",
+        "128585",
+        "128640",
+        "128640",
+      ];
+    function updateScoring(){
+            const emoticonIndex = Math.floor(score / 3);
+            const repeats = score % 3;
+          
+            let codedEmoticon;
+
+            if(emoticonIndex >= emoticons.length) {
+              codedEmoticon = baseCode + (emoticonIndex - emoticons.length); 
+            } else {
+              codedEmoticon = emoticons[emoticonIndex];
+            }
+
+            let emoticonHtml = '';
+          
+            for(let i = 0; i < repeats; i++) {
+              emoticonHtml += "&#" + codedEmoticon + ";";
+            }
+          
+            document.getElementById("emoticon").innerHTML = emoticonHtml;
+    }
 });
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}

@@ -7,8 +7,23 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        Woord
+        <div id="menuWords" class="menuWords"></div>
+        Naamval
+        <div id="menuNaamval" class="menuNaamval"></div>
+        Getal
+        <div id="menuCard" class="menuCard"></div>
+        Geslacht
+        <div id="menuGeslacht" class="menuGeslacht"></div>
+   </div>
+   <div id="header">
+        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+        <div id="emoticon" class="emoticon" ></div>
+    </div>
     <div class="container">
-        <h1 class="word">Grieks woord hier</h1>
+        <h1 class="word"></h1>
         <div class="options" id="firstGroup">
             <div class="option-group" >
                 <button class="option" data-type="nom">Nom</button>

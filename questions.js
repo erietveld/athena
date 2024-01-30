@@ -1,5 +1,7 @@
 const questions = [
-    { word: "woord1", answers: ["nom ev m", "nom mv f"] },
-    { word: "woord2", answers: ["gen mv f"] }
-    // Add more questions if needed
+    { word: "ὁ", cat: "lidwoord", answers: ["nom ev m"] },
+    { word: "ἔργον", cat: "ἔργον", answers: ["nom ev n", "acc ev n"] },
+    { word: "ἔργα", cat: "ἔργον", answers: ["nom mv n", "acc mv n"] },
+    { word: "ἀδελφός", cat: "ἀδελφός", answers: ["nom ev m"] },
+    { word: "ἀδελφή", cat: "ἀδελφή", answers: ["nom ev f"] },
 ];
