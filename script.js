@@ -97,8 +97,7 @@ const questions = [
                 });
             }
         }
-        const nrOfIncorrect = 0;
-        //document.querySelectorAll('button[class*="incorrect"]');
+        const nrOfIncorrect = document.querySelectorAll('button[class*="incorrect"]');
         
         if (nrOfIncorrect.length>0){
            // console.log("incorrect");
