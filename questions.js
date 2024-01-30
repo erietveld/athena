@@ -75,7 +75,7 @@ const questions = [
 	{ word: "γυναῖκα", cat: "γυνή", answers: ["acc ev f"] },
 	{ word: "γυναῖκες", cat: "γυνή", answers: ["nom mv f"] },
 	{ word: "γυναικῶν", cat: "γυνή", answers: ["gen mv f"] },
-	{ word: "γυναί(ν)", cat: "γυνή", answers: ["dat mv f"] },
+	{ word: "γυναιξί(ν)", cat: "γυνή", answers: ["dat mv f"] },
 	{ word: "γυναῖκας", cat: "γυνή", answers: ["acc mv f"] },
 	{ word: "λέων", cat: "λέων", answers: ["nom ev m"] },
 	{ word: "λέοντος", cat: "λέων", answers: ["gen ev m"] },
