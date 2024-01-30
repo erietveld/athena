@@ -100,17 +100,17 @@ button {
 #header {
     display: flex;
     justify-content: space-between; 
-    align-items: center; 
+    align-items: top; 
   }
 
-  #emoticon {
+#emoticon {
     font-size: 60px; /* Twice the size */
     align-self: flex-end;
-  } 
-  span, #emoticon {
+} 
+span, #emoticon {
     display: inline-block;
     vertical-align: top; 
-  }
+}
 
 .sidenav {
     height: 100%;
@@ -125,6 +125,7 @@ button {
     padding-top: 60px;
     color: #818181;
     font-size: 25px;
+
 }
   
 .sidenav a {
@@ -154,5 +155,6 @@ button {
 @media (min-width: 900px) {
     .sidenav {
       width: 250px;
+      
     }
   }

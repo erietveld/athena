@@ -14,7 +14,7 @@ const questions = [
          ];*/
 
     let selectedAnswers = [];
-    let score = 0;
+    let score = -1;
     var tweedeOptie = false;
 
     // Voeg een event listener toe om te luisteren naar klikgebeurtenissen op de extra optie-knop
@@ -97,13 +97,18 @@ const questions = [
                 });
             }
         }
-        const nrOfIncorrect = document.querySelectorAll('button[class*="incorrect"]');
+        const nrOfIncorrect = 0;
+        //document.querySelectorAll('button[class*="incorrect"]');
+        
         if (nrOfIncorrect.length>0){
-            console.log("incorrect");
-            score = 0;
+           // console.log("incorrect");
+            score --;
+            if (score<-1){
+                score = -1;
+            }
         }
         else{
-            console.log("correct");
+            //console.log("correct");
             score++;
         }
         updateScoring();
@@ -208,7 +213,6 @@ const questions = [
         const menuWords = document.getElementById("menuWords");
         const menuNaamval = document.getElementById("menuNaamval");
         const menuCard = document.getElementById("menuCard");
-        const menuGeslacht = document.getElementById("menuGeslacht");
 
         // Flatten all answers into one array
         const allAnswers = questions.flatMap(q => q.answers);
@@ -221,23 +225,18 @@ const questions = [
         const cardinaliteit = [...new Set(
             allAnswers.map(a => a.split(" ")[1])
         )];
-        const geslacht = [...new Set(
-            allAnswers.map(a => a.split(" ")[2])
-        )];
 
         // Get unique category values
         const categories = [...new Set(questions.map(q => q.cat))];
         addCheckbox(categories, menuWords);
         addCheckbox(naamvals, menuNaamval);
         addCheckbox(cardinaliteit, menuCard);
-        addCheckbox(geslacht, menuGeslacht);
 
         // Get checkboxes inside menuWords
         const wordCB = menuWords.querySelectorAll('input[type="checkbox"]');
         const naamvalsCB = menuNaamval.querySelectorAll('input[type="checkbox"]');
         const cardinaliteitCB = menuCard.querySelectorAll('input[type="checkbox"]');
-        const geslachtCB = menuGeslacht.querySelectorAll('input[type="checkbox"]');
-        
+
         // Add change listener
         const checkboxes = document.getElementById("mySidenav").querySelectorAll("input[type='checkbox']");
         checkboxes.forEach(checkbox => {
@@ -260,10 +259,6 @@ const questions = [
             cardinaliteitCB.forEach(cb => {
                 if (cb.checked) checkedCard.push(cb.value);
             });
-            const checkedGeslacht = [];
-            geslachtCB.forEach(cb => {
-                if (cb.checked) checkedGeslacht.push(cb.value);
-            });
 
             var filteredQuestions = JSON.parse(JSON.stringify(questions));
 
@@ -281,9 +276,6 @@ const questions = [
                     if (!checkedNV.includes(parts[0])) return false;
                     // Check second part  
                     if (!checkedCard.includes(parts[1])) return false;
-                    // Check third part
-                    if (!checkedGeslacht.includes(parts[2])) return false;
-                    return true;
                 });
 
                 // Remove question if no answers
@@ -329,10 +321,10 @@ const questions = [
     const baseCode = 127872;
     const emoticons = [
         "128512", 
-        "128515", 
         "129392",
         "128641",
         "128520",
+        "128515",
         "128540",
         "128558",
         "128580",
@@ -343,9 +335,10 @@ const questions = [
         "128571",
         "128585",
         "128640",
-        "128640",
       ];
     function updateScoring(){
+            if (score <0 ) return;
+
             const emoticonIndex = Math.floor(score / 3);
             const repeats = score % 3;
           
@@ -358,8 +351,8 @@ const questions = [
             }
 
             let emoticonHtml = '';
-          
-            for(let i = 0; i < repeats; i++) {
+           
+            for(let i = -1; i < repeats; i++) {
               emoticonHtml += "&#" + codedEmoticon + ";";
             }
           
