@@ -1,47 +1,112 @@
 document.addEventListener('DOMContentLoaded', function () {
     const wordElement = document.querySelector('.word');
     const checkBtn = document.getElementById('checkBtn');
-    const extraOptionBtn = document.getElementById('extraOptionBtn');
-    const firstGroup = document.getElementById('firstGroup');
-    const secondGroup = document.getElementById('extraOptions');
-    const optionGroups = document.querySelectorAll('.option-group');
-    const extraOptions = document.getElementById('extraOptions');
+    const resetBtn = document.getElementById('resetBtn');
+    const nextBtn = document.getElementById('nextBtn');
 
-    /*
-const questions = [
-    { word: "ὁ", cat: "lidwoord", answers: ["nom ev m"] },
-    { word: "ἔργον", cat: "ἔργον", answers: ["nom ev n", "acc ev n"] },
-         ];*/
+    const firstGroup = document.getElementById('firstGroup');
+
+    const secondGroup = document.getElementById('secondGroup');
+    const secondOptionBtn = document.getElementById('secondOptionBtn');
+    const secondGroupFrame = document.getElementById('secondGroupFrame');
+
+    const thirdGroup = document.getElementById('thirdGroup');
+    const thirdOptionBtn = document.getElementById('thirdOptionBtn');
+    const thirdGroupFrame = document.getElementById('thirdGroupFrame');
+
+    const optionButtons = document.querySelectorAll('.option');
+    const optionGroups = document.querySelectorAll('.option-group');
+    const optionsFrames = document.querySelectorAll('.options-frame');
 
     let selectedAnswers = [];
     let score = -1;
-    var tweedeOptie = false;
+    var nrOfAnswers = 1;
 
-    // Voeg een event listener toe om te luisteren naar klikgebeurtenissen op de extra optie-knop
-    extraOptionBtn.addEventListener('click', function () {
-        if (extraOptions && !tweedeOptie) {
-            setSecondBlock();
+    secondOptionBtn.addEventListener('click', extraBlock);
+    thirdOptionBtn.addEventListener('click', extraBlock);
+    function extraBlock() {
+        if (nrOfAnswers == 1) {
+            nrOfAnswers = 2;
+            showSecondBlock();
+            showReset();
+        }
+        else if (nrOfAnswers == 2) {
+            nrOfAnswers = 3;
+            showThirdBlock();
+            showReset();
         }
         else {
-            resetSecondBlock();
+            //    resetSecondBlock();
         }
         updateCheckButtonVisibility();
-    });
+    };
 
-    function setSecondBlock() {
-        // Toon het extra optieblok
-        extraOptions.style.display = 'flex';
-        extraOptionBtn.style.display = 'flex';
-        tweedeOptie = true;
-        extraOptionBtn.innerText = "Toch maar 1 optie?";
+    nextBtn.addEventListener('click', showQuestion);
+    resetBtn.addEventListener('click', reset);
+    function reset() {
+        nrOfAnswers = 1;
+        selectedAnswers = [];
+        optionButtons.forEach(button => {
+            button.classList.remove('selected', 'correct', 'incorrect', 'hidden', 'missed', 'button-with-x');
+        });
+        secondGroupFrame.style.display = 'none';
+        secondOptionBtn.style.display = 'none';
+        thirdGroupFrame.style.display = 'none';
+        thirdOptionBtn.style.display = 'none';
+        resetBtn.style.display = 'none';
+        checkBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+        document.querySelectorAll('div').forEach(div => {
+            div.classList.remove('incorrect','correct', 'button-with-x');
+            });
+
+    };
+
+    // Loop through each options-frame div and attach a click event listener
+    // optionsFrames.forEach(optionsFrame => {
+    //     optionsFrame.addEventListener('click', () => {
+    //         // Your event handling code here
+    //       //  console.log("Clicked on an options-frame div");
+    //         var hiddenButtons = optionsFrame.querySelectorAll('.option.hidden');
+    //         hiddenButtons.forEach(function(button) {
+    //             button.classList.remove('hidden');
+    //         });
+    //     });
+    // });
+
+    function showSecondBlock() {
+        var unselectedButtons = firstGroup.querySelectorAll('.option:not(.selected):not(.incorrect):not(.correct)');
+        // Add 'hidden' class to unselected buttons
+        unselectedButtons.forEach(function (button) {
+            button.classList.add('hidden');
+        });
+
+        secondGroupFrame.style.display = 'flex';
+        secondOptionBtn.style.display = 'none';
+    }
+
+    function showThirdBlock() {
+        var unselectedButtons = secondGroup.querySelectorAll('.option:not(.selected):not(.incorrect):not(.correct)');
+        // Add 'hidden' class to unselected buttons
+        unselectedButtons.forEach(function (button) {
+            button.classList.add('hidden');
+        });
+
+        thirdGroupFrame.style.display = 'flex';
+        thirdOptionBtn.style.display = 'none';
+
+        //  extraOptionBtn.innerText = "Toch maar 1 optie?";
+    }
+    function showReset() {
+        resetBtn.style.display = 'flex';
     }
 
     function resetSecondBlock() {
-        extraOptions.style.display = 'none';
-        tweedeOptie = false;
-        extraOptionBtn.innerText = "Nog een optie?";
+        // secondGroup.style.display = 'none';
+        // nrOfAnswers = false;
+        //secondOptionBtn.innerText = "Nog een optie?";
 
-        const extraOptionButtons = extraOptions.querySelectorAll('.option');
+        const extraOptionButtons = secondGroup.querySelectorAll('.option');
         extraOptionButtons.forEach(button => {
             button.classList.remove('selected');
         });
@@ -57,49 +122,107 @@ const questions = [
         const question = qbank[randomIndex];
         wordElement.textContent = question.word;
         selectedAnswers = [];
-        resetButtons();
+        reset();
     }
     function verifyTwoAnswers(correctAnswer) {
         const firstAnswer = selectedAnswers.slice(0, 3).join(" ");
         const secondAnswer = selectedAnswers.slice(3).join(" ");
         if ((correctAnswer[1] == firstAnswer) || (correctAnswer[0] == secondAnswer)) {
-            verifyOneOptionGroup(firstGroup, correctAnswer[1].split(" "));
-            verifyOneOptionGroup(secondGroup, correctAnswer[0].split(" "));
+            verifyOneOptionGroup(firstGroup, correctAnswer[1]);
+            verifyOneOptionGroup(secondGroup, correctAnswer[0]);
         }
         else {
-            verifyOneOptionGroup(firstGroup, correctAnswer[0].split(" "));
-            verifyOneOptionGroup(secondGroup, correctAnswer[1].split(" "));
+            verifyOneOptionGroup(firstGroup, correctAnswer[0]);
+            verifyOneOptionGroup(secondGroup, correctAnswer[1]);
         }
-        setSecondBlock();
+        showSecondBlock();
+    }
+    function verifyThreeAnswers(correctAnswers) {
+        var ans = [];
+        ans[0] = selectedAnswers.slice(0, 3).join(" ");
+        ans[1] = selectedAnswers.slice(3, 6).join(" ");
+        ans[2] = selectedAnswers.slice(6).join(" ");
+        var groups = [firstGroup, secondGroup, thirdGroup];
+
+        //Go over the correctAnswer array to find out in what order the answers
+        //are given to fill the answerOrder array. Incorrect answers that don't match any correctAnswers can be assigned the maining numbers.
+
+        // Create a copy of correctAnswers array to preserve the original order
+        var remainingAnswers = correctAnswers.slice();
+
+        // Initialize the answerOrder array with -1 to indicate an unanswered question
+        var answerOrder = [-1, -1, -1];
+
+        // Go through each answer and find its position in the correctAnswers array
+        for (var i = 0; i < ans.length; i++) {
+            var index = remainingAnswers.indexOf(ans[i]);
+            // If the answer is found in correctAnswers array, assign its index to answerOrder
+            if (index !== -1) {
+                answerOrder[i] = correctAnswers.indexOf(remainingAnswers[index]);
+                // Remove the found answer from remainingAnswers to handle duplicates
+                remainingAnswers.splice(index, 1);
+            }
+        }
+
+        // For any unanswered questions, assign the remaining indices in correctAnswers to answerOrder
+        for (var j = 0; j < answerOrder.length; j++) {
+            if (answerOrder[j] === -1) {
+                answerOrder[j] = correctAnswers.indexOf(remainingAnswers.shift());
+
+            }
+        }
+
+        verifyOneOptionGroup(groups[0], correctAnswers[answerOrder[0]]);
+        verifyOneOptionGroup(groups[1], correctAnswers[answerOrder[1]]);
+        verifyOneOptionGroup(groups[2], correctAnswers[answerOrder[2]]);
+
+        secondGroupFrame.style.display = 'flex';
+        thirdGroupFrame.style.display = 'flex';
+      //  showSecondBlock();
+      //  showThirdBlock();
+    }
+
+    function markTooManyAnswers(correctAnswerlength) {
+        if (correctAnswerlength == 3) return;
+        const nrOfAnwersGiven = selectedAnswers.length / 3;
+        if (correctAnswerlength < 3 && nrOfAnwersGiven == 3) {
+            thirdGroup.querySelectorAll('.option-group').forEach((optionGroup) => {
+                optionGroup.querySelectorAll('.option:not(.selected)').forEach(option => {
+                  //  option.classList.add('incorrect');
+                    option.classList.add('hidden');
+                });
+            });
+            thirdGroup.closest('.options-frame').classList.add('button-with-x');
+        }
+        if (correctAnswerlength == 1 && nrOfAnwersGiven > 1) {
+            secondGroup.querySelectorAll('.option-group').forEach((optionGroup) => {
+                optionGroup.querySelectorAll('.option:not(.selected)').forEach(option => {
+                 //   option.classList.add('incorrect');
+                    option.classList.add('hidden');
+                });
+            });
+            secondGroup.closest('.options-frame').classList.add('button-with-x');
+        }
+
     }
 
     function checkAnswer() {
         const currentWord = wordElement.textContent;
         const correctAnswer = qbank.find(question => question.word === currentWord)?.answers;
-        //console.log('Correct Answer: ', correctAnswer);
-        const correctFirstAnswer = correctAnswer[0].split(" ");
-        //  console.log('Correct AnswerA: ', correctFirstAnswer);
-        const selectedAnswersString = selectedAnswers.join(' ');
-        //console.log('Selected Answer: ', selectedAnswersString);
+
+        markTooManyAnswers(correctAnswer.length);
         if (correctAnswer.length == 2) {
             verifyTwoAnswers(correctAnswer);
         }
-        else {
-            verifyOneOptionGroup(firstGroup, correctFirstAnswer);
-
-            if ((selectedAnswers.length > 3) && (correctAnswer.length == 1)) {
-                secondGroup.querySelectorAll('.option-group').forEach((optionGroup, index) => {
-                    // Loop over alle opties binnen de huidige optiegroep
-                    optionGroup.querySelectorAll('.option').forEach(option => {
-                        option.classList.add('incorrect');
-                        fullAnswerCorrect = false;
-                    });
-                });
-            }
+        else if (correctAnswer.length == 1) {
+            verifyOneOptionGroup(firstGroup, correctAnswer[0]);
         }
-        const nrOfIncorrect = document.querySelectorAll('button[class*="incorrect"]');
-
-        if (nrOfIncorrect.length > 0) {
+        else if (correctAnswer.length == 3) {
+            verifyThreeAnswers(correctAnswer);
+        }
+        const nrOfIncorrect = document.querySelectorAll('div[class*="incorrect"]');
+        var correct = nrOfIncorrect.length == 0;
+        if (!correct) {
             // console.log("incorrect");
             score--;
             if (score < -1) {
@@ -111,61 +234,74 @@ const questions = [
             score++;
         }
         updateScoring();
-        resetButtonsAfterTimeout(); // Reset button classes after 2 seconds
+        resetButtonsAfterTimeout(nrOfIncorrect); // Reset button classes after 2 seconds
     }
 
-    function verifyOneOptionGroup(optionGroup, answerGroep) {
-
-
-        // Loop over elke optiegroep binnen de eerste groep
+    function verifyOneOptionGroup(optionGroup, answerGroepString) {
+        var answerGroep = answerGroepString.split(" ");
         optionGroup.querySelectorAll('.option-group').forEach((optionGroup, index) => {
             // Loop over alle opties binnen de huidige optiegroep
             const correctSingleAnswer = answerGroep[index];
             var hasMadeSelection = (optionGroup.querySelectorAll('.option.selected').length > 0);
+            
+            var groupCorrect = true;
             optionGroup.querySelectorAll('.option').forEach(option => {
                 const dataType = option.getAttribute('data-type');
                 const isSelected = option.classList.contains('selected');
-                const isCorrect = (dataType == correctSingleAnswer);
-
+                const isThisButtonCorrect = (dataType == correctSingleAnswer);
+                
                 // Voeg klassen toe op basis van de resultaten
-                if (isSelected && isCorrect) {
+                if (isSelected && isThisButtonCorrect) {
                     option.classList.add('correct');
-                } else if (isSelected && !isCorrect) {
-                    option.classList.add('incorrect');
+                    option.classList.remove('hidden');
+
+                } else if (isSelected && !isThisButtonCorrect) {
+                   // option.classList.add('incorrect');
+                    option.classList.add('button-with-x');
+                    groupCorrect = false;
                 }
-                else if (!isSelected && isCorrect) {
-                    option.classList.add('correct');
+                else if (!isSelected && isThisButtonCorrect) {
+                    option.classList.add('missed');
+                    option.classList.remove('hidden');
+                    groupCorrect = false;
                 }
-                else if (!hasMadeSelection && !isCorrect) {
-                    option.classList.add('incorrect');
+                else if (!hasMadeSelection && !isThisButtonCorrect) {
+                    option.classList.add('hidden');
+                }
+                else if (!isSelected && !isThisButtonCorrect){
+                   option.classList.add('hidden');
                 }
             });
+
+            const optionFrame = optionGroup.closest('.options-frame');
+            if (groupCorrect){
+                optionFrame.classList.add('correct');
+            }
+            else{
+                optionFrame.classList.add('incorrect');
+            }
         });
     }
 
-    function resetButtonsAfterTimeout() {
-        extraOptionBtn.style.display = 'none';
+    function resetButtonsAfterTimeout(nrOfIncorrect) {
         checkBtn.style.display = 'none';
-        setTimeout(() => {
-            resetButtons(); // Reset button classes after 2 seconds
-            showQuestion();
-        }, 2000);
-    }
+        secondOptionBtn.style.display = 'none';
+        thirdOptionBtn.style.display = 'none';
+        resetBtn.style.display = 'none';
+        nextBtn.style.display = 'flex';
+        // var delay = 2000;
+        // if (!correct) delay = 10000;
+        // setTimeout(() => {
 
-    function resetButtons() {
-        optionGroups.forEach(group => {
-            const buttons = group.querySelectorAll('.option');
-            buttons.forEach(button => {
-                button.classList.remove('selected', 'correct', 'incorrect');
-            });
-        });
-        resetSecondBlock();
+        //     showQuestion();
+        // }, delay);
     }
 
     function selectOption(event) {
         const selectedButton = event.target;
         const selectedOption = selectedButton.dataset.type;
         const group = selectedButton.closest('.option-group');
+        
 
         // Deselect previously selected option in the same group
         const previouslySelectedButton = group.querySelector('.selected');
@@ -186,10 +322,13 @@ const questions = [
         // checkBtn.style.display = 'none';
         //  console.log("Updating checkbutotn visiblity");
         // checkBtn.disabled = true;
-        if ((selectedAnswers.length === 3 && !tweedeOptie) ||
-            (selectedAnswers.length === 6 && tweedeOptie)) {
-            //checkBtn.disabled = false;
-            extraOptionBtn.style.display = 'flex';
+        if (((selectedAnswers.length === 3) && (nrOfAnswers == 1)) ||
+            ((selectedAnswers.length === 6) && (nrOfAnswers == 2)) ||
+            ((selectedAnswers.length === 9) && (nrOfAnswers == 3))
+        ) {
+            if (nrOfAnswers == 1) secondOptionBtn.style.display = 'flex';
+            else if (nrOfAnswers == 2) thirdOptionBtn.style.display = 'flex';
+
             checkBtn.classList.add('active');
             checkBtn.style.display = 'flex'; // Display the "Check" button
         }
@@ -200,7 +339,7 @@ const questions = [
         }
     }
 
-    optionGroups.forEach(group => {
+    optionButtons.forEach(group => {
         group.addEventListener('click', selectOption);
     });
 
@@ -286,8 +425,6 @@ const questions = [
 
             // Filter out null values
             filteredQuestions = filteredQuestions.filter(q => q);
-
-            // console.log("FilterQ: " + filteredQuestions);
             qbank = filteredQuestions;
             showQuestion();
         }
@@ -358,36 +495,6 @@ const questions = [
         document.getElementById("emoticon").innerHTML = emoticonHtml;
     }
 
-    registerSwipeEvent();
-    function registerSwipeEvent() {
-        const div = document.querySelector('mySidenav');
-
-        div.addEventListener('touchstart', handleTouchStart);
-        div.addEventListener('touchmove', handleTouchMove);
-        div.addEventListener('touchend', handleTouchEnd);
-        div.addEventListener('mousedown', handleTouchStart);
-        div.addEventListener('mousemove', handleTouchMove);
-        div.addEventListener('mouseup', handleTouchEnd);
-
-        let startX;
-
-        function handleTouchStart(e) {
-            startX = e.touches[0].clientX;
-            console.log("Start Touch" + startX);
-        }
-        function handleTouchMove(e) {
-            if (!startX) return;
-            let currentX = e.touches[0].clientX;
-
-            if (currentX < startX) {
-                // swipe left
-                closeNav();
-            }
-        }
-        function handleTouchEnd() {
-            startX = null;
-        }
-    };
 });
 
 function openNav() {
