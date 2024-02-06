@@ -1,5 +1,26 @@
 const questionsLatinNaamwoord = [
-	{ word: "lego", cat: "lidwoord", answers: ["nom ev m"] },
+	{ word: "mensa", cat: "mensa", answers: ["nom ev f", "abl ev f"] },
+	{ word: "mensae", cat: "mensa", answers: ["gen ev f", "dat ev f", "nom mv f"] },
+	 { word: "mensam", cat: "mensa", answers: ["acc ev f"] },
+	 { word: "mensarum", cat: "mensa", answers: ["gen mv f"] },
+	 { word: "mensis", cat: "mensa", answers: ["dat mv f", "abl mv f"] },
+	 { word: "mensas", cat: "mensa", answers: ["acc mv f"] },
+
+	 { word: "servus", cat: "servus", answers: ["nom ev m"] },
+	 { word: "servi", cat: "servus", answers: ["gen ev m", "nom mv m"] },
+	 { word: "servo", cat: "servus", answers: ["dat ev m", "abl ev m"] },
+	 { word: "servum", cat: "servus", answers: ["acc ev m"] },
+	 { word: "servorum", cat: "servus", answers: ["gen mv m"] },
+	 { word: "servis", cat: "servus", answers: ["dat mv m", "abl mv m"] },
+	{ word: "servos", cat: "servus", answers: ["acc mv m"] },
+
+	 { word: "donum", cat: "donum", answers: ["nom ev n", "acc ev n"] },
+	 { word: "doni", cat: "donum", answers: ["gen ev n"] },
+	 { word: "dono", cat: "donum", answers: ["dat ev n", "abl ev n"] },
+	 { word: "dona", cat: "donum", answers: ["nom mv n", "acc mv n"] },
+	 { word: "donorum", cat: "donum", answers: ["gen mv n"] },
+	 { word: "donis", cat: "donum", answers: ["dat mv n", "abl mv n"] },
+	
 ];
 
 const questionsGreekNaamwoord = [
