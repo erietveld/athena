@@ -24,24 +24,35 @@ document.addEventListener('DOMContentLoaded', function () {
     var questions;
     var qbank;
 
-    document.getElementById('GrieksNaamwoord').addEventListener('click', () => {
-        document.getElementById('header').style.display = 'block';
-        document.querySelector('.container').style.display = 'block';
-        document.getElementById('mainmenu').style.display = 'none';
+    document.getElementById('GrieksNaamwoord').addEventListener('click', () => {   
         // Find all buttons with class Latin and remove them from the DOM
         var latinButtons = document.querySelectorAll('.latin');
         latinButtons.forEach(function(button) {
             button.parentNode.removeChild(button);
         });
         questions = questionsGreekNaamwoord;
+        loadMainQuiz()
+    });
+
+    document.getElementById('LatijnNaamwoord').addEventListener('click', () => {
+        questions = questionsLatinNaamwoord;
+        loadMainQuiz()
+    });
+
+    function loadMainQuiz(){
+        document.getElementById('mySidenav').classList.add('show');
+        document.getElementById('header').style.display = 'block';
+        document.querySelector('.container').style.display = 'block';
+        document.getElementById('mainmenu').style.display = 'none';
+        document.body.style.display = 'block';
         qbank = questions;
         populateMenuItems();
         showQuestion();
+    }
+
+    document.getElementById('hamburger').addEventListener('click', () => {
+        document.getElementById("mySidenav").style.width = "250px";
     });
-
-   
-  //  var questions = questionsLatinNaamwoord;
-
     secondOptionBtn.addEventListener('click', extraBlock);
     thirdOptionBtn.addEventListener('click', extraBlock);
     function extraBlock() {
@@ -374,9 +385,21 @@ document.addEventListener('DOMContentLoaded', function () {
         const allAnswers = questions.flatMap(q => q.answers);
 
         // Get unique values by splitting on space and taking the parts
-        const naamvals = [...new Set(
-            allAnswers.map(a => a.split(" ")[0])
-        )];
+        // const naamvals = [...new Set(
+        //     allAnswers.map(a => a.split(" ")[0])
+        // )];
+
+        // Find all buttons under the first option-group under the first option class
+        var buttons = document.querySelector('#firstGroup .option-group').querySelectorAll('button');
+        
+        // Initialize an empty array to store data-type values
+        var naamvals = [];
+
+        // Loop through each button and extract its data-type value
+        buttons.forEach(function(button) {
+            var dataType = button.getAttribute('data-type');
+            naamvals.push(dataType);
+        });
 
         const cardinaliteit = [...new Set(
             allAnswers.map(a => a.split(" ")[1])
