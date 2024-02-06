@@ -1,4 +1,8 @@
-const questions = [
+const questionsLatinNaamwoord = [
+	{ word: "lego", cat: "lidwoord", answers: ["nom ev m"] },
+];
+
+const questionsGreekNaamwoord = [
     { word: "ὁ", cat: "lidwoord", answers: ["nom ev m"] },
     { word: "τοῦ", cat: "lidwoord", answers: ["gen ev m", "gen ev n"] },
     { word: "τῷ", cat: "lidwoord", answers: ["dat ev m", "dat ev n"] },

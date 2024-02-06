@@ -21,6 +21,26 @@ document.addEventListener('DOMContentLoaded', function () {
     let selectedAnswers = [];
     let score = -1;
     var nrOfAnswers = 1;
+    var questions;
+    var qbank;
+
+    document.getElementById('GrieksNaamwoord').addEventListener('click', () => {
+        document.getElementById('header').style.display = 'block';
+        document.querySelector('.container').style.display = 'block';
+        document.getElementById('mainmenu').style.display = 'none';
+        // Find all buttons with class Latin and remove them from the DOM
+        var latinButtons = document.querySelectorAll('.latin');
+        latinButtons.forEach(function(button) {
+            button.parentNode.removeChild(button);
+        });
+        questions = questionsGreekNaamwoord;
+        qbank = questions;
+        populateMenuItems();
+        showQuestion();
+    });
+
+   
+  //  var questions = questionsLatinNaamwoord;
 
     secondOptionBtn.addEventListener('click', extraBlock);
     thirdOptionBtn.addEventListener('click', extraBlock);
@@ -178,8 +198,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         secondGroupFrame.style.display = 'flex';
         thirdGroupFrame.style.display = 'flex';
-      //  showSecondBlock();
-      //  showThirdBlock();
     }
 
     function markTooManyAnswers(correctAnswerlength) {
@@ -449,11 +467,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Initial setup
-    populateMenuItems();
+    // populateMenuItems();
     //Since the are all checked by default set qbank to questions
-    var qbank = questions;
+  //  var qbank = questions;
 
-    showQuestion();
+   // showQuestion();
 
     const baseCode = 127872;
     const emoticons = [

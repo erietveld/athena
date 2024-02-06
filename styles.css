@@ -4,6 +4,16 @@ body {
     padding: 0;
 }
 
+.menucontainer {
+    display: flex;
+    margin-top: 10vh;
+        
+}
+.column {
+    flex: 1;
+    text-align: center;
+}
+
 button {
     display: inline-block; /* Change from flex to inline-block */
     padding: 10px 20px; /* Add padding */
@@ -33,6 +43,7 @@ button {
     max-width: 400px;
     margin: 30px auto;
     text-align: center;
+    display: none;
 }
 
 .word {
@@ -138,7 +149,7 @@ button {
 }
 
 #header {
-    display: flex;
+    display: none;
     justify-content: space-between; 
     align-items: top; 
   }
@@ -195,7 +206,7 @@ span, #emoticon {
 @media (min-width: 900px) {
     .sidenav {
       width: 250px;
-      
+      display: none;
     }
   }
 

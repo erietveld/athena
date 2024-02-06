@@ -4,11 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Griekse Quiz</title>
+    <title>Athena</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <div id="mainmenu">
+        <div class="menucontainer">
+            <div class="column">
+                <h2>Latijn</h2>
+                <button id="LatijnNaamwoord">Naamwoorden</button>
+            </div>
+            <div class="column">
+                <h2>Grieks</h2>
+                <button id="GrieksNaamwoord">Lidwoorden en naamwoorden</button>
+            </div>
+        </div>
+    </div>
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div class="menuHeader">Woord</div>
@@ -33,6 +45,7 @@
                     <button class="option" data-type="gen">Gen</button>
                     <button class="option" data-type="dat">Dat</button>
                     <button class="option" data-type="acc">Acc</button>
+                    <button class="option latin" data-type="acc">Abl</button>
                 </div>
                 <div class="option-group">
                     <button class="option" data-type="ev">Ev</button>
@@ -54,6 +67,7 @@
                     <button class="option" data-type="gen">Gen</button>
                     <button class="option" data-type="dat">Dat</button>
                     <button class="option" data-type="acc">Acc</button>
+                    <button class="option latin" data-type="acc">Abl</button>
                 </div>
                 <div class="option-group">
                     <button class="option" data-type="ev">Ev</button>
@@ -74,6 +88,7 @@
                     <button class="option" data-type="gen">Gen</button>
                     <button class="option" data-type="dat">Dat</button>
                     <button class="option" data-type="acc">Acc</button>
+                    <button class="option latin" data-type="acc">Abl</button>
                 </div>
                 <div class="option-group">
                     <button class="option" data-type="ev">Ev</button>
