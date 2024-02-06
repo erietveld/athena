@@ -26,7 +26,7 @@ const questionsLatinNaamwoord = [
 	 { word: "regi", cat: "rex", answers: ["dat ev m"] },
 	 { word: "regem", cat: "rex", answers: ["acc ev m"] },
 	{ word: "rege", cat: "rex", answers: ["abl ev m"] },
-	{ word: "reges", cat: "rex", answers: ["nom mv m", acc mv m"] },
+	{ word: "reges", cat: "rex", answers: ["nom mv m", "acc mv m"] },
 	 { word: "regum", cat: "rex", answers: ["gen mv m"] },
 	 { word: "regibus", cat: "rex", answers: ["dat mv m", "abl mv m"] },
 
@@ -35,7 +35,7 @@ const questionsLatinNaamwoord = [
 	 { word: "nominis", cat: "nomen", answers: ["gen ev n"] },
 	 { word: "nomini", cat: "nomen", answers: ["dat ev n"] },
 	{ word: "nomine", cat: "nomen", answers: ["abl ev n"] },
-	{ word: "nomina", cat: "nomen", answers: ["nom mv n", acc mv n"] },
+	{ word: "nomina", cat: "nomen", answers: ["nom mv n", "acc mv n"] },
 	 { word: "nominum", cat: "nomen", answers: ["gen mv n"] },
 	 { word: "nominbus", cat: "nomen", answers: ["dat mv n", "abl mv n"] },
 
@@ -53,22 +53,22 @@ const questionsLatinNaamwoord = [
 	 { word: "bonorum", cat: "bonus", answers: ["gen mv m", "gen mv n"] },
 	{ word: "bonos", cat: "bonus", answers: ["acc mv m"] },
 
-	 { word: "fortis", cat: "fortis", answers: ["nom ev m", "nom ev f", "gen ev m, "gen ev f, "gen ev n"] },
-	 { word: "forti", cat: "fortis", answers: ["dat ev m", "dat ev f", "dat ev n", abl ev m", "abl ev f", "abl ev n"] },
+	 { word: "fortis", cat: "fortis", answers: ["nom ev m", "nom ev f", "gen ev m", "gen ev f", "gen ev n"] },
+	 { word: "forti", cat: "fortis", answers: ["dat ev m", "dat ev f", "dat ev n", "abl ev m", "abl ev f", "abl ev n"] },
 	 { word: "fortem", cat: "fortis", answers:["acc ev m", "acc ev f"] },
-	 { word: "fortes", cat: "fortis", answers: ["nom mv m", "nom mv f, "acc mv m", "acc mv f"] },
+	 { word: "fortes", cat: "fortis", answers: ["nom mv m", "nom mv f", "acc mv m", "acc mv f"] },
 	 { word: "fortium", cat: "fortis", answers: ["gen mv m", "gen mv f", "gen mv n"] },
 	{ word: "fortibus", cat: "fortis", answers:["dat mv m", "abl mv m","dat mv f", "abl mv f", "dat mv n", "abl mv n"] },
 	  { word: "forte", cat: "fortis", answers: ["nom ev n", "acc ev n"] },
 	 { word: "fortia", cat: "fortis", answers: ["nom mv n", "acc mv n"]  },
 
 	 { word: "ingens", cat: "ingens", answers: ["nom ev m", "nom ev f", "nom ev n", "acc ev n"] },
-	 { word: "ingentis", cat: "ingens", answers: [ "gen ev m, "gen ev f, "gen ev n"] },
-	 { word: "ingenti", cat: "ingens", answers: ["dat ev m", "dat ev f", "dat ev n", abl ev m", "abl ev f", "abl ev n"] },
+	 { word: "ingentis", cat: "ingens", answers: [ "gen ev m", "gen ev f", "gen ev n"] },
+	 { word: "ingenti", cat: "ingens", answers: ["dat ev m", "dat ev f", "dat ev n", "abl ev m", "abl ev f", "abl ev n"] },
 	 { word: "ingentem", cat: "ingens", answers:["acc ev m", "acc ev f"] },
-	 { word: "ingentes", cat: "ingens", answers: ["nom mv m", "nom mv f, "acc mv m", "acc mv f"] },
+	 { word: "ingentes", cat: "ingens", answers: ["nom mv m", "nom mv f", "acc mv m", "acc mv f"] },
 	 { word: "ingentium", cat: "ingens", answers: ["gen mv m", "gen mv f", "gen mv n"] },
-	{ word: "ingentibus", cat: "ingens", answers:["dat mv m", "abl mv m","dat mv f", "abl mv f", "dat mv n", "abl mv n"] },
+	{ word: "ingentibus", cat: "ingens", answers:["dat mv m", "abl mv m", "dat mv f", "abl mv f", "dat mv n", "abl mv n"] },
 	  { word: "ingentia", cat: "ingens", answers: ["nom mv n", "acc mv n"]  },
 	 { 	
 ];
