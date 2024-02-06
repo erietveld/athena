@@ -70,7 +70,7 @@ const questionsLatinNaamwoord = [
 	 { word: "ingentium", cat: "ingens", answers: ["gen mv m", "gen mv f", "gen mv n"] },
 	{ word: "ingentibus", cat: "ingens", answers:["dat mv m", "abl mv m", "dat mv f", "abl mv f", "dat mv n", "abl mv n"] },
 	  { word: "ingentia", cat: "ingens", answers: ["nom mv n", "acc mv n"]  },
-	 { 	
+	 	
 ];
 
 const questionsGreekNaamwoord = [
