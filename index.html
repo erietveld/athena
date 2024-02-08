@@ -22,7 +22,7 @@
         </div>
     </div>
     <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <span title="Close Menu" class="closebtn" style="cursor:pointer" id="closeMenu">&times;</span>
         <div class="menuHeader">Woord</div>
         <div id="menuWords" class="menuWords"></div>
         <div class="menuHeader">Naamval</div>
@@ -33,35 +33,14 @@
         <br>
     </div>
     <div id="header">
-        <span id="hamburger" style="font-size:30px;cursor:pointer">&#9776;</span>
-        <div id="emoticon" class="emoticon"></div>
+        <span id="hamburger" title="Open Menu" style="font-size:30px;cursor:pointer">&#9776;</span>
+        <div id="emoticon"></div>
     </div>
     <div class="container">
-        <h1 class="word"></h1>
-        <div class="options-frame" id="firstGroupFrame">
-            <div class="options" id="firstGroup">
-                <div class="option-group">
-                    <button class="option" data-type="nom">Nom</button>
-                    <button class="option" data-type="gen">Gen</button>
-                    <button class="option" data-type="dat">Dat</button>
-                    <button class="option" data-type="acc">Acc</button>
-                    <button class="option latin" data-type="abl">Abl</button>
-                </div>
-                <div class="option-group">
-                    <button class="option" data-type="ev">Ev</button>
-                    <button class="option" data-type="mv">Mv</button>
-                </div>
-                <div class="option-group">
-                    <button class="option" data-type="m">M</button>
-                    <button class="option" data-type="f">F</button>
-                    <button class="option" data-type="n">N</button>
-                </div>
-            </div>
-            
-        </div>
-        <button class="action-button" id="secondOptionBtn">Nog een optie?</button>
-        <div class="options-frame" id="secondGroupFrame">
-            <div class="options" id="secondGroup">
+        <h1 id="word" class="word"></h1>
+        <div id="groups">
+        <div class="options-frame" id="groupFrame0">
+            <div class="options">
                 <div class="option-group">
                     <button class="option" data-type="nom">Nom</button>
                     <button class="option" data-type="gen">Gen</button>
@@ -80,28 +59,9 @@
                 </div>
             </div>
         </div>
+    </div>
+        <button class="action-button" id="addOptionBtn">Nog een optie?</button>
         
-        <div class="options-frame" id="thirdGroupFrame">
-            <div class="options" id="thirdGroup">
-                <div class="option-group">
-                    <button class="option" data-type="nom">Nom</button>
-                    <button class="option" data-type="gen">Gen</button>
-                    <button class="option" data-type="dat">Dat</button>
-                    <button class="option" data-type="acc">Acc</button>
-                    <button class="option latin" data-type="abl">Abl</button>
-                </div>
-                <div class="option-group">
-                    <button class="option" data-type="ev">Ev</button>
-                    <button class="option" data-type="mv">Mv</button>
-                </div>
-                <div class="option-group">
-                    <button class="option" data-type="m">M</button>
-                    <button class="option" data-type="f">F</button>
-                    <button class="option" data-type="n">N</button>
-                </div>
-            </div>
-        </div>
-        <button class="action-button" id="thirdOptionBtn">Nog een optie?</button>
         <button id="resetBtn" class="action-button" type="button">Reset</button>
         <button id="checkBtn" class="action-button" type="button">Controleren</button>
         <button id="nextBtn" class="action-button" type="button">Volgende</button>
