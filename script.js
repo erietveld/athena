@@ -12,21 +12,111 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('GrieksNaamwoord').addEventListener('click', () => {
         // Find all buttons with class Latin and remove them from the DOM
-        var latinButtons = document.querySelectorAll('.latin');
+        var latinButtons = document.querySelectorAll('.latijn');
         latinButtons.forEach(function (button) {
             button.parentNode.removeChild(button);
         });
+        var naamwoordBlock = document.querySelectorAll('.werkwoorden');
+        naamwoordBlock.forEach(function (button) {
+            button.parentNode.removeChild(button);
+        })
         questions = questionsGreekNaamwoord;
-        loadMainQuiz()
+        loadMainQuiz();
+        populateMenuItemsNaamwoorden();
     });
+    document.getElementById('LatijnWerkwoord').addEventListener('click', loadLatijnWW);
+
+    function loadLatijnWW() {
+        var grieksButtons = document.querySelectorAll('.grieks');
+        grieksButtons.forEach(function (button) {
+            button.parentNode.removeChild(button);
+        });
+        var naamwoordBlock = document.querySelectorAll('.naamwoorden');
+        naamwoordBlock.forEach(function (button) {
+            button.classList.add('hidden');
+        })
+
+        questions = qWerkwoordLatijn;
+        // addWerkwoordListeners();
+        loadMainQuiz();
+        populateMenuItemsWerkwoorden();
+    }
+    addAllButtonListeners();
+
+    function addAllButtonListeners(){
+        //!!ER: Keep this order of eventListener registrations
+        document.querySelectorAll('.option').forEach(group => {
+            group.addEventListener('click', selectOption);
+        });
+        addWerkwoordListeners();
+        document.querySelectorAll('.option').forEach(group => {
+            group.addEventListener('click', validateAnswerComplete);
+        });
+    }
+    
+
+    function addWerkwoordListeners() {
+        const ptcButtons = document.querySelectorAll('button[data-type="ptc"]');
+        ptcButtons.forEach(button => {
+            button.addEventListener('click', ptcClicked); 
+        });
+        
+        const wijsButtons = document.querySelectorAll('.werkwoorden .option-group:nth-child(1) button');
+        wijsButtons.forEach(button => {
+            button.addEventListener('click', wijsUpdated);
+        });
+    }
+    function ptcClicked(event){
+        const clickedButton = event.target;
+        const optionsFrameDiv = clickedButton.closest('.options-frame');
+        var naamwoordBlock = optionsFrameDiv.querySelector('.naamwoorden');
+        if (clickedButton.classList.contains('selected')) {
+            naamwoordBlock.classList.remove('hidden');
+        }
+        else{
+            naamwoordBlock.classList.add('hidden');
+            const allNaamwoordButtons = naamwoordBlock.querySelectorAll('button');
+            allNaamwoordButtons.forEach(function (button) {
+                button.classList.remove('selected');
+            });
+
+        }
+    }
+
+    function wijsUpdated(event) {
+        const clickedButton = event.target;
+        const optionsDiv = clickedButton.closest('.options');
+        const wijsButtons = optionsDiv.querySelectorAll('.option-group:nth-child(1) button');
+        var disList = "";
+
+        wijsButtons.forEach(function (button) {
+            if (button.classList.contains('selected')) {
+                const disGetal = button.getAttribute('data-disGetal')
+                if (disGetal  !== undefined) {
+                    disList += disGetal;
+                }
+            }
+        });
+
+
+        // Find all buttons in the third option-group under the options div
+        const persGetalButtons = optionsDiv.querySelectorAll('.option-group:nth-child(3) button');
+
+        // Check if any button in the third option-group is already disabled
+        persGetalButtons.forEach(function (button, index) {
+            if (disList.includes(index)) {
+                button.classList.remove('selected');
+                button.disabled = true;
+            }
+            else {
+                button.disabled = false;
+            }
+        });
+    }
 
     //TODO: Remove before flight
     if (false) {
-        questions = [
-            { word: "mensae", cat: "mensa", answers: ["gen ev f"]}
-            //, "dat ev f", "nom mv f"] },
-        ];
-        loadMainQuiz();
+        loadLatijnWW();
     }
     // END TODO
 
@@ -34,6 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('LatijnNaamwoord').addEventListener('click', () => {
         questions = questionsLatinNaamwoord;
         loadMainQuiz()
+        populateMenuItemsNaamwoorden();
     });
 
     function loadMainQuiz() {
@@ -43,18 +134,18 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('mainmenu').style.display = 'none';
         document.body.style.display = 'block';
         qbank = questions;
-        populateMenuItems();
+
         showQuestion();
     }
 
     document.getElementById('hamburger').addEventListener('click', () => {
         document.getElementById("mySidenav").style.width = "250px";
     });
-    
+
     document.getElementById('closeMenu').addEventListener('click', () => {
         document.getElementById("mySidenav").style.width = "0px";
     });
-    
+
 
 
     addOptionBtn.addEventListener('click', extraFrame);
@@ -65,15 +156,19 @@ document.addEventListener('DOMContentLoaded', function () {
         var selectedOptions = [];
         var optionGroups = currentFrame.querySelectorAll('.option-group');
 
-        optionGroups.forEach(function(group) {
+        optionGroups.forEach(function (group) {
             var groupSelectedOptions = [];
             var buttons = group.querySelectorAll('.option.selected');
 
-            buttons.forEach(function(button) {
+            buttons.forEach(function (button) {
                 groupSelectedOptions.push(button.getAttribute('data-type'));
             });
+            const parentVisible = !group.closest('.options').classList.contains('hidden');
+            const hasEnabledButtons = group.querySelectorAll('.option:not([disabled])').length>0;
 
-            selectedOptions.push(groupSelectedOptions);
+            if (parentVisible && hasEnabledButtons) {
+                selectedOptions.push(groupSelectedOptions);
+            }
         });
 
         return selectedOptions;
@@ -92,8 +187,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var permutations = [];
 
-        firstGroup.forEach(function(option) {
-            restPermutations.forEach(function(permutation) {
+        firstGroup.forEach(function (option) {
+            restPermutations.forEach(function (permutation) {
                 permutations.push([option].concat(permutation));
             });
         });
@@ -101,14 +196,14 @@ document.addEventListener('DOMContentLoaded', function () {
         return permutations;
     }
 
-    function expandPermutations(){
-        
+    function expandPermutations() {
+
         var currentFrame = document.getElementById('groupFrame' + currentFrameId);
         const selectedOptions = getSelectedOptions(currentFrame);
         // Generate permutations of selected options
         const permutations = generatePermutations(selectedOptions);
 
-        if (permutations.length==1) return;
+        if (permutations.length == 1) return;
 
         //Clear selections from current frame
         var selectedButtons = currentFrame.querySelectorAll('.option.selected');
@@ -119,27 +214,27 @@ document.addEventListener('DOMContentLoaded', function () {
         const startFrameId = currentFrameId;
         permutations.forEach((permutation, index) => {
             var oneFrame;
-            if (index==0){
-                 oneFrame = document.getElementById('groupFrame' + (startFrameId + index));
+            if (index == 0) {
+                oneFrame = document.getElementById('groupFrame' + (startFrameId + index));
             }
-            else{
-                 oneFrame = addFrame(false);
+            else {
+                oneFrame = addFrame(false);
             }
             var optionGroups = oneFrame.querySelectorAll('.option-group');
             optionGroups.forEach((group, index2) => {
                 var buttons = group.querySelectorAll('.option');
-    
-                buttons.forEach(function(button) {
+
+                buttons.forEach(function (button) {
                     if (button.getAttribute('data-type') === permutation[index2]) {
                         button.classList.add("selected");
                     }
-                    else{
+                    else {
                         button.classList.add('hidden');
                     }
                 });
             });
         });
-        
+
     }
 
     function extraFrame() {
@@ -168,10 +263,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var selectedButtons = frameClone.querySelectorAll('.option');
         selectedButtons.forEach(button => {
             button.className = 'option';
-            if (addEventHandler) button.addEventListener('click', selectOption);
+           // if (addEventHandler) button.addEventListener('click', selectOption);
         });
-
         container.appendChild(frameClone);
+        addAllButtonListeners();
         return frameClone;
     }
 
@@ -212,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const question = qbank[randomIndex];
         wordElement.textContent = question.word;
         selectedAnswers = [];
-        
+
         reset();
     }
     function markAnswers(correctAnswers) {
@@ -332,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const dataType = option.getAttribute('data-type');
                 const isSelected = option.classList.contains('selected');
                 const isThisButtonCorrect = (dataType == correctSingleAnswer);
-                option.classList.remove('pressed');
+                option.classList.remove('selected');
 
                 // Voeg klassen toe op basis van de resultaten
                 if (isSelected && isThisButtonCorrect) {
@@ -373,31 +468,18 @@ document.addEventListener('DOMContentLoaded', function () {
         resetBtn.style.display = 'none';
         nextBtn.style.display = 'flex';
     }
-    
+
     function selectOption(event) {
         if (amReviewing) return;
 
         const selectedButton = event.target;
-        const isAlreadySelected = selectedButton.classList.contains('selected');
+        // const isAlreadySelected = selectedButton.classList.contains('selected');
 
         // Toggle the "selected" class
         selectedButton.classList.toggle('selected');
-    
-        // If the button is already selected, remove the "pressed" class
-        if (isAlreadySelected) {
-            selectedButton.classList.remove('pressed');
-        } else {
-            // If the button is newly selected, add the "pressed" class
-            selectedButton.classList.add('pressed');
-        }
-/*
-        // Toggle the selection state of the clicked option
-        if (selectedButton.classList.contains('selected')) {
-            selectedButton.classList.remove('selected'); // Remove 'selected' class if already selected
-        } else {
-            selectedButton.classList.add('selected'); // Add 'selected' class if not selected
-        }*/
-
+    }
+    function validateAnswerComplete(event){
+        const selectedButton = event.target;
         // Get the parent options-frame of the selected button
         const optionsFrame = selectedButton.closest('.options-frame');
 
@@ -409,11 +491,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Iterate over each option group
         optionGroups.forEach(function (group) {
+            
+            // Check if parent options is maybe hidden (and thus this optionGroup as well)
+            const parentOptions = group.closest('.options');
+            const parentVisible = !parentOptions.classList.contains('hidden');
             // Get all selected options within the group
             const selectedOptions = group.querySelectorAll('.option.selected');
+            const notDisabledButtons = group.querySelectorAll('.option:not([disabled])');
 
             // Check if at least one option is selected
-            if (selectedOptions.length === 0) {
+            if (selectedOptions.length === 0 && parentVisible && notDisabledButtons.length>0) {
                 isValid = false;
             }
         });
@@ -434,24 +521,60 @@ document.addEventListener('DOMContentLoaded', function () {
         addOptionBtn.style.display = 'none';
     }
 
-    document.querySelectorAll('.option').forEach(group => {
-        group.addEventListener('click', selectOption);
-    });
-
+    
     checkBtn.addEventListener('click', checkAnswer);
 
+    function populateMenuItemsWerkwoorden() {
 
-    function populateMenuItems() {
+        const miWords = document.getElementById("miWerkwoorden");
+        const categories = [...new Set(questions.map(q => q.cat))];
+        addCheckboxes(categories, miWords);
+
+        // Flatten all answers into one array
+        // const allAnswers = questions.flatMap(q => q.answers);
+
+        const buttonsWijs = document.querySelector('.werkwoorden .option-group').querySelectorAll('button');
+        var wijzen = [];
+        // Loop through each button and extract its data-type value
+        buttonsWijs.forEach(function (button) {
+            var dataType = button.getAttribute('data-type');
+            wijzen.push(dataType);
+        });
+        const miWijs = document.getElementById("miWijs");
+        addCheckboxes(wijzen, miWijs);
+
+        
+        const buttonsTijd = document.querySelectorAll('.werkwoorden .option-group')[1].querySelectorAll('button');
+        var tijden = [];
+        buttonsTijd.forEach(function (button) {
+            var dataType = button.getAttribute('data-type');
+            tijden.push(dataType);
+        });
+        const miTijd = document.getElementById("miTijd");
+        addCheckboxes(tijden, miTijd);
+
+        const buttonsDias= document.querySelectorAll('.werkwoorden .option-group')[3].querySelectorAll('button');
+        var dias = [];
+        buttonsDias.forEach(function (button) {
+            var dataType = button.getAttribute('data-type');
+            dias.push(dataType);
+        });
+        const miDiathese = document.getElementById("miDiathese");
+        addCheckboxes(dias, miDiathese);
+
+    }
+
+    function populateMenuItemsNaamwoorden() {
         // Get reference to menu div
-        const menuWords = document.getElementById("menuWords");
-        const menuNaamval = document.getElementById("menuNaamval");
-        const menuCard = document.getElementById("menuCard");
+        const menuWords = document.getElementById("miNaamwoorden");
+        const menuNaamval = document.getElementById("miNaamval");
+        const menuCard = document.getElementById("miCard");
 
         // Flatten all answers into one array
         const allAnswers = questions.flatMap(q => q.answers);
 
         // Find all buttons under the first option-group under the first option class
-        var buttons = document.querySelector('#groupFrame0 .option-group').querySelectorAll('button');
+        var buttons = document.querySelector('.naamwoorden .option-group').querySelectorAll('button');
 
         // Initialize an empty array to store data-type values
         var naamvallen = [];
@@ -468,9 +591,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Get unique category values
         const categories = [...new Set(questions.map(q => q.cat))];
-        addCheckbox(categories, menuWords);
-        addCheckbox(naamvallen, menuNaamval);
-        addCheckbox(cardinaliteit, menuCard);
+        addCheckboxes(categories, menuWords);
+        addCheckboxes(naamvallen, menuNaamval);
+        addCheckboxes(cardinaliteit, menuCard);
 
         // Get checkboxes inside menuWords
         const wordCB = menuWords.querySelectorAll('input[type="checkbox"]');
@@ -530,25 +653,25 @@ document.addEventListener('DOMContentLoaded', function () {
             qbank = filteredQuestions;
             showQuestion();
         }
+    }
 
-        function addCheckbox(list, div) {
-            // Loop through categories and add checkbox for each
-            list.forEach(cat => {
-                const checkbox = document.createElement("input");
-                checkbox.type = "checkbox";
-                checkbox.value = cat;
-                checkbox.id = cat;
-                checkbox.checked = true;
+    function addCheckboxes(list, div) {
+        // Loop through categories and add checkbox for each
+        list.forEach(cat => {
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.value = cat;
+            checkbox.id = cat;
+            checkbox.checked = true;
 
-                const label = document.createElement("label");
-                label.htmlFor = cat;
-                label.textContent = cat;
+            const label = document.createElement("label");
+            label.htmlFor = cat;
+            label.textContent = cat;
 
-                div.appendChild(checkbox);
-                div.appendChild(label);
-                div.appendChild(document.createElement("br"));
-            });
-        }
+            div.appendChild(checkbox);
+            div.appendChild(label);
+            div.appendChild(document.createElement("br"));
+        });
     }
     const baseCode = 127872;
     const emoticons = [
@@ -589,14 +712,14 @@ document.addEventListener('DOMContentLoaded', function () {
         var emoticon = document.getElementById("emoticon")
         emoticon.innerHTML = emoticonHtml;
 
-        if (score%10==7){
+        if (score % 10 == 7) {
             emoticon.classList.add('rotate');
 
             // Remove the 'rotate' class after the animation completes
-            setTimeout(function() {
+            setTimeout(function () {
                 emoticon.classList.remove('rotate');
             }, 500); // Duration of the animation in milliseconds
-                }
         }
+    }
 
 });

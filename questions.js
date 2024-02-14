@@ -1,3 +1,7 @@
+const qWerkwoordLatijn = [
+	{ word: "voco", cat: "vocare", answers: ["ind praes 1e-ev act"] },
+];
+
 const questionsLatinNaamwoord = [
 	{ word: "mensa", cat: "mensa", answers: ["nom ev f", "abl ev f"] },
 	{ word: "mensae", cat: "mensa", answers: ["gen ev f", "dat ev f", "nom mv f"] },

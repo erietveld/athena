@@ -21,10 +21,12 @@ label{
 .column {
     flex: 1;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .menuButton{
-    width: auto;
+    margin-bottom: 15px; 
 }
 
 button {
@@ -42,7 +44,7 @@ button {
     position: relative; 
 
 }
-button.pressed {
+button.selected {
     transform: translateY(2px); /* Move the button 2 pixels down when pressed */
     box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.2);
     z-index: 2; 
@@ -87,19 +89,26 @@ button.pressed {
 
 .option-group {
     margin-bottom: 0px;
-    flex: 1 0 calc(33.33% - 10px); /* Verdeel de ruimte in drie kolommen en laat een beetje ruimte tussen de elementen */
+    flex: 1 0 0;
+    /*calc(33.33% - 10px); /* Verdeel de ruimte in drie kolommen en laat een beetje ruimte tussen de elementen */
+    gap: 10px;
 }
 .options-frame {
     border: 2px solid #ccc;
     padding: 3px;
     margin: 2px;
     display: flex;
+    flex-direction: column;
 }
 .options-frame.correct {
     border: 3px solid green;
 }
 .options-frame.incorrect {
     border: 3px solid red;
+}
+
+div.hidden {
+    display: none;
 }
 
 .option.hidden {

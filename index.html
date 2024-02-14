@@ -13,22 +13,36 @@
         <div class="menucontainer">
             <div class="column">
                 <h2>Latijn</h2>
+                <button class="menuButton" id="LatijnWerkwoord">Werkwoorden</button>
                 <button class="menuButton" id="LatijnNaamwoord">Naamwoorden</button>
             </div>
             <div class="column">
                 <h2>Grieks</h2>
-                <button class="menuButton"  id="GrieksNaamwoord">Lidwoorden en naamwoorden</button>
+                <button class="menuButton" id="GrieksWerkwoord">Werkwoorden</button>
+                <button class="menuButton" id="GrieksNaamwoord">Lidwoorden en naamwoorden</button>
             </div>
         </div>
     </div>
     <div id="mySidenav" class="sidenav">
         <span title="Close Menu" class="closebtn" style="cursor:pointer" id="closeMenu">&times;</span>
-        <div class="menuHeader">Woord</div>
-        <div id="menuWords" class="menuWords"></div>
-        <div class="menuHeader">Naamval</div>
-        <div id="menuNaamval" class="menuNaamval"></div>
-        <div class="menuHeader">Getal</div>
-        <div id="menuCard" class="menuCard"></div>
+        <div id="naamwoordenMenu" class="naamwoorden">
+            <div class="menuHeader">Naamwoord</div>
+            <div id="miNaamwoorden" class="menuWords"></div>
+            <div class="menuHeader">Naamval</div>
+            <div id="miNaamval" class="menuNaamval"></div>
+            <div class="menuHeader">Getal</div>
+            <div id="miCard" class="menuCard"></div>
+        </div>
+        <div id="werkwoordenMenu" class="werkwoorden">
+            <div class="menuHeader">Werkwoord</div>
+            <div id="miWerkwoorden" class="menuWords"></div>
+            <div class="menuHeader">Wijs</div>
+            <div id="miWijs" class="menuWijs"></div>
+            <div class="menuHeader">Tijd</div>
+            <div id="miTijd" class="menuTijd"></div>
+            <div class="menuHeader">Diathese</div>
+            <div id="miDiathese" class="miDiathese"></div>
+        </div>
         <br>
         <br>
     </div>
@@ -40,13 +54,45 @@
         <h1 id="word" class="word"></h1>
         <div id="groups">
         <div class="options-frame" id="groupFrame0">
-            <div class="options">
+            <div class="options werkwoorden">
+                <div class="option-group">
+                    <button class="option" data-type="ind">ind</button>
+                    <button class="option" data-type="imp" data-disGetal="0235">imp</button>
+                    <button class="option grieks" data-type="opt">opt</button>
+                    <button class="option" data-type="conj">conj</button>
+                    <button class="option" data-type="inf" data-disGetal="012345">inf</button>
+                    <button class="option" data-type="ptc" data-disGetal="012345">ptc</button>
+                </div>
+                <div class="option-group">
+                    <button class="option" data-type="praes">praes</button>
+                    <button class="option" data-type="impf">impf</button>
+                    <button class="option" data-type="fut">fut</button>
+                    <button class="option" data-type="perf">perf</button>
+                    <button class="option grieks" data-type="aor">aor</button>
+                    <button class="option" data-type="plqpf">plqpf</button>
+                    <button class="option latijn" data-type="fex">fex</button>
+                </div>
+                <div class="option-group">
+                    <button class="option" data-type="1e-ev">1e ev</button>
+                    <button class="option" data-type="2e-ev">2e ev</button>
+                    <button class="option" data-type="3e-ev">3e ev</button>
+                    <button class="option" data-type="1e-mv">1e mv</button>
+                    <button class="option" data-type="2e-mv">2e mv</button>
+                    <button class="option" data-type="3e-mv">3e mv</button>
+                </div>
+                <div class="option-group">
+                    <button class="option" data-type="act">act</button>
+                    <button class="option grieks" data-type="med">med</button>
+                    <button class="option" data-type="pass">pass</button>
+                </div>              
+            </div>
+            <div class="options naamwoorden">
                 <div class="option-group">
                     <button class="option" data-type="nom">Nom</button>
                     <button class="option" data-type="gen">Gen</button>
                     <button class="option" data-type="dat">Dat</button>
                     <button class="option" data-type="acc">Acc</button>
-                    <button class="option latin" data-type="abl">Abl</button>
+                    <button class="option latijn" data-type="abl">Abl</button>
                 </div>
                 <div class="option-group">
                     <button class="option" data-type="ev">Ev</button>
