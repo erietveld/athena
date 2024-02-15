@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         var naamwoordBlock = document.querySelectorAll('.naamwoorden');
         naamwoordBlock.forEach(function (button) {
-            button.classList.add('hidden');
+            button.classList.add('hidden', 'hideOnReset');
         })
 
         questions = qWerkwoordLatijn;
@@ -263,8 +263,11 @@ document.addEventListener('DOMContentLoaded', function () {
         var selectedButtons = frameClone.querySelectorAll('.option');
         selectedButtons.forEach(button => {
             button.className = 'option';
-           // if (addEventHandler) button.addEventListener('click', selectOption);
         });
+
+        frameClone.querySelectorAll('.hideOnReset').forEach(button => {
+            button.classList.add('hidden');
+        })
         container.appendChild(frameClone);
         addAllButtonListeners();
         return frameClone;
@@ -276,9 +279,12 @@ document.addEventListener('DOMContentLoaded', function () {
         amReviewing = false;
         selectedAnswers = [];
         resetFrames();
+        document.querySelectorAll('.hideOnReset').forEach(button => {
+            button.classList.add('hidden');
+        })
         document.querySelectorAll('.option').forEach(button => {
             button.className = 'option';
-            //button.classList.remove('selected', 'correct', 'incorrect', 'hidden', 'missed', 'button-with-x');
+            button.disabled = false;
         });
         addOptionBtn.style.display = 'none';
         resetBtn.style.display = 'none';
@@ -561,6 +567,50 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         const miDiathese = document.getElementById("miDiathese");
         addCheckboxes(dias, miDiathese);
+        
+        // Add change listener
+        const checkboxes = document.getElementById("mySidenav").querySelectorAll("input[type='checkbox']");
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', filterWerkwoordQuestions);
+        });
+
+        // Filter questions function
+        function filterWerkwoordQuestions() {
+            NodeList.prototype.map = Array.prototype.map;
+            const checkedValues = document.querySelectorAll('.miWW input[type="checkbox"]:checked').map(checkbox => checkbox.value); 
+
+            const checkedWWs = document.querySelectorAll('#miWerkwoorden input[type="checkbox"]:checked').map(checkbox => checkbox.value); 
+            
+            var filteredQuestions = JSON.parse(JSON.stringify(questions));
+
+            // Filter questions by checked cats
+            filteredQuestions = filteredQuestions.filter(q => {
+                return checkedWWs.includes(q.cat);
+            });
+
+            // Filter answer
+            filteredQuestions = filteredQuestions.map(q => {
+                q.answers = q.answers.filter(a => {
+                    // Split answer
+                    const parts = a.split(" ");
+
+                    if (!checkedValues.includes(parts[0])
+                        || !checkedValues.includes(parts[1])
+                        || (!checkedValues.includes(parts[3]) )) return false;
+                    return true;
+                });
+
+                // Remove question if no answers
+                if (q.answers.length === 0) return null;
+                return q;
+
+            });
+
+            // Filter out null values
+            filteredQuestions = filteredQuestions.filter(q => q);
+            qbank = filteredQuestions;
+            showQuestion();
+        }
 
     }
 
@@ -603,11 +653,11 @@ document.addEventListener('DOMContentLoaded', function () {
         // Add change listener
         const checkboxes = document.getElementById("mySidenav").querySelectorAll("input[type='checkbox']");
         checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', filterWoordQuestions);
+            checkbox.addEventListener('change', filterNaamwoordQuestions);
         });
 
         // Filter questions function
-        function filterWoordQuestions() {
+        function filterNaamwoordQuestions() {
 
             // Get checked values
             const checkedCats = [];
