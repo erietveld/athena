@@ -16,31 +16,33 @@ document.addEventListener('DOMContentLoaded', function () {
         latinButtons.forEach(function (button) {
             button.parentNode.removeChild(button);
         });
-        var naamwoordBlock = document.querySelectorAll('.werkwoorden');
-        naamwoordBlock.forEach(function (button) {
-            button.parentNode.removeChild(button);
-        })
         questions = questionsGreekNaamwoord;
-        loadMainQuiz();
-        populateMenuItemsNaamwoorden();
+        naamwoordenLoad();
     });
-    document.getElementById('LatijnWerkwoord').addEventListener('click', loadLatijnWW);
+    document.getElementById('GrieksWerkwoord').addEventListener('click', () => {
+        questions = qWerkwoordGrieks;
+        werkwoordenLoad();
+    });
 
+    document.getElementById('LatijnWerkwoord').addEventListener('click', loadLatijnWW);
     function loadLatijnWW() {
         var grieksButtons = document.querySelectorAll('.grieks');
         grieksButtons.forEach(function (button) {
             button.parentNode.removeChild(button);
         });
+        questions = qWerkwoordLatijn;
+        werkwoordenLoad();
+    }
+
+    function werkwoordenLoad(){
         var naamwoordBlock = document.querySelectorAll('.naamwoorden');
         naamwoordBlock.forEach(function (button) {
             button.classList.add('hidden', 'hideOnReset');
         })
-
-        questions = qWerkwoordLatijn;
-        // addWerkwoordListeners();
         loadMainQuiz();
-        populateMenuItemsWerkwoorden();
+        populateMenuItemsWerkwoorden();        
     }
+
     addAllButtonListeners();
 
     function addAllButtonListeners(){
@@ -123,9 +125,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('LatijnNaamwoord').addEventListener('click', () => {
         questions = questionsLatinNaamwoord;
-        loadMainQuiz()
-        populateMenuItemsNaamwoorden();
+
+        naamwoordenLoad();
     });
+
+    function naamwoordenLoad(){
+        var naamwoordBlock = document.querySelectorAll('.werkwoorden');
+        naamwoordBlock.forEach(function (button) {
+            button.parentNode.removeChild(button);
+        })
+        
+        loadMainQuiz();
+        populateMenuItemsNaamwoorden();
+    }
 
     function loadMainQuiz() {
         document.getElementById('mySidenav').classList.add('show');
@@ -133,10 +145,34 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('.container').style.display = 'block';
         document.getElementById('mainmenu').style.display = 'none';
         document.body.style.display = 'block';
+        questions = removeDuplicates(questions);
+        
         qbank = questions;
 
         showQuestion();
     }
+
+    function removeDuplicates(array) {
+        const result = [];
+        const map = new Map();
+        
+        // Itereer over elk object in de array
+        array.forEach(obj => {
+          // Controleer of het woord al voorkomt in de map
+          if (map.has(obj.word)) {
+            // Voeg de antwoorden toe aan het bestaande woord in de map
+            const existing = map.get(obj.word);
+            existing.answers.push(...obj.answers);
+          } else {
+            // Voeg het nieuwe woord toe aan de map
+            map.set(obj.word, { ...obj });
+            result.push(obj);
+          }
+        });
+        
+        return result;
+      }
+
 
     document.getElementById('hamburger').addEventListener('click', () => {
         document.getElementById("mySidenav").style.width = "250px";
@@ -247,7 +283,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var unselectedButtons = currentFrame.querySelectorAll('.option:not(.selected):not(.incorrect):not(.correct):not(.missed)');
         // Add 'hidden' class to unselected buttons
         unselectedButtons.forEach((button) => {
-            button.className = 'option hidden';
+            button.classL.add('hidden');
         });
 
         hideForIncompleteAnswer();
@@ -262,7 +298,12 @@ document.addEventListener('DOMContentLoaded', function () {
         frameClone.id = 'groupFrame' + currentFrameId;
         var selectedButtons = frameClone.querySelectorAll('.option');
         selectedButtons.forEach(button => {
+            if (button.classList.contains('filter')){
+                button.className = 'option filter';
+            }
+            else{
             button.className = 'option';
+            }
         });
 
         frameClone.querySelectorAll('.hideOnReset').forEach(button => {
@@ -283,7 +324,12 @@ document.addEventListener('DOMContentLoaded', function () {
             button.classList.add('hidden');
         })
         document.querySelectorAll('.option').forEach(button => {
+            if (button.classList.contains('filter')){
+                button.className = 'option filter';
+            }
+            else{
             button.className = 'option';
+            }
             button.disabled = false;
         });
         addOptionBtn.style.display = 'none';
@@ -296,7 +342,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     };
     // Function to remove all extra frames except for the first one
-    function resetFrames() {
+        function resetFrames() {
         var extraFrames = document.querySelectorAll('.options-frame:not(#groupFrame0)');
         extraFrames.forEach(function (frame) {
             frame.remove();
@@ -477,13 +523,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function selectOption(event) {
         if (amReviewing) return;
-
         const selectedButton = event.target;
-        // const isAlreadySelected = selectedButton.classList.contains('selected');
-
-        // Toggle the "selected" class
         selectedButton.classList.toggle('selected');
     }
+
     function validateAnswerComplete(event){
         const selectedButton = event.target;
         // Get the parent options-frame of the selected button
@@ -576,6 +619,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Filter questions function
         function filterWerkwoordQuestions() {
+
+
             NodeList.prototype.map = Array.prototype.map;
             const checkedValues = document.querySelectorAll('.miWW input[type="checkbox"]:checked').map(checkbox => checkbox.value); 
 
@@ -610,6 +655,20 @@ document.addEventListener('DOMContentLoaded', function () {
             filteredQuestions = filteredQuestions.filter(q => q);
             qbank = filteredQuestions;
             showQuestion();
+
+            // Select all option classes under the werkwoorden div, excluding the third option-group
+            var dynamicButtons = document.querySelectorAll('.werkwoorden > .option-group:not(:nth-child(3)) .option');
+            dynamicButtons.forEach(function(button){
+                if (checkedValues.includes(button.getAttribute("data-type"))) {
+                    button.classList.remove('filter');
+                }
+                else{
+                    button.classList.add('filter');
+                }
+            }
+            );
+            
+
         }
 
     }
@@ -664,13 +723,13 @@ document.addEventListener('DOMContentLoaded', function () {
             wordCB.forEach(cb => {
                 if (cb.checked) checkedCats.push(cb.value);
             });
-            const checkedNV = [];
+            const checkedAttrs = [];
             naamvalsCB.forEach(cb => {
-                if (cb.checked) checkedNV.push(cb.value);
+                if (cb.checked) checkedAttrs.push(cb.value);
             });
-            const checkedCard = [];
+            // const checkedCard = [];
             cardinaliteitCB.forEach(cb => {
-                if (cb.checked) checkedCard.push(cb.value);
+                if (cb.checked) checkedAttrs.push(cb.value);
             });
 
             var filteredQuestions = JSON.parse(JSON.stringify(questions));
@@ -686,9 +745,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Split answer
                     const parts = a.split(" ");
                     // Check first part
-                    if (!checkedNV.includes(parts[0])) return false;
+                    if (!checkedAttrs.includes(parts[0])) return false;
                     // Check second part  
-                    if (!checkedCard.includes(parts[1])) return false;
+                    if (!checkedAttrs.includes(parts[1])) return false;
                     return true;
                 });
 
@@ -702,6 +761,18 @@ document.addEventListener('DOMContentLoaded', function () {
             filteredQuestions = filteredQuestions.filter(q => q);
             qbank = filteredQuestions;
             showQuestion();
+
+            var dynamicButtons = document.querySelectorAll('.naamwoorden > .option-group:not(:nth-child(3)) .option');
+            dynamicButtons.forEach(function(button){
+                if (checkedAttrs.includes(button.getAttribute("data-type"))) {
+                    button.classList.remove('filter');
+                }
+                else{
+                    button.classList.add('filter');
+                }
+            }
+            );
+            
         }
     }
 

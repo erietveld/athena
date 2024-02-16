@@ -110,6 +110,9 @@ button.selected {
 div.hidden {
     display: none;
 }
+.option.filter {
+    display: none;
+}
 
 .option.hidden {
     display: none;

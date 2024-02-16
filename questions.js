@@ -1,3 +1,25 @@
+const qWerkwoordGrieks = [
+	{ "word": "λύω", "cat": "λύω", "answers": ["ind praes 1e-ev act"] },
+	{ "word": "λύεις", "cat": "λύω", "answers": ["ind praes 2e-ev act"] },
+	{ "word": "λύει", "cat": "λύω", "answers": ["ind praes 3e-ev act"] },
+	{ "word": "λύομεν", "cat": "λύω", "answers": ["ind praes 1e-mv act"] },
+	{ "word": "λύετε", "cat": "λύω", "answers": ["ind praes 2e-mv act"] },
+	{ "word": "λύουσι(ν)", "cat": "λύω", "answers": ["ind praes 3e-mv act"] },
+	{ "word": "ἔλυον", "cat": "λύω", "answers": ["ind impf 1e-ev act"] },
+	{ "word": "ἔλυες", "cat": "λύω", "answers": ["ind impf 2e-ev act"] },
+	{ "word": "ἔλυε", "cat": "λύω", "answers": ["ind impf 3e-ev act"] },
+	{ "word": "ἐλύομεν", "cat": "λύω", "answers": ["ind impf 1e-mv act"] },
+	{ "word": "ἐλύετε", "cat": "λύω", "answers": ["ind impf 2e-mv act"] },
+	{ "word": "ἔλυον", "cat": "λύω", "answers": ["ind impf 3e-mv act"] },
+	{ "word": "λύσω", "cat": "λύω", "answers": ["ind fut 1e-ev act"] },
+	{ "word": "λύσεις", "cat": "λύω", "answers": ["ind fut 2e-ev act"] },
+	{ "word": "λύσει", "cat": "λύω", "answers": ["ind fut 3e-ev act"] },
+	{ "word": "λύσομεν", "cat": "λύω", "answers": ["ind fut 1e-mv act"] },
+	{ "word": "λύσετε", "cat": "λύω", "answers": ["ind fut 2e-mv act"] },
+	{ "word": "λύσουσι(ν)", "cat": "λύω", "answers": ["ind fut 3e-mv act"] },
+  ]
+  
+
 const qWerkwoordLatijn = [
 	{ word: "voco", cat: "vocare", answers: ["ind praes 1e-ev act"] },
 	{ word: "vocas", cat: "vocare", answers: ["ind praes 2e-ev act"] },
