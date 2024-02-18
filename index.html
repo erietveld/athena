@@ -5,7 +5,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Athena</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            
+            display: flex;
+            justify-content: center;
+        }
+        .menucontainer {
+    display: flex;
+    margin-top: 10vh;
+}
+.column {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.menuButton{
+    margin-bottom: 15px; 
+}
+
+button {
+    display: inline-block; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+    width: 92%; 
+    box-shadow: 4px 8px 10px 1px rgba(0,0,0,0.2);
+    transition-duration: 0.2s;
+    z-index: 3; 
+    position: relative; 
+}
+    </style>
+    <link rel="stylesheet" href="styles.css" defer>
 </head>
 
 <body>
@@ -23,7 +59,7 @@
             </div>
         </div>
     </div>
-    <div id="mySidenav" class="sidenav">
+    <div id="mySidenav" class="sidenav" style="display:none">
         <span title="Close Menu" class="closebtn" style="cursor:pointer" id="closeMenu">&times;</span>
         <div id="naamwoordenMenu" class="naamwoorden">
             <div class="menuHeader">Naamwoord</div>
@@ -46,11 +82,11 @@
         <br>
         <br>
     </div>
-    <div id="header">
+    <div id="header" style="display:none">
         <span id="hamburger" title="Open Menu" style="font-size:30px;cursor:pointer">&#9776;</span>
         <div id="emoticon"></div>
     </div>
-    <div class="container">
+    <div class="container" style="display:none">
         <h1 id="word" class="word"></h1>
         <div id="groups">
         <div class="options-frame" id="groupFrame0">
@@ -112,8 +148,7 @@
         <button id="checkBtn" class="action-button" type="button">Controleren</button>
         <button id="nextBtn" class="action-button" type="button">Volgende</button>
     </div>
-    <script src="questions.js"></script>
-    <script src="script.js"></script>
+    <script type="module" src="main.js"></script>
 </body>
 
 </html>

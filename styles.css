@@ -1,60 +1,18 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-       
-    display: flex;
-    justify-content: center;
-}
+label,
 input{
     cursor: pointer;
 }
-label{
-    cursor: pointer;
-}
 
-.menucontainer {
-    display: flex;
-    margin-top: 10vh;
-      
-}
-.column {
-    flex: 1;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-}
-
-.menuButton{
-    margin-bottom: 15px; 
-}
-
-button {
-    display: inline-block; /* Change from flex to inline-block */
-    padding: 10px 20px; /* Add padding */
-  /*  margin: 5px 10px; /* Add margin */
-
-    border: none; /* Remove border */
-    border-radius: 5px; /* Add border radius */
-    cursor: pointer;
-    width: 92%; 
-    box-shadow: 4px 8px 10px 1px rgba(0,0,0,0.2);
-    transition-duration: 0.2s;
-    z-index: 3; 
-    position: relative; 
-
-}
 button.selected {
-    transform: translateY(2px); /* Move the button 2 pixels down when pressed */
+    transform: translateY(2px);
     box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.2);
     z-index: 2; 
 }
 
-/* Add a class for the secondary button */
 .action-button {
-    background-color: #007bff; /* Button background color */
-    color: #fff; /* Button text color */
-    background-color: #5e5b5b; /* Secondary button background color */
+    background-color: #007bff;
+    color: #fff; 
+    background-color: #5e5b5b; 
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 1rem;
@@ -64,7 +22,6 @@ button.selected {
     width: 100%;
     justify-content: center;
 }
-
 
 .container {
     max-width: 400px;
@@ -80,9 +37,8 @@ button.selected {
 }
 
 .options {
-    /*margin-top: 3px;*/
     display: flex;
-    flex-wrap: wrap; /* Allow flex items to wrap */
+    flex-wrap: wrap;
     justify-content: center;
     width: 100%
 }
@@ -90,7 +46,6 @@ button.selected {
 .option-group {
     margin-bottom: 0px;
     flex: 1 0 0;
-    /*calc(33.33% - 10px); /* Verdeel de ruimte in drie kolommen en laat een beetje ruimte tussen de elementen */
     gap: 10px;
 }
 .options-frame {
@@ -135,7 +90,7 @@ div.hidden {
     display: block;
     font-size: 1rem;
     padding: 10px 20px;
-    margin: 5px auto; /* Center buttons horizontally */
+    margin: 5px auto;
     background-color: #fff;
     border: 1px solid #0056b3;
     border-radius: 5px;
@@ -163,7 +118,6 @@ div.hidden {
 }
 #checkBtn {
     cursor: pointer;
-
 }
 #checkBtn.active {
     background-color: #789cc3;
@@ -192,13 +146,13 @@ div.hidden {
     }
 }
 .rotate {
-    animation: rotate 0.5s linear; /* Apply the rotation animation when the element has the 'rotate' class */
+    animation: rotate 0.5s linear;
 }
 
 #emoticon {
-    font-size: 60px; /* Twice the size */
+    font-size: 60px;
     align-self: flex-end;
-    transition: transform 0.3s ease-in-out; /* Add a transition for smooth animation */
+    transition: transform 0.3s ease-in-out; 
 } 
 span, #emoticon {
     display: inline-block;
@@ -258,8 +212,6 @@ span, #emoticon {
   
   .button-with-x {
     position: relative;
-/*    display: inline-block;
-    padding: 10px 20px;*/
     background-color: transparent;
     color: red;
     font-size: 16px;
@@ -280,15 +232,14 @@ span, #emoticon {
   }
   
   .button-with-x::before {
-    background: linear-gradient(to bottom right, transparent 49.5%, red 49.5%, red 50.5%, transparent 50.5%);
+    background: linear-gradient(to bottom right, red 50%, transparent 50%);
+    opacity: 0.3; /* Adjust opacity as needed */
   }
   
   .button-with-x::after {
-    background: linear-gradient(to bottom left, transparent 49.5%, red 49.5%, red 50.5%, transparent 50.5%);
+    background: linear-gradient(to bottom left, red 50%, transparent 50%);
+    opacity: 0.3; /* Adjust opacity as needed */
   }
-
   #nextBtn{
     display: none;
   }
-  
-  
