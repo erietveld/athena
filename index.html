@@ -48,22 +48,26 @@ button {
     <div id="mainmenu">
         <div class="menucontainer">
             <div class="column">
-                <h2>Latijn</h2>
-                <button class="menuButton" id="LatijnWerkwoord">Werkwoorden</button>
-                <button class="menuButton" id="LatijnNaamwoord">Naamwoorden</button>
+                <h2 data-translate="latinTitle">Latijn</h2>
+                <button class="menuButton" id="latinVerbs" data-translate="latinVerbs">Werkwoorden</button>
+                <button class="menuButton" id="latinNouns" data-translate="latinNouns">Naamwoorden</button>
             </div>
             <div class="column">
-                <h2>Grieks</h2>
-                <button class="menuButton" id="GrieksWerkwoord">Werkwoorden</button>
-                <button class="menuButton" id="GrieksNaamwoord">Lidwoorden en naamwoorden</button>
-            </div>
+                <h2 data-translate="greekTitle">Grieks</h2>
+                <button class="menuButton" id="greekVerbs" data-translate="greekVerbs">Werkwoorden</button>
+                <button class="menuButton" id="greekNouns" data-translate="greekNouns">Lidwoorden en naamwoorden</button>
+            </div>            
         </div>
     </div>
     <div id="mySidenav" class="sidenav" style="display:none">
         <span title="Close Menu" class="closebtn" style="cursor:pointer" id="closeMenu">&times;</span>
         <div id="naamwoordenMenu" class="naamwoorden">
-            <div class="menuHeader">Naamwoord</div>
-            <div id="miNaamwoorden" class="menuNaamwoordenords"></div>
+            <div class="menuHeader">Filters</div>
+            <div id="miNominals" class="menuNominals"></div>
+            <div class="menuHeader">Zelfstandig naamwoorden</div>
+            <div id="miNouns" class="menuNominals"></div>
+            <div class="menuHeader">Bijvoegelijke naamwoorden</div>
+            <div id="miAdjectives" class="menuNominals"></div>
             <div class="menuHeader">Naamval</div>
             <div id="miNaamval" class="menuNaamval"></div>
             <div class="menuHeader">Getal</div>
@@ -103,8 +107,8 @@ button {
                     <button class="option" data-type="praes">praes</button>
                     <button class="option" data-type="impf">impf</button>
                     <button class="option" data-type="fut">fut</button>
-                    <button class="option" data-type="perf">perf</button>
                     <button class="option grieks" data-type="aor">aor</button>
+                    <button class="option" data-type="perf">perf</button>
                     <button class="option" data-type="plqpf">plqpf</button>
                     <button class="option latijn" data-type="fex">fex</button>
                 </div>

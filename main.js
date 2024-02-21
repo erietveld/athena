@@ -1,8 +1,9 @@
-import { qLatinVerb, qLatinNoun, qGreekVerb, qGreekNoun } from './questions.js';
+import { qLatinVerb, qLatinNoun, qGreekVerb, qGreekNoun, qGreekAdjective, qLatinAdjectives} from './questions.js';
 import { checkAnswer} from './scoring.js';
 import { verbLoad, nounLoad, setQuestions, showQuestion } from './initgame.js';
 import { validateAnswerComplete, extraFrame, resetFrames } from './logic.js';
 
+// translateHtmlElements();
 document.addEventListener('DOMContentLoaded', function () {
     const addOptionBtn = document.getElementById('addOptionBtn');
     const checkBtn = document.getElementById('checkBtn');
@@ -37,11 +38,56 @@ document.addEventListener('DOMContentLoaded', function () {
     nextBtn.addEventListener('click', showQuestion);
     resetBtn.addEventListener('click', reset);
     checkBtn.addEventListener('click', checkAnswer);
-
+  
 });
 
+let translations = {};
+
+async function initializeTranslations() {
+    const userLanguage = getUserLanguage();
+    translations = await loadTranslations(userLanguage);
+}
+
+function getUserLanguage() {
+    // Get the user's preferred language
+    let language = navigator.language || navigator.userLanguage;
+    // Remove the region specifier (if present)
+    language = language.split('-')[0];
+    return language;
+}
+
+
+export function translate(key) {
+    return translations[key] || key; // Return the translation or the key itself if not found
+}
+
+async function loadTranslations(language) {
+    try {
+        const response = await fetch(`./translations/${language}.json`);
+        if (!response.ok) {
+            throw new Error(`Failed to load translations for ${language}: ${response.statusText}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error(error);
+        return {};
+    }
+}
+
+
+async function translateHtmlElements() {
+    await initializeTranslations();
+
+    document.querySelectorAll('[data-translate]').forEach(async element => {
+        const translationKey = element.dataset.translate;
+        const translatedText = translate(translationKey);
+        element.textContent = translatedText;
+    });
+}
+
+
 function addMainMenuListeners() {
-    document.getElementById('LatijnWerkwoord').addEventListener('click', () => {
+    document.getElementById('latinVerbs').addEventListener('click', () => {
         var grieksButtons = document.querySelectorAll('.grieks');
         grieksButtons.forEach(function (button) {
             button.parentNode.removeChild(button);
@@ -49,24 +95,27 @@ function addMainMenuListeners() {
         setQuestions(qLatinVerb);
         verbLoad();
     });
-    document.getElementById('LatijnNaamwoord').addEventListener('click', () => {
-        setQuestions(qLatinNoun);
-        nounLoad();
+    document.getElementById('latinNouns').addEventListener('click', () => {
+        nounLoad(qLatinNoun, qLatinAdjectives);
     });
-    document.getElementById('GrieksWerkwoord').addEventListener('click', () => {
+    document.getElementById('greekVerbs').addEventListener('click', () => {
+        var latinButtons = document.querySelectorAll('.latijn');
+        latinButtons.forEach(function (button) {
+            button.parentNode.removeChild(button);
+        });
         setQuestions(qGreekVerb);
         verbLoad();
     });
-    document.getElementById('GrieksNaamwoord').addEventListener('click', () => {
+    document.getElementById('greekNouns').addEventListener('click', () => {
         // Find all buttons with class Latin and remove them from the DOM
         var latinButtons = document.querySelectorAll('.latijn');
         latinButtons.forEach(function (button) {
             button.parentNode.removeChild(button);
         });
-        setQuestions(qGreekNoun);
-        nounLoad();
+        nounLoad(qGreekNoun, qGreekAdjective);
     });
 }
+
 
 export function addAllButtonListeners(){
     //!!ER: Keep this order of eventListener registrations

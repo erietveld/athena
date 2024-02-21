@@ -16,7 +16,21 @@ export function verbLoad(){
     loadMainQuiz();
     populateMenuItemsWerkwoorden();        
 }
-export function nounLoad(){
+export function nounLoad(nouns, adjs){
+
+    const part1 = nouns.map(obj => {
+        if (obj.cat !== "lidwoord") {
+          return { ...obj, menu: "noun" };
+        }
+        return obj;
+      });
+
+    const part2 = adjs.map(obj => ({
+        ...obj,
+        "menu": "adj"
+      }));
+    questions = part1.concat(part2);
+
     var naamwoordBlock = document.querySelectorAll('.werkwoorden');
     naamwoordBlock.forEach(function (button) {
         button.parentNode.removeChild(button);
@@ -162,7 +176,10 @@ function populateMenuItemsWerkwoorden() {
 
 function populateMenuItemsNaamwoorden() {
     // Get reference to menu div
-    const menuWords = document.getElementById("miNaamwoorden");
+    const menuNominals = document.getElementById("miNominals");
+    const menuNouns = document.getElementById("miNouns");
+    const menuAdjectives = document.getElementById("miAdjectives");
+    
     const menuNaamval = document.getElementById("miNaamval");
     const menuCard = document.getElementById("miCard");
 
@@ -186,13 +203,20 @@ function populateMenuItemsNaamwoorden() {
     )];
 
     // Get unique category values
-    const categories = [...new Set(questions.map(q => q.cat))];
-    addCheckboxes(categories, menuWords);
+    //const categories = [...new Set(questions.map(q => q.cat))];
+    const uncats = [...new Set(questions.filter(q => !q.menu).map(q => q.cat))];
+    const catNouns = [...new Set(questions.filter(q => q.menu=="noun").map(q => q.cat))];
+    const catAdjs = [...new Set(questions.filter(q => q.menu=="adj").map(q => q.cat))];
+
+    addCheckboxes(uncats, menuNominals);
+    addCheckboxes(catNouns, menuNouns);
+    addCheckboxes(catAdjs, menuAdjectives);
+
     addCheckboxes(naamvallen, menuNaamval);
     addCheckboxes(cardinaliteit, menuCard);
 
     // Get checkboxes inside menuWords
-    const wordCB = menuWords.querySelectorAll('input[type="checkbox"]');
+    const wordCB = document.querySelectorAll('div.menuNominals input[type="checkbox"]');
     const naamvalsCB = menuNaamval.querySelectorAll('input[type="checkbox"]');
     const cardinaliteitCB = menuCard.querySelectorAll('input[type="checkbox"]');
 

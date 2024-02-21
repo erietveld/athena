@@ -14,7 +14,7 @@ button.selected {
     color: #fff; 
     background-color: #5e5b5b; 
     margin-top: 20px;
-    padding: 10px 20px;
+    padding: 10px 15px;
     font-size: 1rem;
     border: none;
     border-radius: 5px;
@@ -89,7 +89,7 @@ div.hidden {
     overflow: hidden; 
     display: block;
     font-size: 1rem;
-    padding: 10px 20px;
+    padding: 10px 15px;
     margin: 5px auto;
     background-color: #fff;
     border: 1px solid #0056b3;
