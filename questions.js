@@ -572,8 +572,9 @@ export const qLatinNoun= [
 	{ "word": "nomine", "cat": "nomen", "answers": ["abl ev n"] },
 	{ "word": "nomina", "cat": "nomen", "answers": ["nom mv n", "acc mv n"] },
 	{ "word": "nominum", "cat": "nomen", "answers": ["gen mv n"] },
-	{ "word": "nominbus", "cat": "nomen", "answers": ["dat mv n", "abl mv n"] },
+	{ "word": "nominbus", "cat": "nomen", "answers": ["dat mv n", "abl mv n"] },];
 
+export const qLatinAdjectives= [
 	{ "word": "bona", "cat": "bonus", "answers": ["nom ev f", "abl ev f", "nom mv n", "acc mv n"] },
 	{ "word": "bonae", "cat": "bonus", "answers": ["gen ev f", "dat ev f", "nom mv f"] },
 	{ "word": "bonam", "cat": "bonus", "answers": ["acc ev f"] },
@@ -703,4 +704,101 @@ export const qGreekNoun = [
 	{ "word": "σώμασι(ν)", "cat": "σῶμα", "answers": ["dat mv n"] },
 
 ];
+export const qGreekAdjective = [
+	{ "word": "ἀγαθός", "cat": "ἀγαθός", "answers": ["nom ev m"] },
+	{ "word": "ἀγαθοῦ", "cat": "ἀγαθός", "answers": ["gen ev m", "gen ev n"] },
+	{ "word": "ἀγαθῷ", "cat": "ἀγαθός", "answers": ["dat ev m", "dat ev n"] },
+	{ "word": "ἀγαθόν", "cat": "ἀγαθός", "answers": ["acc ev m", "nom ev n", "acc ev n"] },
+	{ "word": "ἀγαθοί", "cat": "ἀγαθός", "answers": ["nom mv m"] },
+	{ "word": "ἀγαθῶν", "cat": "ἀγαθός", "answers": ["gen mv m", "gen mv f","gen mv n"] },
+	{ "word": "ἀγαθοῖς", "cat": "ἀγαθός", "answers": ["dat mv m", "dat mv n"] },
+	{ "word": "ἀγαθούς", "cat": "ἀγαθός", "answers": ["acc mv m"] },
+	
+	{ "word": "ἀγαθή", "cat": "ἀγαθός", "answers": ["nom ev f"] },
+	{ "word": "ἀγαθῆς", "cat": "ἀγαθός", "answers": ["gen ev f"] },
+	{ "word": "ἀγαθῇ", "cat": "ἀγαθός", "answers": ["dat ev f"] },
+	{ "word": "ἀγαθήν", "cat": "ἀγαθός", "answers": ["acc ev f"] },
+	{ "word": "ἀγαθαί", "cat": "ἀγαθός", "answers": ["nom mv f"] },
+	
+	{ "word": "ἀγαθαῖς", "cat": "ἀγαθός", "answers": ["dat mv f"] },
+	{ "word": "ἀγαθάς", "cat": "ἀγαθός", "answers": ["acc mv f"] },
+	{ "word": "ἀγαθά", "cat": "ἀγαθός", "answers": ["nom mv n", "acc mv n"] },
+
+
+	{ "word": "μακρός", "cat": "μακρός", "answers": ["nom ev m"] },
+	{ "word": "μακροῦ", "cat": "μακρός", "answers": ["gen ev m", "gen ev n"] },
+	{ "word": "μακρῷ", "cat": "μακρός", "answers": ["dat ev m", "dat ev n"] },
+	{ "word": "μακρόν", "cat": "μακρός", "answers": ["acc ev m", "nom ev n", "acc ev n"] },
+	{ "word": "μακροί", "cat": "μακρός", "answers": ["nom mv m"] },
+	{ "word": "μακρῶν", "cat": "μακρός", "answers": ["gen mv m", "gen mv f","gen mv n"] },
+	{ "word": "μακροῖς", "cat": "μακρός", "answers": ["dat mv m", "dat mv n"] },
+	{ "word": "μακρούς", "cat": "μακρός", "answers": ["acc mv m"] },
+	{ "word": "μακρά", "cat": "μακρός", "answers": ["nom ev f"] },
+	{ "word": "μακρᾶς", "cat": "μακρός", "answers": ["gen ev f"] },
+	{ "word": "μακρᾷ", "cat": "μακρός", "answers": ["dat ev f"] },
+	{ "word": "μακράν", "cat": "μακρός", "answers": ["acc ev f"] },
+	{ "word": "μακραί", "cat": "μακρός", "answers": ["nom mv f"] },
+	{ "word": "μακραῖς", "cat": "μακρός", "answers": ["dat mv f"] },
+	{ "word": "μακράς", "cat": "μακρός", "answers": ["acc mv f"] },
+	{ "word": "μακρά", "cat": "μακρός", "answers": ["nom mv n", "acc mv n"] },
+
+	{ "word": "πολύς", "cat": "πολύς", "answers": ["nom ev m"] },
+	{ "word": "πολλοῦ", "cat": "πολύς", "answers": ["gen ev m", "gen ev n"] },
+	{ "word": "πολλῷ", "cat": "πολύς", "answers": ["dat ev m", "dat ev n"] },
+	{ "word": "πολύν", "cat": "πολύς", "answers": ["acc ev m"] },
+	{ "word": "πολύ", "cat": "πολύς", "answers": ["nom ev n", "acc ev n"] },
+	{ "word": "πολλοί", "cat": "πολύς", "answers": ["nom mv m"] },
+	{ "word": "πολλῶν", "cat": "πολύς", "answers": ["gen mv m", "gen mv f","gen mv n"] },
+	{ "word": "πολλοῖς", "cat": "πολύς", "answers": ["dat mv m", "dat mv n"] },
+	{ "word": "πολλούς", "cat": "πολύς", "answers": ["acc mv m"] },
+	{ "word": "πολλή", "cat": "πολύς", "answers": ["nom ev f"] },
+	{ "word": "πολλῆς", "cat": "πολύς", "answers": ["gen ev f"] },
+	{ "word": "πολλῇ", "cat": "πολύς", "answers": ["dat ev f"] },
+	{ "word": "πολλήν", "cat": "πολύς", "answers": ["acc ev f"] },
+	{ "word": "πολλαί", "cat": "πολύς", "answers": ["nom mv f"] },
+	{ "word": "πολλαῖς", "cat": "πολύς", "answers": ["dat mv f"] },
+	{ "word": "πολλάς", "cat": "πολύς", "answers": ["acc mv f"] },
+	{ "word": "πολλά", "cat": "πολύς", "answers": ["nom mv n", "acc mv n"] },
+
+	
+		{ "word": "μέγας", "cat": "μέγας", "answers": ["nom ev m"] },
+		{ "word": "μεγάλου", "cat": "μέγας", "answers": ["gen ev m", "gen ev n"] },
+		{ "word": "μεγάλῳ", "cat": "μέγας", "answers": ["dat ev m", "dat ev n"] },
+		{ "word": "μέγαν", "cat": "μέγας", "answers": ["acc ev m"] },
+		{ "word": "μέγα", "cat": "μέγας", "answers": [ "nom ev n", "acc ev n"] },
+		{ "word": "μεγάλοι", "cat": "μέγας", "answers": ["nom mv m"] },
+		{ "word": "μεγάλων", "cat": "μέγας", "answers": ["gen mv m", "gen mv f","gen mv n"] },
+		{ "word": "μεγάλοις", "cat": "μέγας", "answers": ["dat mv m", "dat mv n"] },
+		{ "word": "μεγάλους", "cat": "μέγας", "answers": ["acc mv m"] },
+		{ "word": "μεγάλη", "cat": "μέγας", "answers": ["nom ev f"] },
+		{ "word": "μεγάλης", "cat": "μέγας", "answers": ["gen ev f"] },
+		{ "word": "μεγάλῃ", "cat": "μέγας", "answers": ["dat ev f"] },
+		{ "word": "μεγάλην", "cat": "μέγας", "answers": ["acc ev f"] },
+		{ "word": "μεγάλαι", "cat": "μέγας", "answers": ["nom mv f"] },
+		{ "word": "μεγάλαις", "cat": "μέγας", "answers": ["dat mv f"] },
+		{ "word": "μεγάλας", "cat": "μέγας", "answers": ["acc mv f"] },
+		{ "word": "μεγάλα", "cat": "μέγας", "answers": ["nom mv n", "acc mv n"] },
+	 
+
+			{ "word": "πᾶς", "cat": "πᾶς", "answers": ["nom ev m"] },
+			{ "word": "παντός", "cat": "πᾶς", "answers": ["gen ev m", "gen ev n"] },
+			{ "word": "παντί", "cat": "πᾶς", "answers": ["dat ev m", "dat ev n"] },
+			{ "word": "πάντα", "cat": "πᾶς", "answers": ["acc ev m", "nom mv n", "acc mv n"] },
+			{ "word": "πᾶν", "cat": "πᾶς", "answers": ["nom ev n", "acc ev n"] },
+			
+			{ "word": "πάντες", "cat": "πᾶς", "answers": ["nom mv m"] },
+			{ "word": "πάντων", "cat": "πᾶς", "answers": ["gen mv m","gen mv n"] },
+			{ "word": "πᾶσι(ν)", "cat": "πᾶς", "answers": ["dat mv m", "dat mv n"] },
+			{ "word": "πάντας", "cat": "πᾶς", "answers": ["acc mv m"] },
+			{ "word": "πᾶσα", "cat": "πᾶς", "answers": ["nom ev f"] },
+			{ "word": "πάσης", "cat": "πᾶς", "answers": ["gen ev f"] },
+			{ "word": "πάσῃ", "cat": "πᾶς", "answers": ["dat ev f"] },
+			{ "word": "πᾶσαν", "cat": "πᾶς", "answers": ["acc ev f"] },
+			{ "word": "πᾶσαι", "cat": "πᾶς", "answers": ["nom mv f"] },
+			{ "word": "πασῶν", "cat": "πᾶς", "answers": ["gen mv f"] },
+			{ "word": "πάσαις", "cat": "πᾶς", "answers": ["dat mv f"] },
+			{ "word": "πάσας", "cat": "πᾶς", "answers": ["acc mv f"] },
+	
+
+]
 

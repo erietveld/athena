@@ -1,7 +1,7 @@
-import { reset } from "./main.js";
+import { reset, translate } from "./main.js";
 
 var questions;
-var qbank; // All filtered questions
+var qbank; // All currently filtered questions
 
 const wordElement = document.getElementById('word');
 
@@ -16,7 +16,21 @@ export function verbLoad(){
     loadMainQuiz();
     populateMenuItemsWerkwoorden();        
 }
-export function nounLoad(){
+export function nounLoad(nouns, adjs){
+
+    const part1 = nouns.map(obj => {
+        if (obj.cat !== "lidwoord") {
+          return { ...obj, menu: "noun" };
+        }
+        return obj;
+      });
+
+    const part2 = adjs.map(obj => ({
+        ...obj,
+        "menu": "adj"
+      }));
+    questions = part1.concat(part2);
+
     var naamwoordBlock = document.querySelectorAll('.werkwoorden');
     naamwoordBlock.forEach(function (button) {
         button.parentNode.removeChild(button);
@@ -161,38 +175,51 @@ function populateMenuItemsWerkwoorden() {
 }
 
 function populateMenuItemsNaamwoorden() {
-    // Get reference to menu div
-    const menuWords = document.getElementById("miNaamwoorden");
-    const menuNaamval = document.getElementById("miNaamval");
+
+
+    const buttonsCards = document.querySelectorAll('.naamwoorden .option-group')[1].querySelectorAll('button');
+    var cardinaliteit = [];
+    buttonsCards.forEach(function (button) {
+        let key = button.getAttribute('data-type');
+        let val = button.textContent;
+        cardinaliteit.push({key, val});
+    });
     const menuCard = document.getElementById("miCard");
+    addCheckboxes(cardinaliteit, menuCard);
+
+    const buttonsNaamvallen = document.querySelector('.naamwoorden .option-group').querySelectorAll('button');
+    var naamvallen = [];
+    buttonsNaamvallen.forEach(function (button) {
+        let key = button.getAttribute('data-type');
+        let val = button.textContent;
+        naamvallen.push({key, val});
+    });
+    const menuNaamval = document.getElementById("miNaamval");
+    addCheckboxes(naamvallen, menuNaamval);
 
     // Flatten all answers into one array
     const allAnswers = questions.flatMap(q => q.answers);
 
-    // Find all buttons under the first option-group under the first option class
-    var buttons = document.querySelector('.naamwoorden .option-group').querySelectorAll('button');
 
-    // Initialize an empty array to store data-type values
-    var naamvallen = [];
+    const uncats = [...new Set(questions.filter(q => !q.menu).map(q => q.cat))];
+    const translatedUnats = uncats.map(key => ({ key, val: translate(key) }));
+    const catNouns = [...new Set(questions.filter(q => q.menu=="noun").map(q => q.cat))];
+    const catAdjs = [...new Set(questions.filter(q => q.menu=="adj").map(q => q.cat))];
 
-    // Loop through each button and extract its data-type value
-    buttons.forEach(function (button) {
-        var dataType = button.getAttribute('data-type');
-        naamvallen.push(dataType);
-    });
+    const menuNominals = document.getElementById("miNominals");
+    const menuNouns = document.getElementById("miNouns");
+    const menuAdjectives = document.getElementById("miAdjectives");
+    
 
-    const cardinaliteit = [...new Set(
-        allAnswers.map(a => a.split(" ")[1])
-    )];
+    addCheckboxes(translatedUnats, menuNominals);
+    addCheckboxes(catNouns, menuNouns);
+    addCheckboxes(catAdjs, menuAdjectives);
 
-    // Get unique category values
-    const categories = [...new Set(questions.map(q => q.cat))];
-    addCheckboxes(categories, menuWords);
-    addCheckboxes(naamvallen, menuNaamval);
-    addCheckboxes(cardinaliteit, menuCard);
+    
+    
 
     // Get checkboxes inside menuWords
-    const wordCB = menuWords.querySelectorAll('input[type="checkbox"]');
+    const wordCB = document.querySelectorAll('div.menuNominals input[type="checkbox"]');
     const naamvalsCB = menuNaamval.querySelectorAll('input[type="checkbox"]');
     const cardinaliteitCB = menuCard.querySelectorAll('input[type="checkbox"]');
 
@@ -264,7 +291,8 @@ function populateMenuItemsNaamwoorden() {
 }
 export function showQuestion() {
     if (qbank.length == 0) {
-        wordElement.textContent = "Geen vragen gevonden, maak een keuze uit het menu."
+        wordElement.textContent = translate("NoQuestionsFound");
+     //   "Geen vragen gevonden, maak een keuze uit het menu."
         return;
     }
     const randomIndex = Math.floor(Math.random() * qbank.length);
@@ -278,18 +306,29 @@ export var correctAnswers;
 
 function addCheckboxes(list, div) {
     // Loop through categories and add checkbox for each
-    list.forEach(cat => {
+    list.forEach(item => {
+        let key, val;
+        if (typeof item === 'object') {
+          key = item.key;
+          val = item.val;
+        } else {
+          key = item;
+          val = item;
+        }
+
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
-        checkbox.value = cat;
-        checkbox.id = cat;
+        checkbox.value = key;
+        checkbox.id = key;
         checkbox.checked = true;
 
         const label = document.createElement("label");
-        label.htmlFor = cat;
-        label.textContent = cat;
+        label.htmlFor = key;
 
-        div.appendChild(checkbox);
+        const labelText = document.createTextNode(val);
+        label.appendChild(checkbox);
+        label.appendChild(labelText);
+
         div.appendChild(label);
         div.appendChild(document.createElement("br"));
     });
