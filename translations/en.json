@@ -2,8 +2,32 @@
     "latinTitle": "Latin",
     "latinVerbs": "Verbs",
     "latinNouns": "Nouns",
-    "greekTitle": "Greek",
+    "ancientGreekTitle": "Ancient Greek",
     "greekVerbs": "Verbs",
-    "greekNouns": "Articles and Nouns"
-  }
+    "greekNouns": "Articles and Nouns",
+    "Filters": "Filters",
+    "Nouns": "Nouns",
+    "Adjectives": "Adjectives",
+    "Case": "Case",
+    "Number": "Number",
+    "Singular": "Sg",
+    "Plural": "Pl",
+    "lidwoord": "Article",
+    "NoQuestionsFound": "No questions found. Make a wider selection in the menu.",
+    "Verb": "Verb",
+    "Mood": "Mood",
+    "Tense": "Tense",
+    "Voice": "Voice",
+    "1st sg": "1st sg",
+    "2nd sg": "2nd sg",
+    "3rd sg": "3rd sg",
+    "1st pl": "1st pl",
+    "2nd pl": "2nd pl",
+    "3rd pl": "3rd pl",
+    "Add Option?": "Add Option?",
+    "Reset": "Reset",
+    "Check": "Check",
+    "Next": "Next"
+    
+}
   

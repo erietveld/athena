@@ -1,10 +1,32 @@
-import { qLatinVerb, qLatinNoun, qGreekVerb, qGreekNoun, qGreekAdjective, qLatinAdjectives} from './questions.js';
-import { checkAnswer} from './scoring.js';
-import { verbLoad, nounLoad, setQuestions, showQuestion } from './initgame.js';
-import { validateAnswerComplete, extraFrame, resetFrames } from './logic.js';
+// import { qLatinVerb, qLatinNoun, qGreekVerb, qGreekNoun, qGreekAdjective, qLatinAdjectives} from './questions.js';
+// import { checkAnswer} from './scoring.js';
+// import { verbLoad, nounLoad, setQuestions, showQuestion } from './initgame.js';
+// import { validateAnswerComplete, extraFrame, resetFrames } from './logic.js';
 
-// translateHtmlElements();
-document.addEventListener('DOMContentLoaded', function () {
+let verbLoad, nounLoad, setQuestions, showQuestion, 
+    qLatinVerb, qLatinNoun, qGreekVerb, qGreekNoun, qGreekAdjective, qLatinAdjectives,
+    checkAnswer, 
+    validateAnswerComplete, extraFrame, resetFrames;
+
+translateHtmlElements();
+window.addEventListener('load', async function () {
+  // Load the modules asynchronously
+  ( [
+    { verbLoad, nounLoad, setQuestions, showQuestion },
+    { qLatinVerb, qLatinNoun, qGreekVerb, qGreekNoun, qGreekAdjective, qLatinAdjectives },
+    { checkAnswer },
+    { validateAnswerComplete, extraFrame, resetFrames }
+  ] = await Promise.all([
+    import('./initgame.js'),
+    import('./questions.js'),
+    import('./scoring.js'),
+    import('./logic.js')
+  ]));
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'styles.css';
+    document.head.appendChild(link);
+
     const addOptionBtn = document.getElementById('addOptionBtn');
     const checkBtn = document.getElementById('checkBtn');
     const resetBtn = document.getElementById('resetBtn');
@@ -49,6 +71,7 @@ async function initializeTranslations() {
 }
 
 function getUserLanguage() {
+    // return "nl";
     // Get the user's preferred language
     let language = navigator.language || navigator.userLanguage;
     // Remove the region specifier (if present)
@@ -77,11 +100,15 @@ async function loadTranslations(language) {
 
 async function translateHtmlElements() {
     await initializeTranslations();
-
-    document.querySelectorAll('[data-translate]').forEach(async element => {
-        const translationKey = element.dataset.translate;
-        const translatedText = translate(translationKey);
-        element.textContent = translatedText;
+    if (getUserLanguage() != "nl") {
+        document.querySelectorAll('[data-translate]').forEach(async element => {
+            const translationKey = element.dataset.translate;
+            const translatedText = translate(translationKey);
+            element.textContent = translatedText;
+        });
+    }
+    document.querySelectorAll('.column').forEach(async element => {
+        element.style.display = "block";
     });
 }
 
