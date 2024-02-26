@@ -5,18 +5,214 @@ export const qGreekVerb = [
 	{ "word": "λύομεν", "cat": "λύω", "answers": ["ind praes 1e-mv act"] },
 	{ "word": "λύετε", "cat": "λύω", "answers": ["ind praes 2e-mv act"] },
 	{ "word": "λύουσι(ν)", "cat": "λύω", "answers": ["ind praes 3e-mv act"] },
+
+	
+    { "word": "λύομαι", "cat": "λύω", "answers": ["ind praes 1e-ev med"] },
+    { "word": "λύει", "cat": "λύω", "answers": ["ind praes 2e-ev med"] },
+    { "word": "λύεται", "cat": "λύω", "answers": ["ind praes 3e-ev med"] },
+    { "word": "λυόμεθα", "cat": "λύω", "answers": ["ind praes 1e-mv med"] },
+    { "word": "λύεσθε", "cat": "λύω", "answers": ["ind praes 2e-mv med"] },
+    { "word": "λύονται", "cat": "λύω", "answers": ["ind praes 3e-mv med"] },
+
+
 	{ "word": "ἔλυον", "cat": "λύω", "answers": ["ind impf 1e-ev act"] },
 	{ "word": "ἔλυες", "cat": "λύω", "answers": ["ind impf 2e-ev act"] },
 	{ "word": "ἔλυε", "cat": "λύω", "answers": ["ind impf 3e-ev act"] },
 	{ "word": "ἐλύομεν", "cat": "λύω", "answers": ["ind impf 1e-mv act"] },
 	{ "word": "ἐλύετε", "cat": "λύω", "answers": ["ind impf 2e-mv act"] },
 	{ "word": "ἔλυον", "cat": "λύω", "answers": ["ind impf 3e-mv act"] },
+
+	
+    { "word": "ἐλύομην", "cat": "λύω", "answers": ["ind impf 1e-ev med"] },
+    { "word": "ἐλύου", "cat": "λύω", "answers": ["ind impf 2e-ev med"] },
+    { "word": "ἐλύετο", "cat": "λύω", "answers": ["ind impf 3e-ev med"] },
+    { "word": "ἐλυόμεθα", "cat": "λύω", "answers": ["ind impf 1e-mv med"] },
+    { "word": "ἐλύεσθε", "cat": "λύω", "answers": ["ind impf 2e-mv med"] },
+    { "word": "ἐλύοντο", "cat": "λύω", "answers": ["ind impf 3e-mv med"] },
+
+	
+    { "word": "λύω", "cat": "λύω", "answers": ["conj praes 1e-ev act"] },
+    { "word": "λύῃς", "cat": "λύω", "answers": ["conj praes 2e-ev act"] },
+    { "word": "λύῃ", "cat": "λύω", "answers": ["conj praes 3e-ev act"] },
+    { "word": "λύωμεν", "cat": "λύω", "answers": ["conj praes 1e-mv act"] },
+    { "word": "λύητε", "cat": "λύω", "answers": ["conj praes 2e-mv act"] },
+    { "word": "λύωσι(ν)", "cat": "λύω", "answers": ["conj praes 3e-mv act"] },
+
+    { "word": "λύωμαι", "cat": "λύω", "answers": ["conj praes 1e-ev med"] },
+    { "word": "λύῃ", "cat": "λύω", "answers": ["conj praes 2e-ev med"] },
+    { "word": "λύηται", "cat": "λύω", "answers": ["conj praes 3e-ev med"] },
+    { "word": "λυώμεθα", "cat": "λύω", "answers": ["conj praes 1e-mv med"] },
+    { "word": "λύησθε", "cat": "λύω", "answers": ["conj praes 2e-mv med"] },
+    { "word": "λύωνται", "cat": "λύω", "answers": ["conj praes 3e-mv med"] },
+	
+    { "word": "λύοιμι", "cat": "λύω", "answers": ["opt praes 1e-ev act"] },
+    { "word": "λύοις", "cat": "λύω", "answers": ["opt praes 2e-ev act"] },
+    { "word": "λύοι", "cat": "λύω", "answers": ["opt praes 3e-ev act"] },
+    { "word": "λύοιμεν", "cat": "λύω", "answers": ["opt praes 1e-mv act"] },
+    { "word": "λύοιτε", "cat": "λύω", "answers": ["opt praes 2e-mv act"] },
+    { "word": "λύοιεν", "cat": "λύω", "answers": ["opt praes 3e-mv act"] },
+
+    { "word": "λυοίμην", "cat": "λύω", "answers": ["opt praes 1e-ev med"] },
+    { "word": "λύοιο", "cat": "λύω", "answers": ["opt praes 2e-ev med"] },
+    { "word": "λύοιτο", "cat": "λύω", "answers": ["opt praes 3e-ev med"] },
+    { "word": "λυοίμεθα", "cat": "λύω", "answers": ["opt praes 1e-mv med"] },
+    { "word": "λύοισθε", "cat": "λύω", "answers": ["opt praes 2e-mv med"] },
+    { "word": "λύοιντο", "cat": "λύω", "answers": ["opt praes 3e-mv med"] },
+
+
 	{ "word": "λύσω", "cat": "λύω", "answers": ["ind fut 1e-ev act"] },
 	{ "word": "λύσεις", "cat": "λύω", "answers": ["ind fut 2e-ev act"] },
 	{ "word": "λύσει", "cat": "λύω", "answers": ["ind fut 3e-ev act"] },
 	{ "word": "λύσομεν", "cat": "λύω", "answers": ["ind fut 1e-mv act"] },
 	{ "word": "λύσετε", "cat": "λύω", "answers": ["ind fut 2e-mv act"] },
 	{ "word": "λύσουσι(ν)", "cat": "λύω", "answers": ["ind fut 3e-mv act"] },
+
+
+    { "word": "λύσομαι", "cat": "λύω", "answers": ["ind fut 1e-ev med"] },
+    { "word": "λύσει", "cat": "λύω", "answers": ["ind fut 2e-ev med"] },
+    { "word": "λύσεται", "cat": "λύω", "answers": ["ind fut 3e-ev med"] },
+    { "word": "λυσόμεθα", "cat": "λύω", "answers": ["ind fut 1e-mv med"] },
+    { "word": "λύσεσθε", "cat": "λύω", "answers": ["ind fut 2e-mv med"] },
+    { "word": "λύσονται", "cat": "λύω", "answers": ["ind fut 3e-mv med"] },
+
+    { "word": "λυθήσομαι", "cat": "λύω", "answers": ["ind fut 1e-ev pass"] },
+    { "word": "λυθήσει", "cat": "λύω", "answers": ["ind fut 2e-ev pass"] },
+    { "word": "λυθήσεται", "cat": "λύω", "answers": ["ind fut 3e-ev pass"] },
+    { "word": "λυθησόμεθα", "cat": "λύω", "answers": ["ind fut 1e-mv pass"] },
+    { "word": "λυθήσεσθε", "cat": "λύω", "answers": ["ind fut 2e-mv pass"] },
+    { "word": "λυθήσονται", "cat": "λύω", "answers": ["ind fut 3e-mv pass"] },
+
+
+
+
+    { "word": "ἔλυσα", "cat": "λύω", "answers": ["ind aor 1e-ev act"] },
+    { "word": "ἔλυσας", "cat": "λύω", "answers": ["ind aor 2e-ev act"] },
+    { "word": "ἔλυσε(ν)", "cat": "λύω", "answers": ["ind aor 3e-ev act"] },
+    { "word": "ἐλύσαμεν", "cat": "λύω", "answers": ["ind aor 1e-mv act"] },
+    { "word": "ἐλύσατε", "cat": "λύω", "answers": ["ind aor 2e-mv act"] },
+    { "word": "ἔλυσαν", "cat": "λύω", "answers": ["ind aor 3e-mv act"] }, 
+	
+    { "word": "ἐλυσάμην", "cat": "λύω", "answers": ["ind aor 1e-ev med"] },
+    { "word": "ἐλύσω", "cat": "λύω", "answers": ["ind aor 2e-ev med"] },
+    { "word": "ἐλύσατο", "cat": "λύω", "answers": ["ind aor 3e-ev med"] },
+    { "word": "ἐλυσάμεθα", "cat": "λύω", "answers": ["ind aor 1e-mv med"] },
+    { "word": "ἐλύσασθε", "cat": "λύω", "answers": ["ind aor 2e-mv med"] },
+    { "word": "ἐλύσαντο", "cat": "λύω", "answers": ["ind aor 3e-mv med"] },
+
+	
+    { "word": "ἐλύθην", "cat": "λύω", "answers": ["ind aor 1e-ev pass"] },
+    { "word": "ἐλύθης", "cat": "λύω", "answers": ["ind aor 2e-ev pass"] },
+    { "word": "ἐλύθη", "cat": "λύω", "answers": ["ind aor 3e-ev pass"] },
+    { "word": "ἐλύθημεν", "cat": "λύω", "answers": ["ind aor 1e-mv pass"] },
+    { "word": "ἐλύθητε", "cat": "λύω", "answers": ["ind aor 2e-mv pass"] },
+    { "word": "ἐλύθησαν", "cat": "λύω", "answers": ["ind aor 3e-mv pass"] },
+
+
+    { "word": "λύσω", "cat": "λύω", "answers": ["conj aor 1e-ev act"] },
+    { "word": "λύσῃς", "cat": "λύω", "answers": ["conj aor 2e-ev act"] },
+    { "word": "λύσῃ", "cat": "λύω", "answers": ["conj aor 3e-ev act"] },
+    { "word": "λύσωμεν", "cat": "λύω", "answers": ["conj aor 1e-mv act"] },
+    { "word": "λύσητε", "cat": "λύω", "answers": ["conj aor 2e-mv act"] },
+    { "word": "λύσωσι(ν)", "cat": "λύω", "answers": ["conj aor 3e-mv act"] },
+
+	 
+    { "word": "λύσωμαι", "cat": "λύω", "answers": ["conj aor 1e-ev med"] },
+    { "word": "λύσῃ", "cat": "λύω", "answers": ["conj aor 2e-ev med"] },
+    { "word": "λύσηται", "cat": "λύω", "answers": ["conj aor 3e-ev med"] },
+    { "word": "λυσώμεθα", "cat": "λύω", "answers": ["conj aor 1e-mv med"] },
+    { "word": "λύσηθε", "cat": "λύω", "answers": ["conj aor 2e-mv med"] },
+    { "word": "λύσωνται", "cat": "λύω", "answers": ["conj aor 3e-mv med"] },
+
+	 
+    { "word": "λυθῶ", "cat": "λύω", "answers": ["conj aor 1e-ev pass"] },
+    { "word": "λυθῇς", "cat": "λύω", "answers": ["conj aor 2e-ev pass"] },
+    { "word": "λυθῇ", "cat": "λύω", "answers": ["conj aor 3e-ev pass"] },
+    { "word": "λυθῶμεν", "cat": "λύω", "answers": ["conj aor 1e-mv pass"] },
+    { "word": "λυθῆτε", "cat": "λύω", "answers": ["conj aor 2e-mv pass"] },
+    { "word": "λυθῶσι(ν)", "cat": "λύω", "answers": ["conj aor 3e-mv pass"] },
+
+    { "word": "λύσαιμι", "cat": "λύω", "answers": ["opt aor 1e-ev act"] },
+    { "word": "λύσειας", "cat": "λύω", "answers": ["opt aor 2e-ev act"] },
+    { "word": "λύσειε(ν)", "cat": "λύω", "answers": ["opt aor 3e-ev act"] },
+    { "word": "λύσαιμεν", "cat": "λύω", "answers": ["opt aor 1e-mv act"] },
+    { "word": "λύσαιτε", "cat": "λύω", "answers": ["opt aor 2e-mv act"] },
+    { "word": "λύσειαν", "cat": "λύω", "answers": ["opt aor 3e-mv act"] },
+
+    { "word": "λυσαίμην", "cat": "λύω", "answers": ["opt aor 1e-ev med"] },
+    { "word": "λύσαιο", "cat": "λύω", "answers": ["opt aor 2e-ev med"] },
+    { "word": "λύσαιτο", "cat": "λύω", "answers": ["opt aor 3e-ev med"] },
+    { "word": "λυσαίμεθα", "cat": "λύω", "answers": ["opt aor 1e-mv med"] },
+    { "word": "λύσαισθε", "cat": "λύω", "answers": ["opt aor 2e-mv med"] },
+    { "word": "λύσαιντο", "cat": "λύω", "answers": ["opt aor 3e-mv med"] },
+	 
+  { "word": "λυθείην", "cat": "λύω", "answers": ["opt aor 1e-ev pass"] },
+    { "word": "λυθείης', "cat": "λύω", "answers": ["opt aor 2e-ev pass"] },
+    { "word": "λυθείη", "cat": "λύω", "answers": ["opt aor 3e-ev pass"] },
+    { "word": "λυθεῖμεν", "cat": "λύω", "answers": ["opt aor 1e-mv pass"] },
+    { "word": "λυθεῖτε", "cat": "λύω", "answers": ["opt aor 2e-mv pass"] },
+    { "word": "λυθεῖεν", "cat": "λύω", "answers": ["opt aor 3e-mv pass"] },
+
+	 
+    { "word": "λέλυκα", "cat": "λύω", "answers": ["ind perf 1e-ev act"] },
+    { "word": "λέλυκας", "cat": "λύω", "answers": ["ind perf 2e-ev act"] },
+    { "word": "λέλυκε", "cat": "λύω", "answers": ["ind perf 3e-ev act"] },
+    { "word": "λελύκαμεν", "cat": "λύω", "answers": ["ind perf 1e-mv act"] },
+    { "word": "λελύκατε", "cat": "λύω", "answers": ["ind perf 2e-mv act"] },
+    { "word": "λέλυκασι(ν)", "cat": "λύω", "answers": ["ind perf 3e-mv act"] },
+
+	 
+    { "word": "λέλυμαι", "cat": "λύω", "answers": ["ind perf 1e-ev med"] },
+    { "word": "λέλυσαι", "cat": "λύω", "answers": ["ind perf 2e-ev med"] },
+    { "word": "λέλυται", "cat": "λύω", "answers": ["ind perf 3e-ev med"] },
+    { "word": "λελύμεθα", "cat": "λύω", "answers": ["ind perf 1e-mv med"] },
+    { "word": "λέλυσθε", "cat": "λύω", "answers": ["ind perf 2e-mv med"] },
+    { "word": "λέλυνται", "cat": "λύω", "answers": ["ind perf 3e-mv med"] },
+
+	 
+    { "word": "ἐλελύκη", "cat": "λύω", "answers": ["ind plqpf 1e-ev act"] },
+    { "word": "ἐλελύκης", "cat": "λύω", "answers": ["ind plqpf 2e-ev act"] },
+    { "word": "ἐλελύκει(ν)", "cat": "λύω", "answers": ["ind plqpf 3e-ev act"] },
+    { "word": "ἐλελύκεμεν", "cat": "λύω", "answers": ["ind plqpf 1e-mv act"] },
+    { "word": "ἐλελύκετε", "cat": "λύω", "answers": ["ind plqpf 2e-mv act"] },
+    { "word": "ἐλελύκεσαν", "cat": "λύω", "answers": ["ind plqpf 3e-mv act"] },
+
+    { "word": "ἐλελύμην", "cat": "λύω", "answers": ["ind plqpf 1e-ev med"] },
+    { "word": "ἐλελύσο", "cat": "λύω", "answers": ["ind plqpf 2e-ev med"] },
+    { "word": "ἐλέλυτο", "cat": "λύω", "answers": ["ind plqpf 3e-ev med"] },
+    { "word": "ἐλελύμεθα", "cat": "λύω", "answers": ["ind plqpf 1e-mv med"] },
+    { "word": "ἐλέλυσθε", "cat": "λύω", "answers": ["ind plqpf 2e-mv med"] },
+    { "word": "ἐλέλυντο", "cat": "λύω", "answers": ["ind plqpf 3e-mv med"] },
+
+
+{ "word": "λύε", "cat": "λύω", "answers": ["imp praes 2e-ev act"] },
+{ "word": "λύετε", "cat": "λύω", "answers": ["imp praes 2e-mv act"] },
+	 
+{ "word": "λύου", "cat": "λύω", "answers": ["imp praes 2e-ev med"] },
+{ "word": "λύεσθε", "cat": "λύω", "answers": ["imp praes 2e-mv med"] },
+,
+{ "word": "λῦσον", "cat": "λύω", "answers": ["imp aor 2e-ev act"] },
+{ "word": "λύσατε", "cat": "λύω", "answers": ["imp aor 2e-mv act"] },
+	 
+ { "word": "λῦσαι", "cat": "λύω", "answers": ["imp aor 2e-ev med"] },
+{ "word": "λύσασθε", "cat": "λύω", "answers": ["imp aor 2e-mv med"] },
+
+{ "word": "λύθητι", "cat": "λύω", "answers": ["imp aor 2e-ev pass"] },
+{ "word": "λύθητε", "cat": "λύω", "answers": ["imp aor 2e-mv pass"] },
+	
+
+{ "word": "λύειν", "cat": "λύω", "answers": ["inf praes act"] },
+{ "word": "λύεσθαι", "cat": "λύω", "answers": ["inf praes med"] },
+
+{ "word": "λῦσαι", "cat": "λύω", "answers": ["inf aor act"] },
+{ "word": "λύσασθαι", "cat": "λύω", "answers": ["inf aor med"] },
+{ "word": "λυθῆναι", "cat": "λύω", "answers": ["inf aor pass"] },
+
+{ "word": "λελυκέναι", "cat": "λύω", "answers": ["inf perf act"] },
+{ "word": "λελύσθαι", "cat": "λύω", "answers": ["inf perf med"] },
+
+{ "word": "λύσειν", "cat": "λύω", "answers": ["inf fut act"] },
+{ "word": "λύσεσθαι", "cat": "λύω", "answers": ["inf fut med"] },
+{ "word": "λυθήσεσθαι", "cat": "λύω", "answers": ["inf fut pass"] }
 ];
 
 
