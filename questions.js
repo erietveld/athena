@@ -146,7 +146,7 @@ export const qGreekVerb = [
     { "word": "λύσαιντο", "cat": "λύω", "answers": ["opt aor 3e-mv med"] },
 	 
   { "word": "λυθείην", "cat": "λύω", "answers": ["opt aor 1e-ev pass"] },
-    { "word": "λυθείης', "cat": "λύω", "answers": ["opt aor 2e-ev pass"] },
+    { "word": "λυθείης", "cat": "λύω", "answers": ["opt aor 2e-ev pass"] },
     { "word": "λυθείη", "cat": "λύω", "answers": ["opt aor 3e-ev pass"] },
     { "word": "λυθεῖμεν", "cat": "λύω", "answers": ["opt aor 1e-mv pass"] },
     { "word": "λυθεῖτε", "cat": "λύω", "answers": ["opt aor 2e-mv pass"] },
