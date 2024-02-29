@@ -7,8 +7,8 @@ let verbLoad, nounLoad, setQuestions, showQuestion,
     qLatinVerb, qLatinNoun, qGreekVerb, qGreekNoun, qGreekAdjective, qLatinAdjectives,
     checkAnswer, 
     validateAnswerComplete, extraFrame, resetFrames;
+  
 
-translateHtmlElements();
 window.addEventListener('load', async function () {
   // Load the modules asynchronously
   ( [
@@ -276,3 +276,5 @@ export function getSelectedOptions(currentFrame) {
 
     return selectedOptions;
 }
+//ER: Keep at bottom to make sure on Safari where the functions aren't hoisted the reference doesn't fail.
+translateHtmlElements();
