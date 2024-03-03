@@ -2,7 +2,7 @@
     "latinTitle": "Latin",
     "latinVerbs": "Verbs",
     "latinNouns": "Nouns",
-    "ancientGreekTitle": "Ancient Greek",
+    "ancientGreekTitle": "Greek",
     "greekVerbs": "Verbs",
     "greekNouns": "Articles and Nouns",
     "Filters": "Filters",
@@ -10,8 +10,8 @@
     "Adjectives": "Adjectives",
     "Case": "Case",
     "Number": "Number",
-    "Singular": "Sg",
-    "Plural": "Pl",
+    "Singular": "sg",
+    "Plural": "pl",
     "lidwoord": "Article",
     "NoQuestionsFound": "No questions found. Make a wider selection in the menu.",
     "Verb": "Verb",
@@ -27,7 +27,13 @@
     "Add Option?": "Add Option?",
     "Reset": "Reset",
     "Check": "Check",
-    "Next": "Next"
-    
+    "Next": "Next",
+    "SeeResults": "This was the last question. See results",
+    "FormsSelected" : "forms selected",
+    "scoreMessage": "You scored {0} out of {1}",
+    "everythingAgain": "Practice this selection again",
+    "onlyRepList": "Practice errorlist again",
+    "tigerModes": "Keep practicing errorlist until everything is correct",
+    "makeNewSelection": "Create new selection"
 }
   

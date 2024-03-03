@@ -5,7 +5,6 @@ export const qGreekVerb = [
 	{ "word": "λύομεν", "cat": "λύω", "answers": ["ind praes 1e-mv act"] },
 	{ "word": "λύετε", "cat": "λύω", "answers": ["ind praes 2e-mv act"] },
 	{ "word": "λύουσι(ν)", "cat": "λύω", "answers": ["ind praes 3e-mv act"] },
-
 	
     { "word": "λύομαι", "cat": "λύω", "answers": ["ind praes 1e-ev med"] },
     { "word": "λύει", "cat": "λύω", "answers": ["ind praes 2e-ev med"] },
@@ -145,7 +144,7 @@ export const qGreekVerb = [
     { "word": "λύσαισθε", "cat": "λύω", "answers": ["opt aor 2e-mv med"] },
     { "word": "λύσαιντο", "cat": "λύω", "answers": ["opt aor 3e-mv med"] },
 	 
-  { "word": "λυθείην", "cat": "λύω", "answers": ["opt aor 1e-ev pass"] },
+ 	 { "word": "λυθείην", "cat": "λύω", "answers": ["opt aor 1e-ev pass"] },
     { "word": "λυθείης", "cat": "λύω", "answers": ["opt aor 2e-ev pass"] },
     { "word": "λυθείη", "cat": "λύω", "answers": ["opt aor 3e-ev pass"] },
     { "word": "λυθεῖμεν", "cat": "λύω", "answers": ["opt aor 1e-mv pass"] },
@@ -184,35 +183,35 @@ export const qGreekVerb = [
     { "word": "ἐλέλυντο", "cat": "λύω", "answers": ["ind plqpf 3e-mv med"] },
 
 
-{ "word": "λύε", "cat": "λύω", "answers": ["imp praes 2e-ev act"] },
-{ "word": "λύετε", "cat": "λύω", "answers": ["imp praes 2e-mv act"] },
-	 
-{ "word": "λύου", "cat": "λύω", "answers": ["imp praes 2e-ev med"] },
-{ "word": "λύεσθε", "cat": "λύω", "answers": ["imp praes 2e-mv med"] },
-,
-{ "word": "λῦσον", "cat": "λύω", "answers": ["imp aor 2e-ev act"] },
-{ "word": "λύσατε", "cat": "λύω", "answers": ["imp aor 2e-mv act"] },
-	 
- { "word": "λῦσαι", "cat": "λύω", "answers": ["imp aor 2e-ev med"] },
-{ "word": "λύσασθε", "cat": "λύω", "answers": ["imp aor 2e-mv med"] },
+	{ "word": "λύε", "cat": "λύω", "answers": ["imp praes 2e-ev act"] },
+	{ "word": "λύετε", "cat": "λύω", "answers": ["imp praes 2e-mv act"] },
+		
+	{ "word": "λύου", "cat": "λύω", "answers": ["imp praes 2e-ev med"] },
+	{ "word": "λύεσθε", "cat": "λύω", "answers": ["imp praes 2e-mv med"] },
+	,
+	{ "word": "λῦσον", "cat": "λύω", "answers": ["imp aor 2e-ev act"] },
+	{ "word": "λύσατε", "cat": "λύω", "answers": ["imp aor 2e-mv act"] },
+		
+	{ "word": "λῦσαι", "cat": "λύω", "answers": ["imp aor 2e-ev med"] },
+	{ "word": "λύσασθε", "cat": "λύω", "answers": ["imp aor 2e-mv med"] },
 
-{ "word": "λύθητι", "cat": "λύω", "answers": ["imp aor 2e-ev pass"] },
-{ "word": "λύθητε", "cat": "λύω", "answers": ["imp aor 2e-mv pass"] },
-	
+	{ "word": "λύθητι", "cat": "λύω", "answers": ["imp aor 2e-ev pass"] },
+	{ "word": "λύθητε", "cat": "λύω", "answers": ["imp aor 2e-mv pass"] },
+		
 
-{ "word": "λύειν", "cat": "λύω", "answers": ["inf praes act"] },
-{ "word": "λύεσθαι", "cat": "λύω", "answers": ["inf praes med"] },
+	{ "word": "λύειν", "cat": "λύω", "answers": ["inf praes act"] },
+	{ "word": "λύεσθαι", "cat": "λύω", "answers": ["inf praes med"] },
 
-{ "word": "λῦσαι", "cat": "λύω", "answers": ["inf aor act"] },
-{ "word": "λύσασθαι", "cat": "λύω", "answers": ["inf aor med"] },
-{ "word": "λυθῆναι", "cat": "λύω", "answers": ["inf aor pass"] },
+	{ "word": "λῦσαι", "cat": "λύω", "answers": ["inf aor act"] },
+	{ "word": "λύσασθαι", "cat": "λύω", "answers": ["inf aor med"] },
+	{ "word": "λυθῆναι", "cat": "λύω", "answers": ["inf aor pass"] },
 
-{ "word": "λελυκέναι", "cat": "λύω", "answers": ["inf perf act"] },
-{ "word": "λελύσθαι", "cat": "λύω", "answers": ["inf perf med"] },
+	{ "word": "λελυκέναι", "cat": "λύω", "answers": ["inf perf act"] },
+	{ "word": "λελύσθαι", "cat": "λύω", "answers": ["inf perf med"] },
 
-{ "word": "λύσειν", "cat": "λύω", "answers": ["inf fut act"] },
-{ "word": "λύσεσθαι", "cat": "λύω", "answers": ["inf fut med"] },
-{ "word": "λυθήσεσθαι", "cat": "λύω", "answers": ["inf fut pass"] }
+	{ "word": "λύσειν", "cat": "λύω", "answers": ["inf fut act"] },
+	{ "word": "λύσεσθαι", "cat": "λύω", "answers": ["inf fut med"] },
+	{ "word": "λυθήσεσθαι", "cat": "λύω", "answers": ["inf fut pass"] }
 ];
 
 
@@ -319,7 +318,7 @@ export const qLatinVerb= [
 	{ "word": "vocavisses", "cat": "vocare", "answers": ["conj plqpf 2e-ev act"] },
 	{ "word": "vocavisset", "cat": "vocare", "answers": ["conj plqpf 3e-ev act"] },
 	{ "word": "vocavissemus", "cat": "vocare", "answers": ["conj plqpf 1e-mv act"] },
-	{ "word": "vvocavissetis", "cat": "vocare", "answers": ["conj plqpf 2e-mv act"] },
+	{ "word": "vocavissetis", "cat": "vocare", "answers": ["conj plqpf 2e-mv act"] },
 	{ "word": "vocavissent", "cat": "vocare", "answers": ["conj plqpf 3e-mv act"] },
 
 	{ "word": "voca", "cat": "vocare", "answers": ["imp praes 2e-ev act"] },
@@ -334,7 +333,7 @@ export const qLatinVerb= [
 	{ "word": "vocantis", "cat": "vocare", "answers": ["ptc praes x act gen ev m", "ptc praes x act gen ev f", "ptc praes x act gen ev n"] },
 	{ "word": "vocanti", "cat": "vocare", "answers": ["ptc praes x act dat ev m", "ptc praes x act dat ev f", "ptc praes x act dat ev n"] },
 	{ "word": "vocante", "cat": "vocare", "answers": ["ptc praes x act abl ev m", "ptc praes x act abl ev f", "ptc praes x act abl ev n"] },
-	{ "word": "vocantes", "cat": "vocare", "answers": ["ptc praes x act nom mv m", "ptc praes x act nom mv f"] },
+	{ "word": "vocantes", "cat": "vocare", "answers": ["ptc praes x act nom mv m", "ptc praes x act nom mv f", "ptc praes x act acc mv m", "ptc praes x act acc mv f"] },
 	{ "word": "vocantia", "cat": "vocare", "answers": ["ptc praes x act nom mv n", "ptc praes x act acc mv n"] },
 	{ "word": "vocantium", "cat": "vocare", "answers": ["ptc praes x act gen mv m", "ptc praes x act gen mv f", "ptc praes x act gen mv n"] },
 	{ "word": "vocantibus", "cat": "vocare", "answers": ["ptc praes x act dat mv m", "ptc praes x act dat mv f", "ptc praes x act dat mv n", "ptc praes x act abl mv m", "ptc praes x act abl mv f", "ptc praes x act abl mv n"] },
@@ -440,6 +439,8 @@ export const qLatinVerb= [
 	{ "word": "tenere", "cat": "tenere", "answers": ["inf praes x act"] },
 	{ "word": "tenuisse", "cat": "tenere", "answers": ["inf perf x act"] },
 	{ "word": "teneri", "cat": "tenere", "answers": ["inf praes x pass"] },
+	{ "word": "tene", "cat": "tenere", "answers": ["imp 2e-ev act"] },
+	{ "word": "tenete", "cat": "tenere", "answers": ["imp 2e-mv act"] },
 	{ "word": "tenere", "cat": "tenere", "answers": ["imp 2e-ev pass"] },
 	{ "word": "tenemini", "cat": "tenere", "answers": ["imp 2e-mv pass"] },
 
@@ -448,7 +449,7 @@ export const qLatinVerb= [
 	{ "word": "tenentis", "cat": "tenere", "answers": ["ptc praes x act gen ev m", "ptc praes x act gen ev f", "ptc praes x act gen ev n"] },
 	{ "word": "tenenti", "cat": "tenere", "answers": ["ptc praes x act dat ev m", "ptc praes x act dat ev f", "ptc praes x act dat ev n"] },
 	{ "word": "tenente", "cat": "tenere", "answers": ["ptc praes x act abl ev m", "ptc praes x act abl ev f", "ptc praes x act abl ev n"] },
-	{ "word": "tenentes", "cat": "tenere", "answers": ["ptc praes x act nom mv m", "ptc praes x act nom mv f"] },
+	{ "word": "tenentes", "cat": "tenere", "answers": ["ptc praes x act nom mv m", "ptc praes x act nom mv f", "ptc praes x act acc mv m", "ptc praes x act acc mv f"] },
 	{ "word": "tenentia", "cat": "tenere", "answers": ["ptc praes x act nom mv n", "ptc praes x act acc mv n"] },
 	{ "word": "tenentium", "cat": "tenere", "answers": ["ptc praes x act gen mv m", "ptc praes x act gen mv f", "ptc praes x act gen mv n"] },
 	{ "word": "tenentibus", "cat": "tenere", "answers": ["ptc praes x act dat mv m", "ptc praes x act dat mv f", "ptc praes x act dat mv n", "ptc praes x act abl mv m", "ptc praes x act abl mv f", "ptc praes x act abl mv n"] },
@@ -521,6 +522,7 @@ export const qLatinVerb= [
 	{ "word": "audiverimus", "cat": "audire", "answers": ["ind fex 1e-mv act"] },
 	{ "word": "audiveritis", "cat": "audire", "answers": ["ind fex 2e-mv act"] },
 	{ "word": "audiverint", "cat": "audire", "answers": ["ind fex 3e-mv act"] },
+
 	{ "word": "audiam", "cat": "audire", "answers": ["conj praes 1e-ev act"] },
 	{ "word": "audias", "cat": "audire", "answers": ["conj praes 2e-ev act"] },
 	{ "word": "audiat", "cat": "audire", "answers": ["conj praes 3e-ev act"] },
@@ -551,6 +553,7 @@ export const qLatinVerb= [
 	{ "word": "audiverimus", "cat": "audire", "answers": ["conj perf 1e-mv act"] },
 	{ "word": "audiveritis", "cat": "audire", "answers": ["conj perf 2e-mv act"] },
 	{ "word": "audiverint", "cat": "audire", "answers": ["conj perf 3e-mv act"] },
+
 	{ "word": "audi", "cat": "audire", "answers": ["imp praes 2e-ev act"] },
 	{ "word": "audite", "cat": "audire", "answers": ["imp praes 2e-mv act"] },
 	{ "word": "audire", "cat": "audire", "answers": ["inf praes x act"] },
@@ -573,7 +576,7 @@ export const qLatinVerb= [
 	{ "word": "auditarum", "cat": "audire", "answers": ["ptc perf x pass gen mv f"] },
 	{ "word": "auditas", "cat": "audire", "answers": ["ptc perf x pass acc mv f"] },
 
-
+	//TODO: PPA
 
 
 	{ "word": "mitto", "cat": "mittere", "answers": ["ind praes 1e-ev act"] },
@@ -630,6 +633,50 @@ export const qLatinVerb= [
 	{ "word": "miseramus", "cat": "mittere", "answers": ["ind fex 1e-mv act"] },
 	{ "word": "miserais", "cat": "mittere", "answers": ["ind fex 2e-mv act"] },
 	{ "word": "miserant", "cat": "mittere", "answers": ["ind fex 3e-mv act"] },
+//conj praes act
+	{ "word": "mittam", "cat": "mittere", "answers": ["conj praes 1e-ev act"] },
+    { "word": "mittas", "cat": "mittere", "answers": ["conj praes 2e-ev act"] },
+    { "word": "mittat", "cat": "mittere", "answers": ["conj praes 3e-ev act"] },
+    { "word": "mittamus", "cat": "mittere", "answers": ["conj praes 1e-mv act"] },
+    { "word": "mittatis", "cat": "mittere", "answers": ["conj praes 2e-mv act"] },
+    { "word": "mittant", "cat": "mittere", "answers": ["conj praes 3e-mv act"] },
+//conj praes pass
+    { "word": "mittar", "cat": "mittere", "answers": ["conj praes 1e-ev pass"] },
+    { "word": "mittaris", "cat": "mittere", "answers": ["conj praes 2e-ev pass"] },
+    { "word": "mittatur", "cat": "mittere", "answers": ["conj praes 3e-ev pass"] },
+    { "word": "mittamur", "cat": "mittere", "answers": ["conj praes 1e-mv pass"] },
+    { "word": "mittamini", "cat": "mittere", "answers": ["conj praes 2e-mv pass"] },
+    { "word": "mittantur", "cat": "mittere", "answers": ["conj praes 3e-mv pass"] },
+//conj impf act
+	{ "word": "mitterem", "cat": "mittere", "answers": ["conj impf 1e-ev act"] },
+	{ "word": "mitteres", "cat": "mittere", "answers": ["conj impf 2e-ev act"] },
+	{ "word": "mitteret", "cat": "mittere", "answers": ["conj impf 3e-ev act"] },
+	{ "word": "mitteremus", "cat": "mittere", "answers": ["conj impf 1e-mv act"] },
+	{ "word": "mitteretis", "cat": "mittere", "answers": ["conj impf 2e-mv act"] },
+	{ "word": "mitterent", "cat": "mittere", "answers": ["conj impf 3e-mv act"] },
+//conj impf pass
+    { "word": "mitterer", "cat": "mittere", "answers": ["conj impf 1e-ev pass"] },
+    { "word": "mittereris", "cat": "mittere", "answers": ["conj impf 2e-ev pass"] },
+    { "word": "mitteretur", "cat": "mittere", "answers": ["conj impf 3e-ev pass"] },
+    { "word": "mitteremur", "cat": "mittere", "answers": ["conj impf 1e-mv pass"] },
+    { "word": "mitteremini", "cat": "mittere", "answers": ["conj impf 2e-mv pass"] },
+    { "word": "mitterentur", "cat": "mittere", "answers": ["conj impf 3e-mv pass"] },
+
+//conj perf act
+    { "word": "miserim", "cat": "mittere", "answers": ["conj perf 1e-ev act"] },
+    { "word": "miseris", "cat": "mittere", "answers": ["conj perf 2e-ev act"] },
+    { "word": "miserit", "cat": "mittere", "answers": ["conj perf 3e-ev act"] },
+    { "word": "miserimus", "cat": "mittere", "answers": ["conj perf 1e-mv act"] },
+    { "word": "miseritis", "cat": "mittere", "answers": ["conj perf 2e-mv act"] },
+    { "word": "miserint", "cat": "mittere", "answers": ["conj perf 3e-mv act"] },
+//conj plqpf act
+    { "word": "misissem", "cat": "mittere", "answers": ["conj plqpf 1e-ev act"] },
+    { "word": "misisses", "cat": "mittere", "answers": ["conj plqpf 2e-ev act"] },
+    { "word": "misisset", "cat": "mittere", "answers": ["conj plqpf 3e-ev act"] },
+    { "word": "misissemus", "cat": "mittere", "answers": ["conj plqpf 1e-mv act"] },
+    { "word": "misissetis", "cat": "mittere", "answers": ["conj plqpf 2e-mv act"] },
+    { "word": "misissent", "cat": "mittere", "answers": ["conj plqpf 3e-mv act"] },
+//imp en inf
 	{ "word": "mitte", "cat": "mittere", "answers": ["imp praes 2e-ev act"] },
 	{ "word": "mittite", "cat": "mittere", "answers": ["imp praes 2e-mv act"] },
 	{ "word": "mittere", "cat": "mittere", "answers": ["inf praes x act"] },
@@ -637,8 +684,7 @@ export const qLatinVerb= [
 	{ "word": "mitti", "cat": "mittere", "answers": ["inf praes x pass"] },
 	{ "word": "mittere", "cat": "mittere", "answers": ["imp 2e-ev pass"] },
 	{ "word": "mittimini", "cat": "mittere", "answers": ["imp 2e-mv pass"] },
-
-
+// tod do: ppa
 	{ "word": "missus", "cat": "mittere", "answers": ["ptc perf x pass nom ev m"] },
 	{ "word": "missi", "cat": "mittere", "answers": ["ptc perf x pass gen ev m", "ptc perf x pass nom mv m", "ptc perf x pass gen ev n"] },
 	{ "word": "misso", "cat": "mittere", "answers": ["ptc perf x pass dat ev m", "ptc perf x pass dat ev n", "ptc perf x pass abl ev m", "ptc perf x pass abl ev n"] },
@@ -652,81 +698,167 @@ export const qLatinVerb= [
 	{ "word": "missarum", "cat": "mittere", "answers": ["ptc perf x pass gen mv f"] },
 	{ "word": "missas", "cat": "mittere", "answers": ["ptc perf x pass acc mv f"] },
 
-
-
-
+//ind praes act
 	{ "word": "sum", "cat": "esse", "answers": ["ind praes 1e-ev act"] },
 	{ "word": "es", "cat": "esse", "answers": ["ind praes 2e-ev act"] },
 	{ "word": "est", "cat": "esse", "answers": ["ind praes 3e-ev act"] },
 	{ "word": "sumus", "cat": "esse", "answers": ["ind praes 1e-mv act"] },
 	{ "word": "estis", "cat": "esse", "answers": ["ind praes 2e-mv act"] },
 	{ "word": "sunt", "cat": "esse", "answers": ["ind praes 3e-mv act"] },
-
+//ind impf act
 	{ "word": "eram", "cat": "esse", "answers": ["ind impf 1e-ev act"] },
 	{ "word": "eras", "cat": "esse", "answers": ["ind impf 2e-ev act"] },
 	{ "word": "erat", "cat": "esse", "answers": ["ind impf 3e-ev act"] },
 	{ "word": "eramus", "cat": "esse", "answers": ["ind impf 1e-mv act"] },
 	{ "word": "eratis", "cat": "esse", "answers": ["ind impf 2e-mv act"] },
 	{ "word": "erant", "cat": "esse", "answers": ["ind impf 3e-mv act"] },
-
+//ind fut act
 	{ "word": "ero", "cat": "esse", "answers": ["ind fut 1e-ev act"] },
 	{ "word": "eris", "cat": "esse", "answers": ["ind fut 2e-ev act"] },
 	{ "word": "erit", "cat": "esse", "answers": ["ind fut 3e-ev act"] },
 	{ "word": "erimus", "cat": "esse", "answers": ["ind fut 1e-mv act"] },
 	{ "word": "eritis", "cat": "esse", "answers": ["ind fut 2e-mv act"] },
 	{ "word": "erunt", "cat": "esse", "answers": ["ind fut 3e-mv act"] },
-
+//ind perf act
 	{ "word": "fui", "cat": "esse", "answers": ["ind perf 1e-ev act"] },
 	{ "word": "fuisti", "cat": "esse", "answers": ["ind perf 2e-ev act"] },
 	{ "word": "fuit", "cat": "esse", "answers": ["ind perf 3e-ev act"] },
 	{ "word": "fuimus", "cat": "esse", "answers": ["ind perf 1e-mv act"] },
 	{ "word": "fuistis", "cat": "esse", "answers": ["ind perf 2e-mv act"] },
 	{ "word": "fuerunt", "cat": "esse", "answers": ["ind perf 3e-mv act"] },
+//ind plqpf act
 	{ "word": "fueram", "cat": "esse", "answers": ["ind plqpf 1e-ev act"] },
 	{ "word": "fueras", "cat": "esse", "answers": ["ind plqpf 2e-ev act"] },
 	{ "word": "fuerat", "cat": "esse", "answers": ["ind plqpf 3e-ev act"] },
 	{ "word": "fueramus", "cat": "esse", "answers": ["ind plqpf 1e-mv act"] },
 	{ "word": "fueratis", "cat": "esse", "answers": ["ind plqpf 2e-mv act"] },
 	{ "word": "fuerant", "cat": "esse", "answers": ["ind plqpf 3e-mv act"] },
+//ind fex act
 	{ "word": "fuero", "cat": "esse", "answers": ["ind fex 1e-ev act"] },
 	{ "word": "fueris", "cat": "esse", "answers": ["ind fex 2e-ev act"] },
 	{ "word": "fuerit", "cat": "esse", "answers": ["ind fex 3e-ev act"] },
 	{ "word": "fuerimus", "cat": "esse", "answers": ["ind fex 1e-mv act"] },
 	{ "word": "fueritis", "cat": "esse", "answers": ["ind fex 2e-mv act"] },
 	{ "word": "fuerint", "cat": "esse", "answers": ["ind fex 3e-mv act"] },
+//conj praes act
 	{ "word": "sim", "cat": "esse", "answers": ["conj praes 1e-ev act"] },
 	{ "word": "sis", "cat": "esse", "answers": ["conj praes 2e-ev act"] },
 	{ "word": "sit", "cat": "esse", "answers": ["conj praes 3e-ev act"] },
 	{ "word": "simus", "cat": "esse", "answers": ["conj praes 1e-mv act"] },
 	{ "word": "sitis", "cat": "esse", "answers": ["conj praes 2e-mv act"] },
 	{ "word": "sint", "cat": "esse", "answers": ["conj praes 3e-mv act"] },
-
+//conj impf act
 	{ "word": "essem", "cat": "esse", "answers": ["conj impf 1e-ev act"] },
 	{ "word": "esses", "cat": "esse", "answers": ["conj impf 2e-ev act"] },
 	{ "word": "esset", "cat": "esse", "answers": ["conj impf 3e-ev act"] },
 	{ "word": "essemus", "cat": "esse", "answers": ["conj impf 1e-mv act"] },
 	{ "word": "essetis", "cat": "esse", "answers": ["conj impf 2e-mv act"] },
 	{ "word": "essent", "cat": "esse", "answers": ["conj impf 3e-mv act"] },
+//conj perf act
 	{ "word": "fuerim", "cat": "esse", "answers": ["conj perf 1e-ev act"] },
 	{ "word": "fueris", "cat": "esse", "answers": ["conj perf 2e-ev act"] },
 	{ "word": "fuerit", "cat": "esse", "answers": ["conj perf 3e-ev act"] },
 	{ "word": "fuerimus", "cat": "esse", "answers": ["conj perf 1e-mv act"] },
 	{ "word": "fueritis", "cat": "esse", "answers": ["conj perf 2e-mv act"] },
 	{ "word": "fuerint", "cat": "esse", "answers": ["conj perf 3e-mv act"] },
-
+//conj plqpf act
 	{ "word": "fuissem", "cat": "esse", "answers": ["conj plqpf 1e-ev act"] },
 	{ "word": "fuisses", "cat": "esse", "answers": ["conj plqpf 2e-ev act"] },
 	{ "word": "fuisset", "cat": "esse", "answers": ["conj plqpf 3e-ev act"] },
 	{ "word": "fuissemus", "cat": "esse", "answers": ["conj plqpf 1e-mv act"] },
 	{ "word": "fuissetis", "cat": "esse", "answers": ["conj plqpf 2e-mv act"] },
 	{ "word": "fuissent", "cat": "esse", "answers": ["conj plqpf 3e-mv act"] },
+//inf en imp
 	{ "word": "esse", "cat": "esse", "answers": ["inf praes x act"] },
 	{ "word": "es", "cat": "esse", "answers": ["imp praes 2e-ev act"] },
 	{ "word": "este", "cat": "esse", "answers": ["imp praes 2e-mv act"] },
-	{ "word": "fuisse", "cat": "esse", "answers": ["inf perf x act"] }
+	{ "word": "fuisse", "cat": "esse", "answers": ["inf perf x act"] },
 
+//ind praes act
+	{ "word": "possum", "cat": "posse", "answers": ["ind praes 1e-ev act"] },
+	{ "word": "potes", "cat": "posse", "answers": ["ind praes 2e-ev act"] },
+	{ "word": "potest", "cat": "posse", "answers": ["ind praes 3e-ev act"] },
+	{ "word": "possumus", "cat": "posse", "answers": ["ind praes 1e-mv act"] },
+	{ "word": "potestis", "cat": "posse", "answers": ["ind praes 2e-mv act"] },
+	{ "word": "possunt", "cat": "posse", "answers": ["ind praes 3e-mv act"] },
 
+//ind impf act
+	{ "word": "poteram", "cat": "posse", "answers": ["ind impf 1e-ev act"] },
+	{ "word": "poteras", "cat": "posse", "answers": ["ind impf 2e-ev act"] },
+	{ "word": "poterat", "cat": "posse", "answers": ["ind impf 3e-ev act"] },
+	{ "word": "poteramus", "cat": "posse", "answers": ["ind impf 1e-mv act"] },
+	{ "word": "poteratis", "cat": "posse", "answers": ["ind impf 2e-mv act"] },
+	{ "word": "poterant", "cat": "posse", "answers": ["ind impf 3e-mv act"] },
 
+	//ind fut act
+	{ "word": "potero", "cat": "posse", "answers": ["ind fut 1e-ev act"] },
+	{ "word": "poteris", "cat": "posse", "answers": ["ind fut 2e-ev act"] },
+	{ "word": "poterit", "cat": "posse", "answers": ["ind fut 3e-ev act"] },
+	{ "word": "poterimus", "cat": "posse", "answers": ["ind fut 1e-mv act"] },
+	{ "word": "poteritis", "cat": "posse", "answers": ["ind fut 2e-mv act"] },
+	{ "word": "poterint", "cat": "posse", "answers": ["ind fut 3e-mv act"] },
+
+	//ind perf act
+	{ "word": "potui", "cat": "posse", "answers": ["ind perf 1e-ev act"] },
+	{ "word": "potuisti", "cat": "posse", "answers": ["ind perf 2e-ev act"] },
+	{ "word": "potuit", "cat": "posse", "answers": ["ind perf 3e-ev act"] },
+	{ "word": "potuimus", "cat": "posse", "answers": ["ind perf 1e-mv act"] },
+	{ "word": "potuistis", "cat": "posse", "answers": ["ind perf 2e-mv act"] },
+	{ "word": "potuerunt", "cat": "posse", "answers": ["ind perf 3e-mv act"] },
+
+	//ind plqpf act
+	{ "word": "potueram", "cat": "posse", "answers": ["ind plqpf 1e-ev act"] },
+	{ "word": "potueras", "cat": "posse", "answers": ["ind plqpf 2e-ev act"] },
+	{ "word": "potuerat", "cat": "posse", "answers": ["ind plqpf 3e-ev act"] },
+	{ "word": "potueramus", "cat": "posse", "answers": ["ind plqpf 1e-mv act"] },
+	{ "word": "potueratis", "cat": "posse", "answers": ["ind plqpf 2e-mv act"] },
+	{ "word": "potuerant", "cat": "posse", "answers": ["ind plqpf 3e-mv act"] },
+
+	//ind fex act
+	{ "word": "potuero", "cat": "posse", "answers": ["ind fex 1e-ev act"] },
+	{ "word": "potueris", "cat": "posse", "answers": ["ind fex 2e-ev act"] },
+	{ "word": "potuerit", "cat": "posse", "answers": ["ind fex 3e-ev act"] },
+	{ "word": "potuerimus", "cat": "posse", "answers": ["ind fex 1e-mv act"] },
+	{ "word": "potueritis", "cat": "posse", "answers": ["ind fex 2e-mv act"] },
+	{ "word": "potuerint", "cat": "posse", "answers": ["ind fex 3e-mv act"] },
+
+	//conj praes act
+	{ "word": "possim", "cat": "posse", "answers": ["conj praes 1e-ev act"] },
+	{ "word": "possis", "cat": "posse", "answers": ["conj praes 2e-ev act"] },
+	{ "word": "possit", "cat": "posse", "answers": ["conj praes 3e-ev act"] },
+	{ "word": "possimus", "cat": "posse", "answers": ["conj praes 1e-mv act"] },
+	{ "word": "possitis", "cat": "posse", "answers": ["conj praes 2e-mv act"] },
+	{ "word": "possint", "cat": "posse", "answers": ["conj praes 3e-mv act"] },
+
+	//conj impf act
+	{ "word": "possem", "cat": "posse", "answers": ["conj impf 1e-ev act"] },
+	{ "word": "posses", "cat": "posse", "answers": ["conj impf 2e-ev act"] },
+	{ "word": "posset", "cat": "posse", "answers": ["conj impf 3e-ev act"] },
+	{ "word": "possemus", "cat": "posse", "answers": ["conj impf 1e-mv act"] },
+	{ "word": "possetis", "cat": "posse", "answers": ["conj impf 2e-mv act"] },
+	{ "word": "possent", "cat": "posse", "answers": ["conj impf 3e-mv act"] },
+
+	//conj perf act
+	{ "word": "potuerim", "cat": "posse", "answers": ["conj perf 1e-ev act"] },
+	{ "word": "potueris", "cat": "posse", "answers": ["conj perf 2e-ev act"] },
+	{ "word": "potuerit", "cat": "posse", "answers": ["conj perf 3e-ev act"] },
+	{ "word": "potuerimus", "cat": "posse", "answers": ["conj perf 1e-mv act"] },
+	{ "word": "potueritis", "cat": "posse", "answers": ["conj perf 2e-mv act"] },
+	{ "word": "potuerint", "cat": "posse", "answers": ["conj perf 3e-mv act"] },
+
+	//conj plqpf act
+	{ "word": "potuissem", "cat": "posse", "answers": ["conj plqpf 1e-ev act"] },
+	{ "word": "potuisses", "cat": "posse", "answers": ["conj plqpf 2e-ev act"] },
+	{ "word": "potuisset", "cat": "posse", "answers": ["conj plqpf 3e-ev act"] },
+	{ "word": "potuissemus", "cat": "posse", "answers": ["conj plqpf 1e-mv act"] },
+	{ "word": "potuissetis", "cat": "posse", "answers": ["conj plqpf 2e-mv act"] },
+	{ "word": "potuissent", "cat": "posse", "answers": ["conj plqpf 3e-mv act"] },
+	
+	//inf en imp
+	{ "word": "posse", "cat": "posse", "answers": ["inf praes x act"] },
+	{ "word": "potuisse", "cat": "posse", "answers": ["inf perf x act"] }
+	// { "word": "potes", "cat": "posse", "answers": ["imp praes 2e-ev act"] },
+	// { "word": "poteste", "cat": "posse", "answers": ["imp praes 2e-mv act"] },
 
 ];
 
@@ -957,44 +1089,43 @@ export const qGreekAdjective = [
 	{ "word": "πολλά", "cat": "πολύς", "answers": ["nom mv n", "acc mv n"] },
 
 	
-		{ "word": "μέγας", "cat": "μέγας", "answers": ["nom ev m"] },
-		{ "word": "μεγάλου", "cat": "μέγας", "answers": ["gen ev m", "gen ev n"] },
-		{ "word": "μεγάλῳ", "cat": "μέγας", "answers": ["dat ev m", "dat ev n"] },
-		{ "word": "μέγαν", "cat": "μέγας", "answers": ["acc ev m"] },
-		{ "word": "μέγα", "cat": "μέγας", "answers": [ "nom ev n", "acc ev n"] },
-		{ "word": "μεγάλοι", "cat": "μέγας", "answers": ["nom mv m"] },
-		{ "word": "μεγάλων", "cat": "μέγας", "answers": ["gen mv m", "gen mv f","gen mv n"] },
-		{ "word": "μεγάλοις", "cat": "μέγας", "answers": ["dat mv m", "dat mv n"] },
-		{ "word": "μεγάλους", "cat": "μέγας", "answers": ["acc mv m"] },
-		{ "word": "μεγάλη", "cat": "μέγας", "answers": ["nom ev f"] },
-		{ "word": "μεγάλης", "cat": "μέγας", "answers": ["gen ev f"] },
-		{ "word": "μεγάλῃ", "cat": "μέγας", "answers": ["dat ev f"] },
-		{ "word": "μεγάλην", "cat": "μέγας", "answers": ["acc ev f"] },
-		{ "word": "μεγάλαι", "cat": "μέγας", "answers": ["nom mv f"] },
-		{ "word": "μεγάλαις", "cat": "μέγας", "answers": ["dat mv f"] },
-		{ "word": "μεγάλας", "cat": "μέγας", "answers": ["acc mv f"] },
-		{ "word": "μεγάλα", "cat": "μέγας", "answers": ["nom mv n", "acc mv n"] },
+	{ "word": "μέγας", "cat": "μέγας", "answers": ["nom ev m"] },
+	{ "word": "μεγάλου", "cat": "μέγας", "answers": ["gen ev m", "gen ev n"] },
+	{ "word": "μεγάλῳ", "cat": "μέγας", "answers": ["dat ev m", "dat ev n"] },
+	{ "word": "μέγαν", "cat": "μέγας", "answers": ["acc ev m"] },
+	{ "word": "μέγα", "cat": "μέγας", "answers": [ "nom ev n", "acc ev n"] },
+	{ "word": "μεγάλοι", "cat": "μέγας", "answers": ["nom mv m"] },
+	{ "word": "μεγάλων", "cat": "μέγας", "answers": ["gen mv m", "gen mv f","gen mv n"] },
+	{ "word": "μεγάλοις", "cat": "μέγας", "answers": ["dat mv m", "dat mv n"] },
+	{ "word": "μεγάλους", "cat": "μέγας", "answers": ["acc mv m"] },
+	{ "word": "μεγάλη", "cat": "μέγας", "answers": ["nom ev f"] },
+	{ "word": "μεγάλης", "cat": "μέγας", "answers": ["gen ev f"] },
+	{ "word": "μεγάλῃ", "cat": "μέγας", "answers": ["dat ev f"] },
+	{ "word": "μεγάλην", "cat": "μέγας", "answers": ["acc ev f"] },
+	{ "word": "μεγάλαι", "cat": "μέγας", "answers": ["nom mv f"] },
+	{ "word": "μεγάλαις", "cat": "μέγας", "answers": ["dat mv f"] },
+	{ "word": "μεγάλας", "cat": "μέγας", "answers": ["acc mv f"] },
+	{ "word": "μεγάλα", "cat": "μέγας", "answers": ["nom mv n", "acc mv n"] },
 	 
 
-			{ "word": "πᾶς", "cat": "πᾶς", "answers": ["nom ev m"] },
-			{ "word": "παντός", "cat": "πᾶς", "answers": ["gen ev m", "gen ev n"] },
-			{ "word": "παντί", "cat": "πᾶς", "answers": ["dat ev m", "dat ev n"] },
-			{ "word": "πάντα", "cat": "πᾶς", "answers": ["acc ev m", "nom mv n", "acc mv n"] },
-			{ "word": "πᾶν", "cat": "πᾶς", "answers": ["nom ev n", "acc ev n"] },
-			
-			{ "word": "πάντες", "cat": "πᾶς", "answers": ["nom mv m"] },
-			{ "word": "πάντων", "cat": "πᾶς", "answers": ["gen mv m","gen mv n"] },
-			{ "word": "πᾶσι(ν)", "cat": "πᾶς", "answers": ["dat mv m", "dat mv n"] },
-			{ "word": "πάντας", "cat": "πᾶς", "answers": ["acc mv m"] },
-			{ "word": "πᾶσα", "cat": "πᾶς", "answers": ["nom ev f"] },
-			{ "word": "πάσης", "cat": "πᾶς", "answers": ["gen ev f"] },
-			{ "word": "πάσῃ", "cat": "πᾶς", "answers": ["dat ev f"] },
-			{ "word": "πᾶσαν", "cat": "πᾶς", "answers": ["acc ev f"] },
-			{ "word": "πᾶσαι", "cat": "πᾶς", "answers": ["nom mv f"] },
-			{ "word": "πασῶν", "cat": "πᾶς", "answers": ["gen mv f"] },
-			{ "word": "πάσαις", "cat": "πᾶς", "answers": ["dat mv f"] },
-			{ "word": "πάσας", "cat": "πᾶς", "answers": ["acc mv f"] },
+	{ "word": "πᾶς", "cat": "πᾶς", "answers": ["nom ev m"] },
+	{ "word": "παντός", "cat": "πᾶς", "answers": ["gen ev m", "gen ev n"] },
+	{ "word": "παντί", "cat": "πᾶς", "answers": ["dat ev m", "dat ev n"] },
+	{ "word": "πάντα", "cat": "πᾶς", "answers": ["acc ev m", "nom mv n", "acc mv n"] },
+	{ "word": "πᾶν", "cat": "πᾶς", "answers": ["nom ev n", "acc ev n"] },
 	
+	{ "word": "πάντες", "cat": "πᾶς", "answers": ["nom mv m"] },
+	{ "word": "πάντων", "cat": "πᾶς", "answers": ["gen mv m","gen mv n"] },
+	{ "word": "πᾶσι(ν)", "cat": "πᾶς", "answers": ["dat mv m", "dat mv n"] },
+	{ "word": "πάντας", "cat": "πᾶς", "answers": ["acc mv m"] },
+	{ "word": "πᾶσα", "cat": "πᾶς", "answers": ["nom ev f"] },
+	{ "word": "πάσης", "cat": "πᾶς", "answers": ["gen ev f"] },
+	{ "word": "πάσῃ", "cat": "πᾶς", "answers": ["dat ev f"] },
+	{ "word": "πᾶσαν", "cat": "πᾶς", "answers": ["acc ev f"] },
+	{ "word": "πᾶσαι", "cat": "πᾶς", "answers": ["nom mv f"] },
+	{ "word": "πασῶν", "cat": "πᾶς", "answers": ["gen mv f"] },
+	{ "word": "πάσαις", "cat": "πᾶς", "answers": ["dat mv f"] },
+	{ "word": "πάσας", "cat": "πᾶς", "answers": ["acc mv f"] },
 
 ]
 

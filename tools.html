@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athena Tools</title>
+    <script type="module">
+        import { qGreekVerb, qLatinVerb, qLatinNoun, qLatinAdjectives,qGreekNoun,
+            qGreekAdjective
+         } from './questions.js';
+
+
+        function extractUniqueAnswers(jsonObject) {
+            const uniqueAnswers = new Set();
+            jsonObject.forEach(entry => {
+            const answers = entry.answers || [];
+            answers.forEach(answer => {
+                const elements = answer.split(' ');
+                elements.forEach(element => {
+                uniqueAnswers.add(element);
+                });
+            });
+            });
+            return Array.from(uniqueAnswers);
+        }
+        function displayAnswerString(answerString) {
+          document.getElementById("answerDiv").textContent = answerString;
+        }
+        function checkDicts(){
+            displayAnswerString( 
+                " GV: " + extractUniqueAnswers(qGreekVerb) + 
+                " LV: " + extractUniqueAnswers(qLatinVerb) + 
+                " LN: " + extractUniqueAnswers(qLatinNoun) + 
+                " LA: " + extractUniqueAnswers(qLatinAdjectives) + 
+                " GN: " + extractUniqueAnswers(qGreekNoun) +
+                " GA: " + extractUniqueAnswers(qGreekAdjective)
+            );
+        }
+        document.getElementById('uniqueBtn').addEventListener('click', function() {
+            checkDicts();
+        });
+   </script>
+
+</head>
+
+<body>
+
+    <h1>Check Answers</h1>
+    <button id="uniqueBtn">Check Unique Answers</button>
+    <br>
+    <h4 id="answerDiv"></h4>
+</body>
+</html>

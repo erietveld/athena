@@ -1,20 +1,36 @@
 import { reset, translate } from "./main.js";
+import {setFilterURL} from "./urls.js";
 
 var questions;
 var qbank; // All currently filtered questions
 
 const wordElement = document.getElementById('word');
-
+export function setRepitionList(){
+    qbank = repList;
+    repList = [];
+    selectieCount = qbank.length;
+    selectNextQuestion();
+}
 export function setQuestions(qs){
     questions = qs;
 }
+
+export function setTigerMode(){
+    trainingMode = "Tiger";
+    setRepitionList();
+}
+export function getRepCount(){
+    return repList.length;
+}
+
 export function verbLoad(){
     var naamwoordBlock = document.querySelectorAll('.naamwoorden');
     naamwoordBlock.forEach(function (naamwoordBlock) {
         naamwoordBlock.classList.add('hidden', 'hideOnReset');
     })
     loadMainQuiz();
-    populateMenuItemsWerkwoorden();        
+    populateMenuItemsWerkwoorden();
+    updateWordCount();        
 }
 export function nounLoad(nouns, adjs){
 
@@ -38,6 +54,7 @@ export function nounLoad(nouns, adjs){
     
     loadMainQuiz();
     populateMenuItemsNaamwoorden();
+    updateWordCount();
 }
 
 function loadMainQuiz() {
@@ -49,8 +66,9 @@ function loadMainQuiz() {
     questions = removeDuplicates(questions);
     
     qbank = questions;
-
-    showQuestion();
+    
+    selectNextQuestion();
+    NodeList.prototype.map = Array.prototype.map;
 }
 
 function removeDuplicates(array) {
@@ -80,9 +98,6 @@ function populateMenuItemsWerkwoorden() {
     const categories = [...new Set(questions.map(q => q.cat))];
     addCheckboxes(categories, miWords);
 
-    // Flatten all answers into one array
-    // const allAnswers = questions.flatMap(q => q.answers);
-
     const buttonsWijs = document.querySelector('.werkwoorden .option-group').querySelectorAll('button');
     var wijzen = [];
     // Loop through each button and extract its data-type value
@@ -92,7 +107,6 @@ function populateMenuItemsWerkwoorden() {
     });
     const miWijs = document.getElementById("miWijs");
     addCheckboxes(wijzen, miWijs);
-
     
     const buttonsTijd = document.querySelectorAll('.werkwoorden .option-group')[1].querySelectorAll('button');
     var tijden = [];
@@ -115,68 +129,65 @@ function populateMenuItemsWerkwoorden() {
     // Add change listener
     const checkboxes = document.getElementById("mySidenav").querySelectorAll("input[type='checkbox']");
     checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', filterWerkwoordQuestions);
+        checkbox.addEventListener('change', filterQuestions);
     });
 
-    // Filter questions function
-    function filterWerkwoordQuestions() {
+   
+}
+ // Filter questions function
+ export function filterQuestions() { 
+    repList = [];
+    const checkedValues = document.querySelectorAll('.miFilter input[type="checkbox"]:checked').map(checkbox => checkbox.value); 
+    const checkedForms = document.querySelectorAll('.miForms input[type="checkbox"]:checked').map(checkbox => checkbox.value); 
+    
+    var filteredQuestions = JSON.parse(JSON.stringify(questions));
 
+    // Filter questions by checked cats
+    filteredQuestions = filteredQuestions.filter(q => {
+        return checkedForms.includes(q.cat);
+    });
 
-        NodeList.prototype.map = Array.prototype.map;
-        const checkedValues = document.querySelectorAll('.miWW input[type="checkbox"]:checked').map(checkbox => checkbox.value); 
+    // Filter answer
+    filteredQuestions = filteredQuestions.map(q => {
+        q.answers = q.answers.filter(a => {
 
-        const checkedWWs = document.querySelectorAll('#miWerkwoorden input[type="checkbox"]:checked').map(checkbox => checkbox.value); 
-        
-        var filteredQuestions = JSON.parse(JSON.stringify(questions));
-
-        // Filter questions by checked cats
-        filteredQuestions = filteredQuestions.filter(q => {
-            return checkedWWs.includes(q.cat);
+            const parts = a.split(" ");
+            if (!checkedValues.includes(parts[0])) return false;
+            if (!checkedValues.includes(parts[1])) return false;
+            if (parts.length>3)
+            {
+                if (!checkedValues.includes(parts[3])) return false;
+            }
+            return true;
         });
 
-        // Filter answer
-        filteredQuestions = filteredQuestions.map(q => {
-            q.answers = q.answers.filter(a => {
-                // Split answer
-                const parts = a.split(" ");
+        // Remove question if no answers
+        if (q.answers.length === 0) return null;
+        return q;
 
-                if (!checkedValues.includes(parts[0])
-                    || !checkedValues.includes(parts[1])
-                    || (!checkedValues.includes(parts[3]) )) return false;
-                return true;
-            });
+    });
 
-            // Remove question if no answers
-            if (q.answers.length === 0) return null;
-            return q;
+    // Filter out null values
+    filteredQuestions = filteredQuestions.filter(q => q);
+    qbank = filteredQuestions;
+    updateWordCount();
 
-        });
-
-        // Filter out null values
-        filteredQuestions = filteredQuestions.filter(q => q);
-        qbank = filteredQuestions;
-        showQuestion();
-
-        // Select all option classes under the werkwoorden div, excluding the third option-group
-        var dynamicButtons = document.querySelectorAll('.werkwoorden > .option-group:not(:nth-child(3)) .option');
-        dynamicButtons.forEach(function(button){
-            if (checkedValues.includes(button.getAttribute("data-type"))) {
-                button.classList.remove('filter');
-            }
-            else{
-                button.classList.add('filter');
-            }
+    // Select all option classes under the werkwoorden div, excluding the third option-group
+    var dynamicButtons = document.querySelectorAll('.options > .option-group:not(:nth-child(3)) .option');
+    dynamicButtons.forEach(function(button){
+        if (checkedValues.includes(button.getAttribute("data-type"))) {
+            button.classList.remove('filter');
         }
-        );
-        
-
+        else{
+            button.classList.add('filter');
+        }
     }
-
+    );
+    selectNextQuestion();
 }
 
+
 function populateMenuItemsNaamwoorden() {
-
-
     const buttonsCards = document.querySelectorAll('.naamwoorden .option-group')[1].querySelectorAll('button');
     var cardinaliteit = [];
     buttonsCards.forEach(function (button) {
@@ -197,10 +208,6 @@ function populateMenuItemsNaamwoorden() {
     const menuNaamval = document.getElementById("miNaamval");
     addCheckboxes(naamvallen, menuNaamval);
 
-    // Flatten all answers into one array
-    const allAnswers = questions.flatMap(q => q.answers);
-
-
     const uncats = [...new Set(questions.filter(q => !q.menu).map(q => q.cat))];
     const translatedUnats = uncats.map(key => ({ key, val: translate(key) }));
     const catNouns = [...new Set(questions.filter(q => q.menu=="noun").map(q => q.cat))];
@@ -210,99 +217,98 @@ function populateMenuItemsNaamwoorden() {
     const menuNouns = document.getElementById("miNouns");
     const menuAdjectives = document.getElementById("miAdjectives");
     
-
     addCheckboxes(translatedUnats, menuNominals);
     addCheckboxes(catNouns, menuNouns);
     addCheckboxes(catAdjs, menuAdjectives);
 
-    
-    
-
-    // Get checkboxes inside menuWords
-    const wordCB = document.querySelectorAll('div.menuNominals input[type="checkbox"]');
-    const naamvalsCB = menuNaamval.querySelectorAll('input[type="checkbox"]');
-    const cardinaliteitCB = menuCard.querySelectorAll('input[type="checkbox"]');
-
     // Add change listener
     const checkboxes = document.getElementById("mySidenav").querySelectorAll("input[type='checkbox']");
     checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', filterNaamwoordQuestions);
+        checkbox.addEventListener('change', filterQuestions);
     });
-
-    // Filter questions function
-    function filterNaamwoordQuestions() {
-
-        // Get checked values
-        const checkedCats = [];
-        wordCB.forEach(cb => {
-            if (cb.checked) checkedCats.push(cb.value);
-        });
-        const checkedAttrs = [];
-        naamvalsCB.forEach(cb => {
-            if (cb.checked) checkedAttrs.push(cb.value);
-        });
-        // const checkedCard = [];
-        cardinaliteitCB.forEach(cb => {
-            if (cb.checked) checkedAttrs.push(cb.value);
-        });
-
-        var filteredQuestions = JSON.parse(JSON.stringify(questions));
-
-        // Filter questions by checked cats
-        filteredQuestions = filteredQuestions.filter(q => {
-            return checkedCats.includes(q.cat);
-        });
-
-        // Filter answer
-        filteredQuestions = filteredQuestions.map(q => {
-            q.answers = q.answers.filter(a => {
-                // Split answer
-                const parts = a.split(" ");
-                // Check first part
-                if (!checkedAttrs.includes(parts[0])) return false;
-                // Check second part  
-                if (!checkedAttrs.includes(parts[1])) return false;
-                return true;
-            });
-
-            // Remove question if no answers
-            if (q.answers.length === 0) return null;
-            return q;
-
-        });
-
-        // Filter out null values
-        filteredQuestions = filteredQuestions.filter(q => q);
-        qbank = filteredQuestions;
-        showQuestion();
-
-        var dynamicButtons = document.querySelectorAll('.naamwoorden > .option-group:not(:nth-child(3)) .option');
-        dynamicButtons.forEach(function(button){
-            if (checkedAttrs.includes(button.getAttribute("data-type"))) {
-                button.classList.remove('filter');
-            }
-            else{
-                button.classList.add('filter');
-            }
-        }
-        );
-        
-    }
 }
-export function showQuestion() {
+
+function preselectSingleOptions(){
+        // Check if there is only one option left in each option-group
+        var optionGroups = document.querySelectorAll('.option-group');
+        optionGroups.forEach(function(group) {
+            var options = group.querySelectorAll('.option:not(.filter)');
+            if (options.length === 1) {
+             //   options[0].classList.add('selected');
+                var clickEvent = new MouseEvent('click', {
+                    bubbles: true,
+                    cancelable: true,
+                    view: window
+                  });
+              
+                  options[0].dispatchEvent(clickEvent);
+              
+            }
+        });
+}
+let selectieCount;
+//ER: Only call this function initially and when filters are changing
+function updateWordCount(){
+    selectieCount = qbank.length;
+    setFilterURL();
+    document.getElementById('wordCount').innerHTML = qbank.length + " " + translate("FormsSelected");
+    trainingMode = "OneTime";
+}
+
+
+
+export var question;
+export function selectNextQuestion() {
     if (qbank.length == 0) {
         wordElement.textContent = translate("NoQuestionsFound");
      //   "Geen vragen gevonden, maak een keuze uit het menu."
         return;
     }
+
     const randomIndex = Math.floor(Math.random() * qbank.length);
-    const question = qbank[randomIndex];
+    question = qbank[randomIndex];
     wordElement.textContent = question.word;
-    correctAnswers = question.answers;
     reset();
+    preselectSingleOptions();
 }
 
-export var correctAnswers;
+export function prepNextQuestionBank(){
+    if (trainingMode=="OneTime"){
+        qbank = qbank.filter(item => item!=question);
+        if (question.wronglyAnswered > 0){
+            repList.push(question);
+        }
+    }
+    else if (trainingMode=='Tiger'){
+        if (question.wronglyAnswered==0){
+            qbank = qbank.filter(item => item!=question);
+        }
+    }
+    if (qbank.length==0){
+        return false;
+    }
+    return true;
+}
+
+export function showResults(){
+
+    var goodCount = selectieCount - repList.length;
+    var resText = translate("scoreMessage", goodCount, selectieCount);
+  
+    document.getElementById('resultsMessage').innerHTML = resText;
+    if (goodCount == selectieCount){
+      document.getElementById('onlyRepListButton').style.display = "none";
+      document.getElementById('tigerModesButton').style.display = "none";
+    }
+    else{
+      document.getElementById('onlyRepListButton').style.display = "inline";
+      document.getElementById('tigerModesButton').style.display = "inline";
+    }
+
+  }
+
+var repList = [];
+var trainingMode = "OneTime";
 
 function addCheckboxes(list, div) {
     // Loop through categories and add checkbox for each

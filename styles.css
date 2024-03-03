@@ -170,9 +170,11 @@ span, #emoticon {
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
-    color: #818181;
     font-size: 25px;
+}
 
+.sidenav h5 {
+    color: #0275ff;
 }
   
 .sidenav a {
@@ -183,9 +185,9 @@ span, #emoticon {
     display: block;
     transition: 0.3s;
 }
-.sidenav div {
+.sidenav div:not(.menuHeader) {
     color: #f5f5f5;
-    padding: 10px 20px;
+    padding: 5px 13px;
 }
 .sidenav input {
     margin: 10px;
@@ -199,6 +201,7 @@ span, #emoticon {
     margin-left: 50px;
   }
 
+
 @media (min-width: 900px) {
     .sidenav {
       width: 250px;
@@ -209,6 +212,10 @@ span, #emoticon {
     }
   }
 
+  .menuHeader{
+    padding-bottom: 1px;
+    padding-top: 10px;
+  }
   
   .button-with-x {
     position: relative;
@@ -242,4 +249,27 @@ span, #emoticon {
   }
   #nextBtn{
     display: none;
+  } 
+
+  .sliding-window {
+    text-align: center;
+    position: fixed;
+    display: block;
+    top: 0;
+    right: -100%; /* Off-screen by default */
+    width: 85%;
+    max-width: 400px;
+    height: 85%;
+    max-height: 500px;
+    background: linear-gradient(to bottom, red, orange, yellow, green, blue, indigo, violet);
+    z-index: 40;
+    border: 2px solid black; /* Add a border around the sliding window */
+    transition: 0.5s;
+    box-shadow: 10 10 10px rgba(0, 0, 0, 0.3); /* Add a box shadow effect */
+    margin: 10px auto;
+  }
+
+  
+  .scoreButton {
+    margin: 5px;
   }

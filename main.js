@@ -1,20 +1,15 @@
-// import { qLatinVerb, qLatinNoun, qGreekVerb, qGreekNoun, qGreekAdjective, qLatinAdjectives} from './questions.js';
-// import { checkAnswer} from './scoring.js';
-// import { verbLoad, nounLoad, setQuestions, showQuestion } from './initgame.js';
-// import { validateAnswerComplete, extraFrame, resetFrames } from './logic.js';
-
-let verbLoad, nounLoad, setQuestions, showQuestion, 
+let verbLoad, nounLoad, setQuestions, selectNextQuestion, setRepitionList, filterQuestions, setTigerMode, showResults,
     qLatinVerb, qLatinNoun, qGreekVerb, qGreekNoun, qGreekAdjective, qLatinAdjectives,
-    checkAnswer, 
+    checkAnswer, resetScore,
     validateAnswerComplete, extraFrame, resetFrames;
   
 
 window.addEventListener('load', async function () {
   // Load the modules asynchronously
   ( [
-    { verbLoad, nounLoad, setQuestions, showQuestion },
+    { verbLoad, nounLoad, setQuestions, selectNextQuestion, setRepitionList, filterQuestions, setTigerMode, showResults },
     { qLatinVerb, qLatinNoun, qGreekVerb, qGreekNoun, qGreekAdjective, qLatinAdjectives },
-    { checkAnswer },
+    { checkAnswer, resetScore },
     { validateAnswerComplete, extraFrame, resetFrames }
   ] = await Promise.all([
     import('./initgame.js'),
@@ -31,18 +26,33 @@ window.addEventListener('load', async function () {
     const checkBtn = document.getElementById('checkBtn');
     const resetBtn = document.getElementById('resetBtn');
     const nextBtn = document.getElementById('nextBtn');
+    // const seeResultsBtn = document.getElementById('seeResultsBtn');
+
 
     addMainMenuListeners();
     addAllButtonListeners();
-  
+    addScoreOverviewListeners();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const testingMode = urlParams.get('mode');
+
     //TODO: Remove before flight
-    if (false) {
-        var grieksButtons = document.querySelectorAll('.grieks');
-        grieksButtons.forEach(function (button) {
+    if (testingMode === 'eric') {
+         const qEricTest= [
+            { "word": "mensae", "cat": "mensa", "answers": ["gen ev f", "dat ev f", "nom mv f"] },
+          //  { "word": "1. ind praes 1e-ev act", "cat": "Eric", "answers": ["ind praes 1e-ev act"] },
+         //   { "word": "2. ind praes 1e-ev act", "cat": "Eric", "answers": ["ind praes 1e-ev act"] },
+         ];
+
+        var greekOnlyButtons = document.querySelectorAll('.greekOnly');
+        greekOnlyButtons.forEach(function (button) {
             button.parentNode.removeChild(button);
         });
-        setQuestions(qLatinVerb);
-        verbLoad();
+        setQuestions(qEricTest);
+        // nounLoad();
+        nounLoad(qEricTest, []);
+        //verbLoad();
+       // translations = await loadTranslations("nl");
     }
     // END TODO
 
@@ -57,7 +67,7 @@ window.addEventListener('load', async function () {
     });
 
     addOptionBtn.addEventListener('click', extraFrame);
-    nextBtn.addEventListener('click', showQuestion);
+    nextBtn.addEventListener('click', selectNextQuestion);
     resetBtn.addEventListener('click', reset);
     checkBtn.addEventListener('click', checkAnswer);
   
@@ -79,8 +89,20 @@ function getUserLanguage() {
     return language;
 }
 
+export function translate(key, ...params) {
+    // Retrieve the translation based on the key
+    const translation = translations[key] || key;
+  
+    // Replace placeholders in the translation with dynamic parameters
+    let translatedText = translation.replace(/{(\d+)}/g, (match, index) => {
+      const paramIndex = parseInt(index, 10);
+      return params[paramIndex];
+    });
+  
+    return translatedText;
+  }
 
-export function translate(key) {
+ function translateKey(key) {
     return translations[key] || key; // Return the translation or the key itself if not found
 }
 
@@ -115,8 +137,8 @@ async function translateHtmlElements() {
 
 function addMainMenuListeners() {
     document.getElementById('latinVerbs').addEventListener('click', () => {
-        var grieksButtons = document.querySelectorAll('.grieks');
-        grieksButtons.forEach(function (button) {
+        var greekButtons = document.querySelectorAll('.greekOnly');
+        greekButtons.forEach(function (button) {
             button.parentNode.removeChild(button);
         });
         setQuestions(qLatinVerb);
@@ -166,12 +188,69 @@ function addWerkwoordListeners() {
         button.addEventListener('click', wijsUpdated);
     });
 }
+
+function addScoreOverviewListeners(){
+    const slidingWindow = document.getElementById('slidingWindow');
+    const container = document.querySelector('.container');
+
+    document.getElementById('seeResultsBtn').addEventListener('click', () => {
+        document.getElementById('swContainer').style.display = "block";
+
+        let menuWidth = slidingWindow.offsetWidth;
+        const screenWidth = window.innerWidth;
+        let rightPosition = (screenWidth - menuWidth) / 2;
+        slidingWindow.style.right = rightPosition + 'px';
+        container.style.pointerEvents = 'none'; // Disable clicks on the underlying content
+        //Remove hamburger, emotions and potentially opened menu.  
+        document.getElementById('header').style.visibility="hidden";
+        document.getElementById("mySidenav").style.width = "0px"; 
+
+        showResults();
+        resetScore();
+        
+    }); 
+
+    function closeSlidingWindow(){
+        slidingWindow.style.right = '-100%';
+        container.style.pointerEvents = 'auto'; // Enable clicks on the underlying content
+        document.getElementById('header').style.visibility="visible";
+        document.getElementById('seeResultsBtn').style.display="none";
+    }
+
+    document.getElementById('onlyRepListButton').addEventListener('click', () => {
+        closeSlidingWindow();
+        setRepitionList();
+    });
+
+    document.getElementById('newSelectionButton').addEventListener('click', () => {
+        closeSlidingWindow();
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("mySidenav").style.display = "block";
+        filterQuestions();
+    });
+
+    document.getElementById('everythingAgainButton').addEventListener('click', () => {
+        closeSlidingWindow();
+        filterQuestions();
+    });
+    document.getElementById('tigerModesButton').addEventListener('click', () => {
+        closeSlidingWindow();
+        setTigerMode();
+    });
+    
+
+}
+
 function ptcClicked(event){
     const clickedButton = event.target;
     const optionsFrameDiv = clickedButton.closest('.options-frame');
     var naamwoordBlock = optionsFrameDiv.querySelector('.naamwoorden');
     if (clickedButton.classList.contains('selected')) {
         naamwoordBlock.classList.remove('hidden');
+        //Independant of filter settings, let's enable all options under naamwoord now
+        naamwoordBlock.querySelectorAll('button').forEach(function (button) {
+            button.classList.remove('filter');
+        });
     }
     else{
         naamwoordBlock.classList.add('hidden');
@@ -237,7 +316,7 @@ export function reset() {
             button.className = 'option filter';
         }
         else{
-        button.className = 'option';
+            button.className = 'option';
         }
         button.disabled = false;
     });

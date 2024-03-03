@@ -1,8 +1,9 @@
 import { setReviewing, getSelectedOptions } from "./main.js";
-import { correctAnswers } from "./initgame.js";
+import { question, prepNextQuestionBank} from "./initgame.js";
 import { expandPermutations, extraFrame } from "./logic.js";
 
 let score = -1;
+
 
 function markAnswers() {
     var ans = [];
@@ -18,14 +19,14 @@ function markAnswers() {
         i++;
     }
 
-    var remainingAnswers = correctAnswers.slice();
+    var remainingAnswers = question.answers.slice();
 
     // Go through each answer and find its position in the correctAnswers array
     for (var i = 0; i < answerOrder.length; i++) {
-        var index = remainingAnswers.indexOf(ans[i]);
+        var index = remainingAnswers.indexOf(ans[i].join(" "));
         // If the answer is found in correctAnswers array, assign its index to answerOrder
         if (index !== -1) {
-            answerOrder[i] = correctAnswers.indexOf(remainingAnswers[index]);
+            answerOrder[i] = question.answers.indexOf(remainingAnswers[index]);
             // Remove the found answer from remainingAnswers to handle duplicates
             remainingAnswers.splice(index, 1);
         }
@@ -38,14 +39,14 @@ function markAnswers() {
                 markTooManyAnswers(j);
             }
             else {
-                answerOrder[j] = correctAnswers.indexOf(leftOverAnswer);
+                answerOrder[j] = question.answers.indexOf(leftOverAnswer);
             }
         }
     }
 
     for (var k = 0; k < answerOrder.length; k++) {
         if (answerOrder[k] != -1) {
-            verifyOneOptionGroup(groups[k], correctAnswers[answerOrder[k]]);
+            verifyOneOptionGroup(groups[k], question.answers[answerOrder[k]]);
         }
     }
 
@@ -71,11 +72,7 @@ function markTooManyAnswers(i) {
 
 export function checkAnswer() {
     setReviewing();
-
-    // const currentWord = wordElement.textContent;
-    // const correctAnswers = qbank.find(question => question.word === currentWord)?.answers;
     expandPermutations();
-
     markAnswers();
 
     const nrOfMistakes = document.querySelectorAll('div[class*="incorrect"]');
@@ -85,18 +82,30 @@ export function checkAnswer() {
         if (score < -1) {
             score = -1;
         }
+        if (question.wronglyAnswered) {
+            question.wronglyAnswered = question.wronglyAnswered + 1;
+        }
+        else {
+            question.wronglyAnswered = 1;
+        }
     }
     else {
         score++;
+        question.wronglyAnswered = 0;
     }
     updateScoring();
-    resetButtons(nrOfMistakes); // Reset buttons
+    buttonsAtScoring(nrOfMistakes); // Reset buttons
 }
-function resetButtons(nrOfIncorrect) {
+function buttonsAtScoring(nrOfIncorrect) {
     checkBtn.style.display = 'none';
     addOptionBtn.style.display = 'none';
     resetBtn.style.display = 'none';
-    nextBtn.style.display = 'flex';
+    if (prepNextQuestionBank()) {
+        nextBtn.style.display = 'flex';
+    }
+    else {
+        seeResultsBtn.style.display = 'flex';
+    }
 }
 
 function verifyOneOptionGroup(optionGroup, answerGroepString) {
@@ -195,4 +204,9 @@ function updateScoring() {
             emoticon.classList.remove('rotate');
         }, 500); // Duration of the animation in milliseconds
     }
+}
+
+export function resetScore(){
+    score = -1;
+    document.getElementById("emoticon").innerHTML = "";
 }
