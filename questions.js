@@ -199,19 +199,19 @@ export const qGreekVerb = [
 	{ "word": "λύθητε", "cat": "λύω", "answers": ["imp aor 2e-mv pass"] },
 		
 
-	{ "word": "λύειν", "cat": "λύω", "answers": ["inf praes act"] },
-	{ "word": "λύεσθαι", "cat": "λύω", "answers": ["inf praes med"] },
+	{ "word": "λύειν", "cat": "λύω", "answers": ["inf praes x act"] },
+	{ "word": "λύεσθαι", "cat": "λύω", "answers": ["inf praes x med"] },
 
-	{ "word": "λῦσαι", "cat": "λύω", "answers": ["inf aor act"] },
-	{ "word": "λύσασθαι", "cat": "λύω", "answers": ["inf aor med"] },
-	{ "word": "λυθῆναι", "cat": "λύω", "answers": ["inf aor pass"] },
+	{ "word": "λῦσαι", "cat": "λύω", "answers": ["inf aor x act"] },
+	{ "word": "λύσασθαι", "cat": "λύω", "answers": ["inf aor x med"] },
+	{ "word": "λυθῆναι", "cat": "λύω", "answers": ["inf aor x pass"] },
 
-	{ "word": "λελυκέναι", "cat": "λύω", "answers": ["inf perf act"] },
-	{ "word": "λελύσθαι", "cat": "λύω", "answers": ["inf perf med"] },
+	{ "word": "λελυκέναι", "cat": "λύω", "answers": ["inf perf x act"] },
+	{ "word": "λελύσθαι", "cat": "λύω", "answers": ["inf perf x med"] },
 
-	{ "word": "λύσειν", "cat": "λύω", "answers": ["inf fut act"] },
-	{ "word": "λύσεσθαι", "cat": "λύω", "answers": ["inf fut med"] },
-	{ "word": "λυθήσεσθαι", "cat": "λύω", "answers": ["inf fut pass"] }
+	{ "word": "λύσειν", "cat": "λύω", "answers": ["inf fut x act"] },
+	{ "word": "λύσεσθαι", "cat": "λύω", "answers": ["inf fut x med"] },
+	{ "word": "λυθήσεσθαι", "cat": "λύω", "answers": ["inf fut x pass"] }
 ];
 
 
@@ -326,8 +326,9 @@ export const qLatinVerb= [
 	{ "word": "vocare", "cat": "vocare", "answers": ["inf praes x act"] },
 	{ "word": "vocavisse", "cat": "vocare", "answers": ["inf perf x act"] },
 	{ "word": "vocari", "cat": "vocare", "answers": ["inf praes x pass"] },
-	{ "word": "vocare", "cat": "vocare", "answers": ["imp 2e-ev pass"] },
-	{ "word": "vocamini", "cat": "vocare", "answers": ["imp 2e-mv pass"] },
+	//ER: AG to verify:
+	{ "word": "vocare", "cat": "vocare", "answers": ["imp praes 2e-ev pass"] },
+	{ "word": "vocamini", "cat": "vocare", "answers": ["imp praes 2e-mv pass"] },
 
 	{ "word": "vocans", "cat": "vocare", "answers": ["ptc praes x act nom ev m", "ptc praes x act nom ev f", "ptc praes x act nom ev n", "ptc praes x act acc ev n"] },
 	{ "word": "vocantis", "cat": "vocare", "answers": ["ptc praes x act gen ev m", "ptc praes x act gen ev f", "ptc praes x act gen ev n"] },
@@ -439,10 +440,11 @@ export const qLatinVerb= [
 	{ "word": "tenere", "cat": "tenere", "answers": ["inf praes x act"] },
 	{ "word": "tenuisse", "cat": "tenere", "answers": ["inf perf x act"] },
 	{ "word": "teneri", "cat": "tenere", "answers": ["inf praes x pass"] },
-	{ "word": "tene", "cat": "tenere", "answers": ["imp 2e-ev act"] },
-	{ "word": "tenete", "cat": "tenere", "answers": ["imp 2e-mv act"] },
-	{ "word": "tenere", "cat": "tenere", "answers": ["imp 2e-ev pass"] },
-	{ "word": "tenemini", "cat": "tenere", "answers": ["imp 2e-mv pass"] },
+	{ "word": "tene", "cat": "tenere", "answers": ["imp praes 2e-ev act"] },
+	//ER: AG to verify:
+	{ "word": "tenete", "cat": "tenere", "answers": ["imp praes 2e-mv act"] },
+	{ "word": "tenere", "cat": "tenere", "answers": ["imp praes 2e-ev pass"] },
+	{ "word": "tenemini", "cat": "tenere", "answers": ["imp praes 2e-mv pass"] },
 
 
 	{ "word": "tenens", "cat": "tenere", "answers": ["ptc praes x act nom ev m", "ptc praes x act nom ev f", "ptc praes x act nom ev n", "ptc praes x act acc ev m"] },
@@ -559,8 +561,8 @@ export const qLatinVerb= [
 	{ "word": "audire", "cat": "audire", "answers": ["inf praes x act"] },
 	{ "word": "audivisse", "cat": "audire", "answers": ["inf perf x act"] },
 	{ "word": "audiri", "cat": "audire", "answers": ["inf praes x pass"] },
-	{ "word": "audire", "cat": "audire", "answers": ["imp 2e-ev pass"] },
-	{ "word": "audimini", "cat": "audire", "answers": ["imp 2e-mv pass"] },
+	{ "word": "audire", "cat": "audire", "answers": ["imp praes 2e-ev pass"] },
+	{ "word": "audimini", "cat": "audire", "answers": ["imp praes 2e-mv pass"] },
 
 
 	{ "word": "auditus", "cat": "audire", "answers": ["ptc perf x pass nom ev m"] },
@@ -682,8 +684,8 @@ export const qLatinVerb= [
 	{ "word": "mittere", "cat": "mittere", "answers": ["inf praes x act"] },
 	{ "word": "misisse", "cat": "mittere", "answers": ["inf perf x act"] },
 	{ "word": "mitti", "cat": "mittere", "answers": ["inf praes x pass"] },
-	{ "word": "mittere", "cat": "mittere", "answers": ["imp 2e-ev pass"] },
-	{ "word": "mittimini", "cat": "mittere", "answers": ["imp 2e-mv pass"] },
+	{ "word": "mittere", "cat": "mittere", "answers": ["imp praes 2e-ev pass"] },
+	{ "word": "mittimini", "cat": "mittere", "answers": ["imp praes 2e-mv pass"] },
 // tod do: ppa
 	{ "word": "missus", "cat": "mittere", "answers": ["ptc perf x pass nom ev m"] },
 	{ "word": "missi", "cat": "mittere", "answers": ["ptc perf x pass gen ev m", "ptc perf x pass nom mv m", "ptc perf x pass gen ev n"] },

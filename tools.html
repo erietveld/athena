@@ -16,15 +16,18 @@
             const answers = entry.answers || [];
             answers.forEach(answer => {
                 const elements = answer.split(' ');
-                elements.forEach(element => {
-                uniqueAnswers.add(element);
-                });
+                const size = elements.length;
+                uniqueAnswers.add(size + ": " + answer + "<br>");
+                // const elements = answer.split(' ');
+                // elements.forEach(element => {
+                // uniqueAnswers.add(element);
+                // });
             });
             });
             return Array.from(uniqueAnswers);
         }
         function displayAnswerString(answerString) {
-          document.getElementById("answerDiv").textContent = answerString;
+          document.getElementById("answerDiv").innerHTML = answerString;
         }
         function checkDicts(){
             displayAnswerString( 
