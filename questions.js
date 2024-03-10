@@ -326,7 +326,6 @@ export const qLatinVerb= [
 	{ "word": "vocare", "cat": "vocare", "answers": ["inf praes x act"] },
 	{ "word": "vocavisse", "cat": "vocare", "answers": ["inf perf x act"] },
 	{ "word": "vocari", "cat": "vocare", "answers": ["inf praes x pass"] },
-	//ER: AG to verify:
 	{ "word": "vocare", "cat": "vocare", "answers": ["imp praes 2e-ev pass"] },
 	{ "word": "vocamini", "cat": "vocare", "answers": ["imp praes 2e-mv pass"] },
 
@@ -441,7 +440,7 @@ export const qLatinVerb= [
 	{ "word": "tenuisse", "cat": "tenere", "answers": ["inf perf x act"] },
 	{ "word": "teneri", "cat": "tenere", "answers": ["inf praes x pass"] },
 	{ "word": "tene", "cat": "tenere", "answers": ["imp praes 2e-ev act"] },
-	//ER: AG to verify:
+
 	{ "word": "tenete", "cat": "tenere", "answers": ["imp praes 2e-mv act"] },
 	{ "word": "tenere", "cat": "tenere", "answers": ["imp praes 2e-ev pass"] },
 	{ "word": "tenemini", "cat": "tenere", "answers": ["imp praes 2e-mv pass"] },

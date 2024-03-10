@@ -108,6 +108,10 @@ export function resetFrames() {
     });
     currentFrameId = 0;
 }
+export function removeLastFrame() {
+    document.getElementById('groupFrame' + currentFrameId).remove();
+    currentFrameId--;
+}
 
 function addFrame(isEditable) {
     currentFrameId++;

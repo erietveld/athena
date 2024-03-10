@@ -1,7 +1,7 @@
 let verbLoad, nounLoad, setQuestions, selectNextQuestion, setRepitionList, filterQuestions, setTigerMode, showResults,
     qLatinVerb, qLatinNoun, qGreekVerb, qGreekNoun, qGreekAdjective, qLatinAdjectives,
     checkAnswer, resetScore,
-    validateAnswerComplete, extraFrame, resetFrames;
+    validateAnswerComplete, extraFrame, resetFrames, removeLastFrame;
   
 
 window.addEventListener('load', async function () {
@@ -10,7 +10,7 @@ window.addEventListener('load', async function () {
     { verbLoad, nounLoad, setQuestions, selectNextQuestion, setRepitionList, filterQuestions, setTigerMode, showResults },
     { qLatinVerb, qLatinNoun, qGreekVerb, qGreekNoun, qGreekAdjective, qLatinAdjectives },
     { checkAnswer, resetScore },
-    { validateAnswerComplete, extraFrame, resetFrames }
+    { validateAnswerComplete, extraFrame, resetFrames, removeLastFrame }
   ] = await Promise.all([
     import('./initgame.js'),
     import('./questions.js'),
@@ -56,19 +56,27 @@ window.addEventListener('load', async function () {
     }
     // END TODO
 
-
     document.getElementById('hamburger').addEventListener('click', () => {
         document.getElementById("mySidenav").style.width = "250px";
         document.getElementById("mySidenav").style.display = "block";
     });
 
+    const menu = document.getElementById('mySidenav');
     document.getElementById('closeMenu').addEventListener('click', () => {
-        document.getElementById("mySidenav").style.width = "0px";
+       menu.style.width = "0px";
     });
+    window.addEventListener('click', function(event) {
+        const isHamburgerClicked = document.getElementById('hamburger').contains(event.target);
+        const isClickedInsideMenu = menu.contains(event.target);
+        if (menu.style.width="250px" && !isClickedInsideMenu  && !isHamburgerClicked){
+            menu.style.width = "0px";
+        }
+    })
+  
 
     addOptionBtn.addEventListener('click', extraFrame);
     nextBtn.addEventListener('click', selectNextQuestion);
-    resetBtn.addEventListener('click', reset);
+    resetBtn.addEventListener('click', reset); //resetLastOption
     checkBtn.addEventListener('click', checkAnswer);
   
 });
@@ -303,6 +311,15 @@ function selectOption(event) {
     if (amReviewing) return;
     const selectedButton = event.target;
     selectedButton.classList.toggle('selected');
+}
+function resetLastOption(){
+    document.querySelectorAll('.hideOnReset').forEach(button => {
+        button.classList.add('hidden');
+    });
+    resetBtn.style.display = 'none';
+    checkBtn.style.display = 'block';
+    addOptionBtn.style.display = 'block';
+    removeLastFrame();
 }
 
 export function reset() {

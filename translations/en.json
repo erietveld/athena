@@ -25,7 +25,7 @@
     "2nd pl": "2nd pl",
     "3rd pl": "3rd pl",
     "Add Option?": "Add Option?",
-    "Reset": "Reset",
+    "Reset": "Remove option",
     "Check": "Check",
     "Next": "Next",
     "SeeResults": "This was the last question. See results",
@@ -34,6 +34,10 @@
     "everythingAgain": "Practice this selection again",
     "onlyRepList": "Practice errorlist again",
     "tigerModes": "Keep practicing errorlist until everything is correct",
-    "makeNewSelection": "Create new selection"
+    "makeNewSelection": "Create new selection",
+    "conj": "subj",
+    "praes": "pres",
+    "plqpf": "plupf",
+    "med": "mid"
 }
   
