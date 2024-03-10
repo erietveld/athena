@@ -111,6 +111,15 @@ export function resetFrames() {
 export function removeLastFrame() {
     document.getElementById('groupFrame' + currentFrameId).remove();
     currentFrameId--;
+
+    const lastOptionFrame = document.getElementById('groupFrame' + currentFrameId);
+    lastOptionFrame.querySelectorAll('.option').forEach(button => {
+        // const isFiltered = button.classList.contains('filter');
+        button.classList.remove("hidden");
+    });
+    if(currentFrameId==0){
+        document.getElementById('resetBtn').style.display = 'none';
+    }
 }
 
 function addFrame(isEditable) {

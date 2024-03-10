@@ -76,7 +76,7 @@ window.addEventListener('load', async function () {
 
     addOptionBtn.addEventListener('click', extraFrame);
     nextBtn.addEventListener('click', selectNextQuestion);
-    resetBtn.addEventListener('click', reset); //resetLastOption
+    resetBtn.addEventListener('click', resetLastOption); //resetLastOption
     checkBtn.addEventListener('click', checkAnswer);
   
 });
@@ -197,6 +197,8 @@ function addWerkwoordListeners() {
     });
 }
 
+
+
 function addScoreOverviewListeners(){
     const slidingWindow = document.getElementById('slidingWindow');
     const container = document.querySelector('.container');
@@ -251,6 +253,9 @@ function addScoreOverviewListeners(){
 
 function ptcClicked(event){
     const clickedButton = event.target;
+    ptcClickedWithBtn(clickedButton);
+}
+function ptcClickedWithBtn(clickedButton){
     const optionsFrameDiv = clickedButton.closest('.options-frame');
     var naamwoordBlock = optionsFrameDiv.querySelector('.naamwoorden');
     if (clickedButton.classList.contains('selected')) {
@@ -272,6 +277,10 @@ function ptcClicked(event){
 
 function wijsUpdated(event) {
     const clickedButton = event.target;
+    wijsUpdateWithButton(clickedButton);
+}
+function wijsUpdateWithButton(clickedButton){
+    
     const optionsDiv = clickedButton.closest('.options');
     const wijsButtons = optionsDiv.querySelectorAll('.option-group:nth-child(1) button');
     var disList = "";
@@ -316,10 +325,22 @@ function resetLastOption(){
     document.querySelectorAll('.hideOnReset').forEach(button => {
         button.classList.add('hidden');
     });
-    resetBtn.style.display = 'none';
-    checkBtn.style.display = 'block';
+    checkBtn.classList.add('active');
+    checkBtn.style.display = 'flex'; 
+    
     addOptionBtn.style.display = 'block';
     removeLastFrame();
+
+    const wijsButtons = document.querySelectorAll('.werkwoorden .option-group:nth-child(1) button');
+    wijsButtons.forEach(button => {
+        if (button.classList.contains('selected')) {
+            const dt = button.getAttribute('data-type');
+            if(dt=="ptc"){
+                ptcClickedWithBtn(button);
+            }
+            wijsUpdateWithButton(button);
+        }
+    });
 }
 
 export function reset() {
