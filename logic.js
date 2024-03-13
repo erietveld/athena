@@ -151,10 +151,10 @@ function addFrame(isEditable) {
 }
 
 
-export function validateAnswerComplete(event){
-    const selectedButton = event.target;
+export function validateAnswerComplete(button){
+    //const selectedButton = event.target;
     // Get the parent options-frame of the selected button
-    const optionsFrame = selectedButton.closest('.options-frame');
+    const optionsFrame = button.closest('.options-frame');
 
     // Get all option groups within the options-frame
     const optionGroups = optionsFrame.querySelectorAll('.option-group');

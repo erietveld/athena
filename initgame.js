@@ -1,4 +1,4 @@
-import { reset, translate } from "./main.js";
+import { reset, translate, quizButtonSelected } from "./main.js";
 import {setFilterURL} from "./urls.js";
 
 var questions;
@@ -232,16 +232,17 @@ function preselectSingleOptions(){
         // Check if there is only one option left in each option-group
         var optionGroups = document.querySelectorAll('.option-group');
         optionGroups.forEach(function(group) {
-            var options = group.querySelectorAll('.option:not(.filter)');
-            if (options.length === 1) {
+            var buttons = group.querySelectorAll('.option:not(.filter)');
+            if (buttons.length === 1) {
+                quizButtonSelected(buttons[0]);
              //   options[0].classList.add('selected');
-                var clickEvent = new MouseEvent('click', {
-                    bubbles: true,
-                    cancelable: true,
-                    view: window
-                  });
+                // var clickEvent = new MouseEvent('click', {
+                //     bubbles: true,
+                //     cancelable: true,
+                //     view: window
+                //   });
               
-                  options[0].dispatchEvent(clickEvent);
+                //   buttons[0].dispatchEvent(clickEvent);
               
             }
         });

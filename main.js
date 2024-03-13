@@ -39,7 +39,7 @@ window.addEventListener('load', async function () {
     //TODO: Remove before flight
     if (testingMode === 'eric') {
          const qEricTest= [
-            { "word": "mensae", "cat": "mensa", "answers": ["gen ev f", "dat ev f", "nom mv f"] },
+            { "word": "mensae", "cat": "mensa", "answers": ["nom ev m"] },
           //  { "word": "1. ind praes 1e-ev act", "cat": "Eric", "answers": ["ind praes 1e-ev act"] },
          //   { "word": "2. ind praes 1e-ev act", "cat": "Eric", "answers": ["ind praes 1e-ev act"] },
          ];
@@ -175,28 +175,28 @@ function addMainMenuListeners() {
 
 
 export function addAllButtonListeners(){
-    //!!ER: Keep this order of eventListener registrations
-    document.querySelectorAll('.option').forEach(group => {
-        group.addEventListener('click', selectOption);
-    });
-    addWerkwoordListeners();
-    document.querySelectorAll('.option').forEach(group => {
-        group.addEventListener('click', validateAnswerComplete);
+    document.querySelectorAll('.option').forEach(button => {
+        button.addEventListener('click', quizButtonSelected);
     });
 }
-
-function addWerkwoordListeners() {
-    const ptcButtons = document.querySelectorAll('button[data-type="ptc"]');
-    ptcButtons.forEach(button => {
-        button.addEventListener('click', ptcClicked); 
-    });
-    
-    const wijsButtons = document.querySelectorAll('.werkwoorden .option-group:nth-child(1) button');
-    wijsButtons.forEach(button => {
-        button.addEventListener('click', wijsUpdated);
-    });
+export function quizButtonSelected(button, skipSelect=false){
+    if (button.target){
+        button = button.target;
+    }
+    //ER: Order is important!
+    if (!amReviewing && !skipSelect){
+        button.classList.toggle('selected');
+    }
+    const dt = button.getAttribute('data-type');
+    if(dt=="ptc"){
+        ptcClicked(button);
+    }
+    const isVerMoodButton = button.parentElement.matches('.werkwoorden .option-group:nth-child(1)');
+    if (isVerMoodButton){
+        wijsClicked(button);
+    }
+    validateAnswerComplete(button);
 }
-
 
 
 function addScoreOverviewListeners(){
@@ -251,11 +251,7 @@ function addScoreOverviewListeners(){
 
 }
 
-function ptcClicked(event){
-    const clickedButton = event.target;
-    ptcClickedWithBtn(clickedButton);
-}
-function ptcClickedWithBtn(clickedButton){
+function ptcClicked(clickedButton){
     const optionsFrameDiv = clickedButton.closest('.options-frame');
     var naamwoordBlock = optionsFrameDiv.querySelector('.naamwoorden');
     if (clickedButton.classList.contains('selected')) {
@@ -275,11 +271,7 @@ function ptcClickedWithBtn(clickedButton){
     }
 }
 
-function wijsUpdated(event) {
-    const clickedButton = event.target;
-    wijsUpdateWithButton(clickedButton);
-}
-function wijsUpdateWithButton(clickedButton){
+function wijsClicked(clickedButton){
     
     const optionsDiv = clickedButton.closest('.options');
     const wijsButtons = optionsDiv.querySelectorAll('.option-group:nth-child(1) button');
@@ -316,11 +308,6 @@ export function setReviewing(){
     amReviewing = true;
 }
 
-function selectOption(event) {
-    if (amReviewing) return;
-    const selectedButton = event.target;
-    selectedButton.classList.toggle('selected');
-}
 function resetLastOption(){
     document.querySelectorAll('.hideOnReset').forEach(button => {
         button.classList.add('hidden');
@@ -331,14 +318,21 @@ function resetLastOption(){
     addOptionBtn.style.display = 'block';
     removeLastFrame();
 
+    document.querySelectorAll('.option').forEach(button => {
+        if (button.classList.contains('selected')) {
+            quizButtonSelected(button, true);
+        }
+    });
+    return;
+
     const wijsButtons = document.querySelectorAll('.werkwoorden .option-group:nth-child(1) button');
     wijsButtons.forEach(button => {
         if (button.classList.contains('selected')) {
             const dt = button.getAttribute('data-type');
             if(dt=="ptc"){
-                ptcClickedWithBtn(button);
+                ptcClicked(button);
             }
-            wijsUpdateWithButton(button);
+            wijsClicked(button);
         }
     });
 }
