@@ -315,10 +315,10 @@ export const qGreekVerb = [
 { "word": "λυσαμέναις", "cat": "λύω", "answers": ["ptc aor x med dat mv f"] },
 { "word": "λυσαμένας", "cat": "λύω", "answers": ["ptc aor x med acc mv f"] },
 
-{ "word": "λυσάμενον ", "cat": "λύω", "answers": ["ptc aor x med nom ev n"] },
+{ "word": "λυσάμενον", "cat": "λύω", "answers": ["ptc aor x med nom ev n"] },
 { "word": "λυσαμένου", "cat": "λύω", "answers": ["ptc aor x med gen ev n"] },
 { "word": "λυσαμένῳ", "cat": "λύω", "answers": ["ptc aor x med dat ev n"] },
-{ "word": "λυσάμενον ", "cat": "λύω", "answers": ["ptc aor x med acc ev n"] },
+{ "word": "λυσάμενον", "cat": "λύω", "answers": ["ptc aor x med acc ev n"] },
 { "word": "λυσάμενα", "cat": "λύω", "answers": ["ptc aor x med nom mv n"] },
 { "word": "λυσαμένων", "cat": "λύω", "answers": ["ptc aor x med gen mv n"] },
 { "word": "λυσαμένοις", "cat": "λύω", "answers": ["ptc aor x med dat mv n"] },
