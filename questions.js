@@ -486,7 +486,7 @@ export const qGreekVerb = [
 { "word": "λυθησόμενα", "cat": "λύω", "answers": ["fut x pass ptc nom mv N"] },
 { "word": "λυθησομένων", "cat": "λύω", "answers": ["fut x pass ptc gen mv N"] },
 { "word": "λυθησομένοις", "cat": "λύω", "answers": ["fut x pass ptc dat mv N"] },
-{ "word": "λυθησόμενα", "cat": "λύω", "answers": ["fut  xpass ptc acc mv N"]
+{ "word": "λυθησόμενα", "cat": "λύω", "answers": ["fut  xpass ptc acc mv N"] },
 
 ];
 
