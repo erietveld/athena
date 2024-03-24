@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" href="main.js" as="script">
     <title>Athena</title>
     <style>
         body {
@@ -43,137 +44,37 @@
             z-index: 3;
             position: relative;
         }
-        .sliding-window {
-             right: -100%; /* Off-screen by default */
-        }
     </style>
+    <script>
+    function navigateToQuiz(q) {
+      window.location.href = "quiz.html?q=" + q; // Redirects to quiz.html
+    }
+    </script>
 </head>
 
 <body>
     <noscript>Sorry, Javascript is required</noscript>
     <div id="mainmenu">
         <div class="menucontainer">
-            <div id="Loading"></div>
-            <div class="column" style="display: none">
+            <div class="column" style="display:none">
                 <h2 data-translate="latinTitle">Latijn</h2>
-                <button class="menuButton" id="latinVerbs" data-translate="latinVerbs">Werkwoorden</button>
-                <button class="menuButton" id="latinNouns" data-translate="latinNouns">Naamwoorden</button>
+                <button class="menuButton" id="latinVerbs" onclick="navigateToQuiz('a')"
+                    data-translate="latinVerbs">Werkwoorden</button>
+                <button class="menuButton" id="latinNouns" onclick="navigateToQuiz('b')"
+                    data-translate="latinNouns">Naamwoorden</button>
             </div>
-            <div class="column" style="display: none">
+            <div class="column" style="display:none">
                 <h2 data-translate="ancientGreekTitle">Grieks</h2>
-                <button class="menuButton" id="greekVerbs" data-translate="greekVerbs">Werkwoorden</button>
-                <button class="menuButton" id="greekNouns" data-translate="greekNouns">Lidwoorden en
+                <button class="menuButton" id="greekVerbs" onclick="navigateToQuiz('c')"
+                    data-translate="greekVerbs">Werkwoorden</button>
+                <button class="menuButton" id="greekNouns" onclick="navigateToQuiz('d')"
+                    data-translate="greekNouns">Lidwoorden en
                     naamwoorden</button>
             </div>
         </div>
     </div>
-    <div id="mySidenav" class="sidenav" style="display:none">
-        <div><span title="Close Menu" class="closebtn" style="cursor:pointer" id="closeMenu">&times;</span></div>
-        <div id="naamwoordenMenu" class="naamwoorden">
-            <div class="menuHeader" data-translate="Filters">Filters</div>
-            <div id="miNominals" class="miForms"></div>
-            <div class="menuHeader" data-translate="Nouns">Zelfstandig naamwoorden</div>
-            <div id="miNouns" class="miForms"></div>
-            <div class="menuHeader" data-translate="Adjectives">Bijvoegelijke naamwoorden</div>
-            <div id="miAdjectives" class="miForms"></div>
-            <div class="menuHeader" data-translate="Case">Naamval</div>
-            <div id="miNaamval" class="miFilter"></div>
-            <div class="menuHeader" data-translate="Number">Getal</div>
-            <div id="miCard" class="miFilter"></div>
-        </div>
-        <div id="werkwoordenMenu" class="werkwoorden">
-            <div class="menuHeader" data-translate="Verb">Werkwoord</div>
-            <div id="miWerkwoorden" class="miForms"></div>
-            <div class="menuHeader" data-translate="Mood">Wijs</div>
-            <div id="miWijs" class="miFilter"></div>
-            <div class="menuHeader" data-translate="Tense">Tijd</div>
-            <div id="miTijd" class="miFilter"></div>
-            <div class="menuHeader" data-translate="Voice">Diathese</div>
-            <div id="miDiathese" class="miFilter"></div>
-        </div>
-        <div>
-            <h5 id="wordCount"></h5>
-        </div>
-        <br>
-        <br>
-    </div>
-    <div id="header" style="display:none">
-        <span id="hamburger" title="Open Menu" style="font-size:30px;cursor:pointer">&#9776;</span>
-        <div id="emoticon"></div>
-    </div>
-    <div class="container" style="display:none">
-        <h1 id="word" class="word"></h1>
-        <div id="groups">
-            <div class="options-frame" id="groupFrame0">
-                <div class="options werkwoorden">
-                    <div class="option-group">
-                        <button class="option" data-type="ind">ind</button>
-                        <button class="option" data-type="imp" data-disGetal="0235">imp</button>
-                        <button class="option" data-type="conj" data-translate="conj">conj</button>
-                        <button class="option greekOnly" data-type="opt">opt</button>
-                        <button class="option" data-type="inf" data-disGetal="012345">inf</button>
-                        <button class="option" data-type="ptc" data-disGetal="012345">ptc</button>
-                    </div>
-                    <div class="option-group">
-                        <button class="option" data-type="praes" data-translate="praes">praes</button>
-                        <button class="option" data-type="impf">impf</button>
-                        <button class="option" data-type="fut">fut</button>
-                        <button class="option greekOnly" data-type="aor">aor</button>
-                        <button class="option" data-type="perf">perf</button>
-                        <button class="option" data-type="plqpf" data-translate="plqpf" >plqpf</button>
-                        <button class="option latijn" data-type="fex">fex</button>
-                    </div>
-                    <div class="option-group">
-                        <button class="option" data-type="1e-ev" data-translate="1st sg">1e ev</button>
-                        <button class="option" data-type="2e-ev" data-translate="2nd sg">2e ev</button>
-                        <button class="option" data-type="3e-ev" data-translate="3rd sg">3e ev</button>
-                        <button class="option" data-type="1e-mv" data-translate="1st pl">1e mv</button>
-                        <button class="option" data-type="2e-mv" data-translate="2nd pl">2e mv</button>
-                        <button class="option" data-type="3e-mv" data-translate="3rd pl">3e mv</button>
-                    </div>
-                    <div class="option-group">
-                        <button class="option" data-type="act">act</button>
-                        <button class="option greekOnly" data-type="med" data-translate="med" >med</button>
-                        <button class="option" data-type="pass">pass</button>
-                    </div>
-                </div>
-                <div class="options naamwoorden">
-                    <div class="option-group">
-                        <button class="option" data-type="nom">nom</button>
-                        <button class="option" data-type="gen">gen</button>
-                        <button class="option" data-type="dat">dat</button>
-                        <button class="option" data-type="acc">acc</button>
-                        <button class="option latijn" data-type="abl">abl</button>
-                    </div>
-                    <div class="option-group">
-                        <button class="option" data-translate="Singular" data-type="ev">ev</button>
-                        <button class="option" data-translate="Plural" data-type="mv">mv</button>
-                    </div>
-                    <div class="option-group">
-                        <button class="option" data-type="m">m</button>
-                        <button class="option" data-type="f">f</button>
-                        <button class="option" data-type="n">n</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button id="addOptionBtn" class="action-button" data-translate="Add Option?">Nog een optie?</button>
-        <button id="resetBtn" class="action-button" type="button" data-translate="Reset">Reset</button>
-        <button id="checkBtn" class="action-button" type="button" data-translate="Check">Controleren</button>
-        <button id="nextBtn" class="action-button" type="button" data-translate="Next">Volgende</button>
-        <button id="seeResultsBtn" class="action-button" type="button" data-translate="SeeResults">Resultaat</button>
-    </div>
-    <div id="swContainer" style="display: none;">
-        <div id="slidingWindow" class="sliding-window">
-            <h1 id="resultsMessage" class="word"></h1>
-            <button id="everythingAgainButton" class="scoreButton" data-translate="everythingAgain">Deze selectie opnieuw oefenen</button>
-            <button id="onlyRepListButton" class="scoreButton" data-translate="onlyRepList">Foutenlijst nog een keer oefenen</button>
-            <button id="tigerModesButton" class="scoreButton" data-translate="tigerModes">Foutenlijst blijven oefenen tot alles goed is</button>
-            <button id="newSelectionButton" class="scoreButton" data-translate="makeNewSelection">Nieuwe selectie maken</button>
-            <!-- <button id="mainMenuButton" class="scoreButton">Hoofdmenu</button>-->
-        </div>
-    </div>
-    <script type="module" src="main.js"></script>
+    <script type="module" src="menu.js"></script>
+    
 </body>
 
 </html>

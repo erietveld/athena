@@ -1,26 +1,16 @@
-let verbLoad, nounLoad, setQuestions, selectNextQuestion, setRepitionList, filterQuestions, setTigerMode, showResults,
-    qLatinVerb, qLatinNoun, qGreekVerb, qGreekNoun, qGreekAdjective, qLatinAdjectives,
-    checkAnswer, resetScore,
-    validateAnswerComplete, extraFrame, resetFrames, removeLastFrame;
-  
+import { translateHtmlElements} from "./translate.js";
+import { verbLoad, nounLoad, setQuestions, selectNextQuestion, setRepitionList, filterQuestions, setTigerMode, showResults } from './initgame.js';
+import { qLatinVerb, qLatinNoun, qGreekVerb, qGreekNoun, qGreekAdjective, qLatinAdjectives } from "./questions.js";
+import { checkAnswer, resetScore } from './scoring.js';
+import { validateAnswerComplete, extraFrame, resetFrames, removeLastFrame } from './logic.js';
+import { setQuiz,applyFilterStateFromParameter} from './urls.js';
 
 window.addEventListener('load', async function () {
-  // Load the modules asynchronously
-  ( [
-    { verbLoad, nounLoad, setQuestions, selectNextQuestion, setRepitionList, filterQuestions, setTigerMode, showResults },
-    { qLatinVerb, qLatinNoun, qGreekVerb, qGreekNoun, qGreekAdjective, qLatinAdjectives },
-    { checkAnswer, resetScore },
-    { validateAnswerComplete, extraFrame, resetFrames, removeLastFrame }
-  ] = await Promise.all([
-    import('./initgame.js'),
-    import('./questions.js'),
-    import('./scoring.js'),
-    import('./logic.js')
-  ]));
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'styles.css';
-    document.head.appendChild(link);
+
+    // const link = document.createElement('link');
+    // link.rel = 'stylesheet';
+    // link.href = 'styles.css';
+    // document.head.appendChild(link);
 
     const addOptionBtn = document.getElementById('addOptionBtn');
     const checkBtn = document.getElementById('checkBtn');
@@ -28,14 +18,29 @@ window.addEventListener('load', async function () {
     const nextBtn = document.getElementById('nextBtn');
     // const seeResultsBtn = document.getElementById('seeResultsBtn');
 
-
-    addMainMenuListeners();
-    addAllButtonListeners();
-    addScoreOverviewListeners();
-
     const urlParams = new URLSearchParams(window.location.search);
     const testingMode = urlParams.get('mode');
 
+    if (!urlParams.has('q')){
+        addMainMenuListeners();
+    }
+    addAllButtonListeners();
+    addScoreOverviewListeners();
+
+
+
+    if (urlParams.has('q')) { 
+        const qValue = urlParams.get('q');
+        const fValue = urlParams.get('f');
+        if (qValue=='a') handleLatinVerbsClick();
+        else if (qValue=='b') handleLatinNounsClick();
+        else if (qValue=='c') handleGreekVerbsClick();
+        else if (qValue=='d') handleGreekNounsClick();
+        if (fValue){
+            applyFilterStateFromParameter(fValue);
+            filterQuestions();
+        }
+    }
     //TODO: Remove before flight
     if (testingMode === 'eric') {
          const qEricTest= [
@@ -81,96 +86,47 @@ window.addEventListener('load', async function () {
   
 });
 
-let translations = {};
 
-async function initializeTranslations() {
-    const userLanguage = getUserLanguage();
-    translations = await loadTranslations(userLanguage);
-}
 
-function getUserLanguage() {
-    // return "nl";
-    // Get the user's preferred language
-    let language = navigator.language || navigator.userLanguage;
-    // Remove the region specifier (if present)
-    language = language.split('-')[0];
-    return language;
-}
 
-export function translate(key, ...params) {
-    // Retrieve the translation based on the key
-    const translation = translations[key] || key;
-  
-    // Replace placeholders in the translation with dynamic parameters
-    let translatedText = translation.replace(/{(\d+)}/g, (match, index) => {
-      const paramIndex = parseInt(index, 10);
-      return params[paramIndex];
+function handleLatinVerbsClick() {
+    var greekButtons = document.querySelectorAll('.greekOnly');
+    greekButtons.forEach(function (button) {
+      button.parentNode.removeChild(button);
     });
-  
-    return translatedText;
-  }
-
- function translateKey(key) {
-    return translations[key] || key; // Return the translation or the key itself if not found
+    setQuestions(qLatinVerb);
+    verbLoad();
+    setQuiz("a");
 }
 
-async function loadTranslations(language) {
-    try {
-        const response = await fetch(`./translations/${language}.json`);
-        if (!response.ok) {
-            throw new Error(`Failed to load translations for ${language}: ${response.statusText}`);
-        }
-        return await response.json();
-    } catch (error) {
-        console.error(error);
-        return {};
-    }
+function handleLatinNounsClick(){
+    nounLoad(qLatinNoun, qLatinAdjectives);
+    setQuiz("b");
 }
-
-
-async function translateHtmlElements() {
-    await initializeTranslations();
-    if (getUserLanguage() != "nl") {
-        document.querySelectorAll('[data-translate]').forEach(async element => {
-            const translationKey = element.dataset.translate;
-            const translatedText = translate(translationKey);
-            element.textContent = translatedText;
-        });
-    }
-    document.querySelectorAll('.column').forEach(async element => {
-        element.style.display = "block";
+function handleGreekVerbsClick(){
+    var latinButtons = document.querySelectorAll('.latijn');
+    latinButtons.forEach(function (button) {
+        button.parentNode.removeChild(button);
     });
+    setQuestions(qGreekVerb);
+    verbLoad();
+    setQuiz("c");
 }
-
-
+function handleGreekNounsClick(){
+    // Find all buttons with class Latin and remove them from the DOM
+    var latinButtons = document.querySelectorAll('.latijn');
+    latinButtons.forEach(function (button) {
+        button.parentNode.removeChild(button);
+    });
+    nounLoad(qGreekNoun, qGreekAdjective);
+    setQuiz("d");
+}
+ 
 function addMainMenuListeners() {
-    document.getElementById('latinVerbs').addEventListener('click', () => {
-        var greekButtons = document.querySelectorAll('.greekOnly');
-        greekButtons.forEach(function (button) {
-            button.parentNode.removeChild(button);
-        });
-        setQuestions(qLatinVerb);
-        verbLoad();
-    });
-    document.getElementById('latinNouns').addEventListener('click', () => {
-        nounLoad(qLatinNoun, qLatinAdjectives);
-    });
-    document.getElementById('greekVerbs').addEventListener('click', () => {
-        var latinButtons = document.querySelectorAll('.latijn');
-        latinButtons.forEach(function (button) {
-            button.parentNode.removeChild(button);
-        });
-        setQuestions(qGreekVerb);
-        verbLoad();
-    });
-    document.getElementById('greekNouns').addEventListener('click', () => {
-        // Find all buttons with class Latin and remove them from the DOM
-        var latinButtons = document.querySelectorAll('.latijn');
-        latinButtons.forEach(function (button) {
-            button.parentNode.removeChild(button);
-        });
-        nounLoad(qGreekNoun, qGreekAdjective);
-    });
+    document.getElementById('latinVerbs').addEventListener('click', handleLatinVerbsClick);
+    document.getElementById('latinNouns').addEventListener('click', handleLatinNounsClick);
+    document.getElementById('greekVerbs').addEventListener('click', handleGreekVerbsClick);
+    document.getElementById('greekNouns').addEventListener('click', handleGreekNounsClick);
 }
 
 
@@ -324,17 +280,6 @@ function resetLastOption(){
         }
     });
     return;
-
-    const wijsButtons = document.querySelectorAll('.werkwoorden .option-group:nth-child(1) button');
-    wijsButtons.forEach(button => {
-        if (button.classList.contains('selected')) {
-            const dt = button.getAttribute('data-type');
-            if(dt=="ptc"){
-                ptcClicked(button);
-            }
-            wijsClicked(button);
-        }
-    });
 }
 
 export function reset() {

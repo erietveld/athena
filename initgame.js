@@ -1,5 +1,6 @@
-import { reset, translate, quizButtonSelected } from "./main.js";
+import { reset, quizButtonSelected } from "./main.js";
 import {setFilterURL} from "./urls.js";
+import {translate} from "./translate.js";
 
 var questions;
 var qbank; // All currently filtered questions
@@ -170,7 +171,7 @@ function populateMenuItemsWerkwoorden() {
     // Filter out null values
     filteredQuestions = filteredQuestions.filter(q => q);
     qbank = filteredQuestions;
-    updateWordCount();
+    updateWordCount(true);
 
     // Select all option classes under the werkwoorden div, excluding the third option-group
     var dynamicButtons = document.querySelectorAll('.options > .option-group:not(:nth-child(3)) .option');
@@ -249,9 +250,9 @@ function preselectSingleOptions(){
 }
 let selectieCount;
 //ER: Only call this function initially and when filters are changing
-function updateWordCount(){
+function updateWordCount(setURL){
     selectieCount = qbank.length;
-    setFilterURL();
+    if (setURL) setFilterURL();
     document.getElementById('wordCount').innerHTML = qbank.length + " " + translate("FormsSelected");
     trainingMode = "OneTime";
 }

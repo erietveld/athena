@@ -157,41 +157,36 @@ function verifyOneOptionGroup(optionGroup, answerGroepString) {
 }
 
 
-const baseEmoticonCode = 127872;
 const emoticons = [
-    "128512",
-    "129392",
-    "128641",
-    "128515",
-    "128540",
-    "128558",
-    "128580",
-    "129312",
-    "128007",
-    "129327",
-    "128568",
-    "128571",
-    "128585",
-    "128640",
+    "🧜‍♀️",
+    "🏛",
+    "🌋",
+    "🏹",
+    "🏺",
+    "📜",
+    "📖",
+    "🦉",
+    "🔱",
+    "🎭",
+    "⚡",
+    "🗡️",
+    "⚱️",
+    "⛵",
+    "🛡️",
 ];
 function updateScoring() {
     if (score < 0) return;
 
-    const emoticonIndex = Math.floor(score / 3);
+    var emoticonIndex = Math.floor(score / 3);
+    emoticonIndex = emoticonIndex % emoticons.length;
     const repeats = score % 3;
 
-    let codedEmoticon;
-
-    if (emoticonIndex >= emoticons.length) {
-        codedEmoticon = baseEmoticonCode + (emoticonIndex - emoticons.length);
-    } else {
-        codedEmoticon = emoticons[emoticonIndex];
-    }
+    let codedEmoticon = emoticons[emoticonIndex];
 
     let emoticonHtml = '';
 
     for (let i = -1; i < repeats; i++) {
-        emoticonHtml += "&#" + codedEmoticon + ";";
+        emoticonHtml +=   codedEmoticon;
     }
     var emoticon = document.getElementById("emoticon")
     emoticon.innerHTML = emoticonHtml;

@@ -1,53 +1,63 @@
 
-
 // Initial state when the page loads
 const initialState = { page: "menu" };
+const quizState = { page: "quiz" };
+
+var quiz;
 
 // Handle the popstate event
 function handlePopstate(event) {
   const state = event.state;
+  console.log(state);
 
   if (state && state.page === "menu") {
     // Show the main menu
     showMainMenu();
   } else if (state && state.page === "quiz") {
     // Show the quiz
-    showQuiz();
+   // showQuiz();
   }
 }
 function showMainMenu(){
     history.pushState({ page: "menu" }, "Main Menu", "#menu");
 }
+export function setQuiz(q){
+  quiz = q;
+  window.history.pushState(quizState, "Quiz", getQuizURL());
+}
 
 export function setFilterURL(){
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]')
-    let binaryString = checkboxes.map(filter => filter.checked ? '1' : '0').join('');
-    let fargs =  "f=" + encodeBinaryString(binaryString);
-    let qargs = "q=A";
-    const newURL = window.location.pathname +"?" + qargs + "&" + fargs;
-    const currentState = { };
-    
-   // window.history.replaceState(currentState, '', newURL);
+
+   // const currentState = { };
+     
+   window.history.replaceState(quizState, 'Quiz', getQuizURL());
 
 }
-function applyFilterStateFromParameter(binaryString) {
-    // Decompress the compressed string to get the binary representation
-    // const binaryString = decompressString(filterStateString);
-
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]')
-    // Apply the filter selection based on the binary string representation
-    for (let i = 0; i < binaryString.length; i++) {
-      const filter = filters[i]; // Assuming `filters` is an array of filter checkboxes
-      filter.checked = binaryString[i] === '1';
-    }
+function getQuizURL(){
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]')
+  let binaryString = checkboxes.map(filter => filter.checked ? '1' : '0').join('');
+  let fargs =  "f=" + encodeBinaryString(binaryString);
+  let qargs = "q=" + quiz;
+  const quizURL = window.location.pathname +"?" + qargs + "&" + fargs;
+  return quizURL;
+}
+export function applyFilterStateFromParameter(shortenedFilter) {
+  
+  const binaryString = decodeBinaryString(shortenedFilter);
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]')
+  // Apply the filter selection based on the binary string representation
+  for (let i = 0; i < checkboxes.length; i++) {
+    const filter = checkboxes[i];
+    filter.checked = binaryString[i] === '1';
   }
+}
 
 let quizId;
 function setQuizId(){
-//A: Greek verbs
-//B: Greek nouns
-//C: Latin verbs
-//D: Latin nouns
+  //A: Greek verbs
+  //B: Greek nouns
+  //C: Latin verbs
+  //D: Latin nouns
 
 }
 
@@ -82,4 +92,4 @@ function encodeBinaryString(binaryString) {
   }
 
   // Add event listener for popstate
-window.addEventListener("popstate", handlePopstate);
+//window.addEventListener("popstate", handlePopstate);
