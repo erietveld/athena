@@ -311,7 +311,7 @@ export const qGreekVerb = [
 { "word": "λυσαμένῃ", "cat": "λύω", "answers": ["ptc aor x med dat ev f"] },
 { "word": "λυσαμένην", "cat": "λύω", "answers": ["ptc aor x med acc ev f"] },
 { "word": "λυσαμέναι", "cat": "λύω", "answers": ["ptc aor x med nom mv f"] },
-{ "word": "λυσαμένῶν", "cat": "λύω", "answers": ["ptc aor x med gen mv f"] },
+{ "word": "λυσαμένων", "cat": "λύω", "answers": ["ptc aor x med gen mv f"] },
 { "word": "λυσαμέναις", "cat": "λύω", "answers": ["ptc aor x med dat mv f"] },
 { "word": "λυσαμένας", "cat": "λύω", "answers": ["ptc aor x med acc mv f"] },
 
