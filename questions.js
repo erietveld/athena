@@ -249,7 +249,7 @@ export const qGreekVerb = [
 { "word": "λυόμενοι", "cat": "λύω", "answers": ["ptc praes x med nom mv m"] },
 { "word": "λυομένων", "cat": "λύω", "answers": ["ptc praes x med gen mv m"] },
 { "word": "λυομένοις", "cat": "λύω", "answers": ["ptc praes x med dat mv m"] },
-{ "word": "λυομένους", "cat": "λύω", "answers": ["ptc praes x med acc mp m"] },
+{ "word": "λυομένους", "cat": "λύω", "answers": ["ptc praes x med acc mv m"] },
 
 { "word": "λυομένη", "cat": "λύω", "answers": ["ptc praes x med nom ev f"] },
 { "word": "λυομένης", "cat": "λύω", "answers": ["ptc praes x med gen ev f"] },
