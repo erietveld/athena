@@ -233,10 +233,10 @@ export const qGreekVerb = [
 { "word": "λυούσαις", "cat": "λύω", "answers": ["ptc praes x act dat mv f"] },
 { "word": "λυούσας", "cat": "λύω", "answers": ["ptc praes x act acc mv f"] },
 
-{ "word": "λύον", "cat": "λύω", "answers": ["ptc praes act nom ev n"] },
+{ "word": "λύον", "cat": "λύω", "answers": ["ptc praes x act nom ev n"] },
 { "word": "λύοντος", "cat": "λύω", "answers": ["ptc praes x act gen ev n"] },
 { "word": "λύοντι", "cat": "λύω", "answers": ["ptc praes x act dat ev n"] },
-{ "word": "λύον", "cat": "λύω", "answers": ["ptc praes act acc ev n"] },
+{ "word": "λύον", "cat": "λύω", "answers": ["ptc praes x act acc ev n"] },
 { "word": "λύοντα", "cat": "λύω", "answers": ["ptc praes x act nom mv n"] },
 { "word": "λύοντων", "cat": "λύω", "answers": ["ptc praes x act gen mv n"] },
 { "word": "λύουσι", "cat": "λύω", "answers": ["ptc praes x act dat mv n"] },

@@ -1,5 +1,5 @@
-import { getSelectedOptions, addAllButtonListeners } from "./main.js";
-
+import { getSelectedOptions, addAllButtonListeners,quizButtonSelected } from "./main.js";
+ 
 function hideForIncompleteAnswer() {
     checkBtn.classList.remove('active');
     checkBtn.style.display = 'none';
@@ -97,6 +97,7 @@ export function extraFrame() {
     });
 
     hideForIncompleteAnswer();
+    preSelectSingleOptions();
     return nextFrame;
 };
 var currentFrameId = 0;
@@ -148,6 +149,17 @@ function addFrame(isEditable) {
     container.appendChild(frameClone);
     addAllButtonListeners();
     return frameClone;
+}
+
+export function preSelectSingleOptions(){
+    // Check if there is only one option left in each option-group
+    var optionGroups = document.querySelectorAll('.option-group');
+    optionGroups.forEach(function(group) {
+        var buttons = group.querySelectorAll('.option:not(.filter):not(.selected)');
+        if (buttons.length === 1) {
+            quizButtonSelected(buttons[0]);
+        }
+    });
 }
 
 

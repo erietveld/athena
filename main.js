@@ -1,34 +1,13 @@
 import { translateHtmlElements} from "./translate.js";
 import { verbLoad, nounLoad, setQuestions, selectNextQuestion, setRepitionList, filterQuestions, setTigerMode, showResults } from './initgame.js';
 import { qLatinVerb, qLatinNoun, qGreekVerb, qGreekNoun, qGreekAdjective, qLatinAdjectives } from "./questions.js";
-import { checkAnswer, resetScore } from './scoring.js';
+import { checkAnswer, resetScore,testScoring } from './scoring.js';
 import { validateAnswerComplete, extraFrame, resetFrames, removeLastFrame } from './logic.js';
 import { setQuiz,applyFilterStateFromParameter} from './urls.js';
 
 window.addEventListener('load', async function () {
 
-    // const link = document.createElement('link');
-    // link.rel = 'stylesheet';
-    // link.href = 'styles.css';
-    // document.head.appendChild(link);
-
-    const addOptionBtn = document.getElementById('addOptionBtn');
-    const checkBtn = document.getElementById('checkBtn');
-    const resetBtn = document.getElementById('resetBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    // const seeResultsBtn = document.getElementById('seeResultsBtn');
-
     const urlParams = new URLSearchParams(window.location.search);
-    const testingMode = urlParams.get('mode');
-
-    if (!urlParams.has('q')){
-        addMainMenuListeners();
-    }
-    addAllButtonListeners();
-    addScoreOverviewListeners();
-
-
-
     if (urlParams.has('q')) { 
         const qValue = urlParams.get('q');
         const fValue = urlParams.get('f');
@@ -36,13 +15,28 @@ window.addEventListener('load', async function () {
         else if (qValue=='b') handleLatinNounsClick();
         else if (qValue=='c') handleGreekVerbsClick();
         else if (qValue=='d') handleGreekNounsClick();
+        else{
+            window.location.href = 'index.html';
+            return;
+        }
         if (fValue){
             applyFilterStateFromParameter(fValue);
             filterQuestions();
         }
     }
+    else{
+        window.location.href = 'index.html';
+        return;
+    }
+
     //TODO: Remove before flight
-    if (testingMode === 'eric') {
+    const testingMode = urlParams.get('mode');
+    if (testingMode === 'test') {
+        const testBtn = document.getElementById('testBtn');
+        testBtn.style.display = "block";
+        testBtn.addEventListener('click', () => {
+            testScoring();
+        });
          const qEricTest= [
             { "word": "mensae", "cat": "mensa", "answers": ["nom ev m"] },
           //  { "word": "1. ind praes 1e-ev act", "cat": "Eric", "answers": ["ind praes 1e-ev act"] },
@@ -61,6 +55,10 @@ window.addEventListener('load', async function () {
     }
     // END TODO
 
+
+    addAllButtonListeners();
+    addScoreOverviewListeners();
+
     document.getElementById('hamburger').addEventListener('click', () => {
         document.getElementById("mySidenav").style.width = "250px";
         document.getElementById("mySidenav").style.display = "block";
@@ -78,10 +76,14 @@ window.addEventListener('load', async function () {
         }
     })
   
+    const addOptionBtn = document.getElementById('addOptionBtn');
+    const checkBtn = document.getElementById('checkBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const nextBtn = document.getElementById('nextBtn');
 
     addOptionBtn.addEventListener('click', extraFrame);
     nextBtn.addEventListener('click', selectNextQuestion);
-    resetBtn.addEventListener('click', resetLastOption); //resetLastOption
+    resetBtn.addEventListener('click', resetLastOption);
     checkBtn.addEventListener('click', checkAnswer);
   
 });

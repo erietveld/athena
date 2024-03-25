@@ -1,6 +1,7 @@
-import { reset, quizButtonSelected } from "./main.js";
+import { reset} from "./main.js";
 import {setFilterURL} from "./urls.js";
 import {translate} from "./translate.js";
+import {preSelectSingleOptions} from "./logic.js";
 
 var questions;
 var qbank; // All currently filtered questions
@@ -229,25 +230,7 @@ function populateMenuItemsNaamwoorden() {
     });
 }
 
-function preselectSingleOptions(){
-        // Check if there is only one option left in each option-group
-        var optionGroups = document.querySelectorAll('.option-group');
-        optionGroups.forEach(function(group) {
-            var buttons = group.querySelectorAll('.option:not(.filter)');
-            if (buttons.length === 1) {
-                quizButtonSelected(buttons[0]);
-             //   options[0].classList.add('selected');
-                // var clickEvent = new MouseEvent('click', {
-                //     bubbles: true,
-                //     cancelable: true,
-                //     view: window
-                //   });
-              
-                //   buttons[0].dispatchEvent(clickEvent);
-              
-            }
-        });
-}
+
 let selectieCount;
 //ER: Only call this function initially and when filters are changing
 function updateWordCount(setURL){
@@ -271,7 +254,7 @@ export function selectNextQuestion() {
     question = qbank[randomIndex];
     wordElement.textContent = question.word;
     reset();
-    preselectSingleOptions();
+    preSelectSingleOptions();
 }
 
 export function prepNextQuestionBank(){

@@ -2,7 +2,7 @@ let translations = {};
 
 
 function getUserLanguage() {
-    // return "nl";
+     return "nl";
     // Get the user's preferred language
     let language = navigator.language || navigator.userLanguage;
     // Remove the region specifier (if present)
@@ -39,7 +39,6 @@ async function loadTranslations(language) {
 
 export function translateHtmlElements() {
     const userLanguage = getUserLanguage();
-    //translations = loadTranslations(userLanguage);
     loadTranslations(userLanguage).then(t =>{
         translations = t;
         if (getUserLanguage() != "nl") {
