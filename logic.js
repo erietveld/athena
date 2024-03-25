@@ -90,7 +90,7 @@ export function extraFrame() {
 
     resetBtn.style.display = 'flex';
 
-    var unselectedButtons = currentFrame.querySelectorAll('.option:not(.selected):not(.incorrect):not(.correct):not(.missed)');
+    var unselectedButtons = currentFrame.querySelectorAll('.option:not(.selected):not(.incorrect):not(.correct):not(.missed):not(.button-with-x)');
     // Add 'hidden' class to unselected buttons
     unselectedButtons.forEach((button) => {
         button.classList.add('hidden');
@@ -153,7 +153,9 @@ function addFrame(isEditable) {
 
 export function preSelectSingleOptions(){
     // Check if there is only one option left in each option-group
-    var optionGroups = document.querySelectorAll('.option-group');
+    var currentFrame = document.getElementById('groupFrame' + currentFrameId);
+
+    var optionGroups = currentFrame.querySelectorAll('.option-group');
     optionGroups.forEach(function(group) {
         var buttons = group.querySelectorAll('.option:not(.filter):not(.selected)');
         if (buttons.length === 1) {

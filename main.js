@@ -123,13 +123,6 @@ function handleGreekNounsClick(){
     nounLoad(qGreekNoun, qGreekAdjective);
     setQuiz("d");
 }
- 
-function addMainMenuListeners() {
-    document.getElementById('latinVerbs').addEventListener('click', handleLatinVerbsClick);
-    document.getElementById('latinNouns').addEventListener('click', handleLatinNounsClick);
-    document.getElementById('greekVerbs').addEventListener('click', handleGreekVerbsClick);
-    document.getElementById('greekNouns').addEventListener('click', handleGreekNounsClick);
-}
 
 
 export function addAllButtonListeners(){
@@ -138,11 +131,13 @@ export function addAllButtonListeners(){
     });
 }
 export function quizButtonSelected(button, skipSelect=false){
+    if (amReviewing) return;
+
     if (button.target){
         button = button.target;
     }
     //ER: Order is important!
-    if (!amReviewing && !skipSelect){
+    if (!skipSelect){
         button.classList.toggle('selected');
     }
     const dt = button.getAttribute('data-type');
@@ -322,13 +317,14 @@ export function getSelectedOptions(currentFrame) {
             groupSelectedOptions.push(button.getAttribute('data-type'));
         });
         const parentVisible = !group.closest('.options').classList.contains('hidden');
-        const hasEnabledButtons = group.querySelectorAll('.option:not([disabled])').length>0;
+        const hasNoEnabledButtons  = group.querySelectorAll('.option:not([disabled])').length==0;
+        const hasNoVisibleButtons = group.querySelectorAll('.option:not(.hidden)').length==0;
 
-        if (parentVisible && hasEnabledButtons) {
-            selectedOptions.push(groupSelectedOptions);
-        }
-        if (!hasEnabledButtons){
+        if (hasNoEnabledButtons || hasNoVisibleButtons){
             selectedOptions.push(['x']);
+        }
+        else if (parentVisible){
+            selectedOptions.push(groupSelectedOptions);
         }
     });
 
