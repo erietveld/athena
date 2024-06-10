@@ -1250,6 +1250,21 @@ export const qLatinPronouns= [
 	{ "word": "eos", "cat": "is/ea/id", "answers": ["acc mv m"] },
 	{ "word": "eas", "cat": "is/ea/id", "answers": ["acc mv f"] }
 
+	{ "word": "qui", "cat": "qui/quae/quod", "answers": ["nom ev m", "nom mv m"] },
+	{ "word": "quae", "cat": "qui/quae/quod", "answers": ["nom ev f","nom mv f", "nom mv n", "acc mv n"] },
+	{ "word": "quod", "cat": "qui/quae/quod", "answers": ["nom ev n",  "acc ev n"]},
+	{ "word": "cuius", "cat": "qui/quae/quod", "answers": ["gen ev f", "gen ev m", "gen ev n"] },
+	{ "word": "cui", "cat": "qui/quae/quod", "answers": ["dat ev f", "dat ev m", "dat ev n"] },
+	{ "word": "quem", "cat": "qui/quae/quod", "answers": ["acc ev m"] },
+	{ "word": "quam", "cat": "qui/quae/quod, "answers": ["acc ev f"] },
+	{ "word": "quo", "cat": "qui/quae/quod", "answers": ["abl ev m", "abl ev n"]},
+	{ "word": "qua", "cat": "qui/quae/quod, "answers": ["abl ev f"] },
+
+	{ "word": "quorum", "cat": "qui/quae/quod", "answers": ["gen mv m", "gen mv n"] },
+ 	{ "word": "quarum", "cat": "qui/quae/quod", "answers": ["gen mv f"] },
+	{ "word": "quibus", "cat": "qui/quae/quod", "answers": ["dat mv m", "abl mv m","dat mv f", "abl mv f", "dat mv n", "abl mv n"] },
+	{ "word": "quos", "cat": "qui/quae/quod", "answers": ["acc mv m"] },
+	{ "word": "quas", "cat": "qui/quae/quod", "answers": ["acc mv f"] }
 ];
 
 export const qGreekNoun = [
