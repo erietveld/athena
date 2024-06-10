@@ -2,7 +2,7 @@ let translations = {};
 
 
 function getUserLanguage() {
-     return "nl";
+     //return "nl";
     // Get the user's preferred language
     let language = navigator.language || navigator.userLanguage;
     // Remove the region specifier (if present)

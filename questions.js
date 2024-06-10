@@ -1215,8 +1215,8 @@ export const qLatinAdjectives= [
 
 export const qLatinPronouns= [
 	{ "word": "hic", "cat": "hic/haec/hoc", "answers": ["nom ev m"] },
-	{ "word": "haec", "cat": "hic/haec/hoc", "answers": ["nom ev F", "nom mv n", "acc mv n"] },
-	{ "word": "hoc", "cat": "hic/haec/hoc", "answers": ["nom ev n"],  ["acc ev n"], ["abl ev m"], ["abl ev n"]},
+	{ "word": "haec", "cat": "hic/haec/hoc", "answers": ["nom ev f", "nom mv n", "acc mv n"] },
+	{ "word": "hoc", "cat": "hic/haec/hoc", "answers": ["nom ev n",  "acc ev n", "abl ev m", "abl ev n"]},
 	{ "word": "huius", "cat": "hic/haec/hoc", "answers": ["gen ev f", "gen ev m", "gen ev n"] },
 	{ "word": "huic", "cat": "hic/haec/hoc", "answers": ["dat ev f", "dat ev m", "dat ev n"] },
 	{ "word": "hunc", "cat": "hic/haec/hoc", "answers": ["acc ev m"] },
@@ -1225,15 +1225,15 @@ export const qLatinPronouns= [
 
 	{ "word": "hi", "cat": "hic/haec/hoc", "answers": ["nom mv m"] },
 	{ "word": "hae", "cat": "hic/haec/hoc", "answers": ["nom mv f"] },
-	{ "word": "horum", "cat": "hic/haec/hoc", "answers": ["gen mv m"], ["gen mv n"], },
+	{ "word": "horum", "cat": "hic/haec/hoc", "answers": ["gen mv m", "gen mv n"] },
  	{ "word": "harum", "cat": "hic/haec/hoc", "answers": ["gen mv f"] },
 	{ "word": "his", "cat": "hic/haec/hoc", "answers":["dat mv m", "abl mv m","dat mv f", "abl mv f", "dat mv n", "abl mv n"] },
 	{ "word": "hos", "cat": "hic/haec/hoc", "answers": ["acc mv m"] },
 	{ "word": "has", "cat": "hic/haec/hoc", "answers": ["acc mv f"] },
 
 	{ "word": "is", "cat": "is/ea/id", "answers": ["nom ev m"] },
-	{ "word": "ea", "cat": "is/ea/id", "answers": ["nom ev F","abl ev f", "nom mv n", "acc mv n"] },
-	{ "word": "id", "cat": "is/ea/id", "answers": ["nom ev n"],  ["acc ev n"],
+	{ "word": "ea", "cat": "is/ea/id", "answers": ["nom ev f","abl ev f", "nom mv n", "acc mv n"] },
+	{ "word": "id", "cat": "is/ea/id", "answers": ["nom ev n",  "acc ev n"]},
 	{ "word": "eius", "cat": "is/ea/id", "answers": ["gen ev f", "gen ev m", "gen ev n"] },
 	{ "word": "ei", "cat": "is/ea/id", "answers": ["dat ev f", "dat ev m", "dat ev n"] },
 	{ "word": "eum", "cat": "is/ea/id", "answers": ["acc ev m"] },
@@ -1243,16 +1243,12 @@ export const qLatinPronouns= [
 	{ "word": "ei", "cat": "is/ea/id", "answers": ["nom mv m"] },
 	{ "word": "ii", "cat": "is/ea/id", "answers": ["nom mv m"] },
 	{ "word": "eae", "cat": "is/ea/id", "answers": ["nom mv f"] },
-	{ "word": "eorum", "cat": "is/ea/id", "answers": ["gen mv m"], ["gen mv n"], },
+	{ "word": "eorum", "cat": "is/ea/id", "answers": ["gen mv m", "gen mv n"] },
  	{ "word": "earum", "cat": "is/ea/id", "answers": ["gen mv f"] },
-	{ "word": "eis", "cat": "is/ea/id", "answers":["dat mv m", "abl mv m","dat mv f", "abl mv f", "dat mv n", "abl mv n"] },
-	{ "word": "iis", "cat": "is/ea/id", "answers":["dat mv m", "abl mv m","dat mv f", "abl mv f", "dat mv n", "abl mv n"] }.
+	{ "word": "eis", "cat": "is/ea/id", "answers": ["dat mv m", "abl mv m","dat mv f", "abl mv f", "dat mv n", "abl mv n"] },
+	{ "word": "iis", "cat": "is/ea/id", "answers": ["dat mv m", "abl mv m","dat mv f", "abl mv f", "dat mv n", "abl mv n"] },
 	{ "word": "eos", "cat": "is/ea/id", "answers": ["acc mv m"] },
-	{ "word": "eas", "cat": "is/ea/id", "answers": ["acc mv f"] },];
-
-				      
-	
-
+	{ "word": "eas", "cat": "is/ea/id", "answers": ["acc mv f"] }
 
 ];
 

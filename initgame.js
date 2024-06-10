@@ -34,20 +34,27 @@ export function verbLoad(){
     populateMenuItemsWerkwoorden();
     updateWordCount();        
 }
-export function nounLoad(nouns, adjs){
+export function nounLoad(nouns, adjs, pronouns){
 
     const part1 = nouns.map(obj => {
         if (obj.cat !== "lidwoord") {
-          return { ...obj, menu: "noun" };
+            return { ...obj, menu: "noun" };
         }
         return obj;
-      });
+        });
 
     const part2 = adjs.map(obj => ({
         ...obj,
         "menu": "adj"
-      }));
+        }));
     questions = part1.concat(part2);
+    if (pronouns){
+    const part3 = pronouns.map(obj => ({
+        ...obj,
+        "menu": "pronouns"
+        }));
+        questions = questions.concat(part3);
+    }
 
     var naamwoordBlock = document.querySelectorAll('.werkwoorden');
     naamwoordBlock.forEach(function (button) {
@@ -214,14 +221,17 @@ function populateMenuItemsNaamwoorden() {
     const translatedUnats = uncats.map(key => ({ key, val: translate(key) }));
     const catNouns = [...new Set(questions.filter(q => q.menu=="noun").map(q => q.cat))];
     const catAdjs = [...new Set(questions.filter(q => q.menu=="adj").map(q => q.cat))];
+    const catPronouns = [...new Set(questions.filter(q => q.menu=="pronouns").map(q => q.cat))];
 
     const menuNominals = document.getElementById("miNominals");
     const menuNouns = document.getElementById("miNouns");
     const menuAdjectives = document.getElementById("miAdjectives");
+    const menuPronouns = document.getElementById("miPronouns");
     
     addCheckboxes(translatedUnats, menuNominals);
     addCheckboxes(catNouns, menuNouns);
     addCheckboxes(catAdjs, menuAdjectives);
+    addCheckboxes(catPronouns, menuPronouns);
 
     // Add change listener
     const checkboxes = document.getElementById("mySidenav").querySelectorAll("input[type='checkbox']");

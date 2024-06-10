@@ -1,6 +1,6 @@
 import { translateHtmlElements} from "./translate.js";
 import { verbLoad, nounLoad, setQuestions, selectNextQuestion, setRepitionList, filterQuestions, setTigerMode, showResults } from './initgame.js';
-import { qLatinVerb, qLatinNoun, qGreekVerb, qGreekNoun, qGreekAdjective, qLatinAdjectives } from "./questions.js";
+import { qLatinVerb, qLatinNoun, qGreekVerb, qGreekNoun, qGreekAdjective, qLatinAdjectives, qLatinPronouns } from "./questions.js";
 import { checkAnswer, resetScore,testScoring } from './scoring.js';
 import { validateAnswerComplete, extraFrame, resetFrames, removeLastFrame } from './logic.js';
 import { setQuiz,applyFilterStateFromParameter} from './urls.js';
@@ -102,11 +102,11 @@ function handleLatinVerbsClick() {
 }
 
 function handleLatinNounsClick(){
-    nounLoad(qLatinNoun, qLatinAdjectives);
+    nounLoad(qLatinNoun, qLatinAdjectives, qLatinPronouns);
     setQuiz("b");
 }
 function handleGreekVerbsClick(){
-    var latinButtons = document.querySelectorAll('.latijn');
+    var latinButtons = document.querySelectorAll('.latinOnly');
     latinButtons.forEach(function (button) {
         button.parentNode.removeChild(button);
     });
@@ -116,7 +116,7 @@ function handleGreekVerbsClick(){
 }
 function handleGreekNounsClick(){
     // Find all buttons with class Latin and remove them from the DOM
-    var latinButtons = document.querySelectorAll('.latijn');
+    var latinButtons = document.querySelectorAll('.latinOnly');
     latinButtons.forEach(function (button) {
         button.parentNode.removeChild(button);
     });
