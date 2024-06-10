@@ -1256,9 +1256,9 @@ export const qLatinPronouns= [
 	{ "word": "cuius", "cat": "qui/quae/quod", "answers": ["gen ev f", "gen ev m", "gen ev n"] },
 	{ "word": "cui", "cat": "qui/quae/quod", "answers": ["dat ev f", "dat ev m", "dat ev n"] },
 	{ "word": "quem", "cat": "qui/quae/quod", "answers": ["acc ev m"] },
-	{ "word": "quam", "cat": "qui/quae/quod, "answers": ["acc ev f"] },
+	{ "word": "quam", "cat": "qui/quae/quod", "answers": ["acc ev f"] },
 	{ "word": "quo", "cat": "qui/quae/quod", "answers": ["abl ev m", "abl ev n"]},
-	{ "word": "qua", "cat": "qui/quae/quod, "answers": ["abl ev f"] },
+	{ "word": "qua", "cat": "qui/quae/quod", "answers": ["abl ev f"] },
 
 	{ "word": "quorum", "cat": "qui/quae/quod", "answers": ["gen mv m", "gen mv n"] },
  	{ "word": "quarum", "cat": "qui/quae/quod", "answers": ["gen mv f"] },
