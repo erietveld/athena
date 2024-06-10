@@ -1248,7 +1248,7 @@ export const qLatinPronouns= [
 	{ "word": "eis", "cat": "is/ea/id", "answers": ["dat mv m", "abl mv m","dat mv f", "abl mv f", "dat mv n", "abl mv n"] },
 	{ "word": "iis", "cat": "is/ea/id", "answers": ["dat mv m", "abl mv m","dat mv f", "abl mv f", "dat mv n", "abl mv n"] },
 	{ "word": "eos", "cat": "is/ea/id", "answers": ["acc mv m"] },
-	{ "word": "eas", "cat": "is/ea/id", "answers": ["acc mv f"] }
+	{ "word": "eas", "cat": "is/ea/id", "answers": ["acc mv f"] },
 
 	{ "word": "qui", "cat": "qui/quae/quod", "answers": ["nom ev m", "nom mv m"] },
 	{ "word": "quae", "cat": "qui/quae/quod", "answers": ["nom ev f","nom mv f", "nom mv n", "acc mv n"] },
