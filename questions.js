@@ -1177,7 +1177,7 @@ export const qLatinNoun= [
 	{ "word": "nomine", "cat": "nomen", "answers": ["abl ev n"] },
 	{ "word": "nomina", "cat": "nomen", "answers": ["nom mv n", "acc mv n"] },
 	{ "word": "nominum", "cat": "nomen", "answers": ["gen mv n"] },
-	{ "word": "nominbus", "cat": "nomen", "answers": ["dat mv n", "abl mv n"] },];
+	{ "word": "nominibus", "cat": "nomen", "answers": ["dat mv n", "abl mv n"] },];
 
 export const qLatinAdjectives= [
 	{ "word": "bona", "cat": "bonus", "answers": ["nom ev f", "abl ev f", "nom mv n", "acc mv n"] },
