@@ -188,7 +188,7 @@ export const qGreekVerb = [
 		
 	{ "word": "λύου", "cat": "λύω", "answers": ["imp praes 2e-ev med"] },
 	{ "word": "λύεσθε", "cat": "λύω", "answers": ["imp praes 2e-mv med"] },
-	,
+	
 	{ "word": "λῦσον", "cat": "λύω", "answers": ["imp aor 2e-ev act"] },
 	{ "word": "λύσατε", "cat": "λύω", "answers": ["imp aor 2e-mv act"] },
 		
@@ -373,7 +373,7 @@ export const qGreekVerb = [
 { "word": "λελυκός", "cat": "λύω", "answers": ["ptc perf x act nom ev n"] },
 { "word": "λελυκότος", "cat": "λύω", "answers": ["ptc perf x act gen ev n"] },
 { "word": "λελυκότι", "cat": "λύω", "answers": ["ptc perf x act dat ev n"] },
-{ "word": " λελυκός", "cat": "λύω", "answers": ["ptc perf x act acc ev n"] },
+{ "word": "λελυκός", "cat": "λύω", "answers": ["ptc perf x act acc ev n"] },
 { "word": "λελυκότα", "cat": "λύω", "answers": ["ptc perf x act nom mv n"] },
 { "word": "λελυκότων", "cat": "λύω", "answers": ["ptc perf x act gen mv n"] },
 { "word": "λελυκόσι(ν)", "cat": "λύω", "answers": ["ptc perf x act dat mv n"] },
@@ -452,10 +452,10 @@ export const qGreekVerb = [
 { "word": "λυσομέναις", "cat": "λύω", "answers": ["fut x med ptc dat mv f"] },
 { "word": "λυσομένας", "cat": "λύω", "answers": ["fut x med ptc acc mv f"] },
 
-{ "word": " λυσόμενον ", "cat": "λύω", "answers": ["fut x med ptc nom ev n"] },
+{ "word": "λυσόμενον", "cat": "λύω", "answers": ["fut x med ptc nom ev n"] },
 { "word": "λυσομένου", "cat": "λύω", "answers": ["fut x med ptc gen ev n"] },
 { "word": "λυσομένῳ", "cat": "λύω", "answers": ["fut x med ptc dat ev n"] },
-{ "word": " λυσόμενον ", "cat": "λύω", "answers": ["fut x med ptc acc ev n"] },
+{ "word": "λυσόμενον", "cat": "λύω", "answers": ["fut x med ptc acc ev n"] },
 { "word": "λυσομένα", "cat": "λύω", "answers": ["fut x med ptc nom mv n"] },
 { "word": "λυσομένων", "cat": "λύω", "answers": ["fut x med ptc gen mv n"] },
 { "word": "λυσομένοις", "cat": "λύω", "answers": ["fut x med ptc dat mv n"] },
@@ -497,7 +497,7 @@ export const qGreekVerb = [
 { "word": "ποιοῦσι(ν)", "cat": "ποιέω", "answers": ["ind praes 3e-mv act"] },
 
 { "word": "ποιοῦμαι", "cat": "ποιέω", "answers": ["ind praes 1e-ev med"] },
-{ "word": "ποιῇ / ποιεῖ", "cat": "ποιέω", "answers": ["ind praes 2e-ev med"] },
+{ "word": "ποιεῖ", "cat": "ποιέω", "answers": ["ind praes 2e-ev med"] },
 { "word": "ποιεῖται", "cat": "ποιέω", "answers": ["ind praes 3e-ev med"] },
 { "word": "ποιούμεθα", "cat": "ποιέω", "answers": ["ind praes 1e-mv med"] },
 { "word": "ποιεῖσθε", "cat": "ποιέω", "answers": ["ind praes 2e-mv med"] },
@@ -525,7 +525,7 @@ export const qGreekVerb = [
 // Participium praesens activum mannelijk
 { "word": "ποιῶν", "cat": "ποιέω", "answers": ["ptc praes x act nom ev m"] },
 { "word": "ποιοῦντος", "cat": "ποιέω", "answers": ["ptc praes x act gen ev m"] },
-{ "word": "ποιοῦνti", "cat": "ποιέω", "answers": ["ptc praes x act dat ev m"] },
+{ "word": "ποιοῦντι", "cat": "ποιέω", "answers": ["ptc praes x act dat ev m"] },
 { "word": "ποιοῦντα", "cat": "ποιέω", "answers": ["ptc praes x act acc ev m"] },
 { "word": "ποιοῦντες", "cat": "ποιέω", "answers": ["ptc praes x act nom mv m"] },
 { "word": "ποιούντων", "cat": "ποιέω", "answers": ["ptc praes x act gen mv m"] },
@@ -539,7 +539,7 @@ export const qGreekVerb = [
 { "word": "ποιοῦσαν", "cat": "ποιέω", "answers": ["ptc praes x act acc ev f"] },
 { "word": "ποιοῦσαι", "cat": "ποιέω", "answers": ["ptc praes x act nom mv f"] },
 { "word": "ποιουσῶν", "cat": "ποιέω", "answers": ["ptc praes x act gen mv f"] },
-{ "word": "ποιούσαιs", "cat": "ποιέω", "answers": ["ptc praes x act dat mv f"] },
+{ "word": "ποιούσαις", "cat": "ποιέω", "answers": ["ptc praes x act dat mv f"] },
 { "word": "ποιούσας", "cat": "ποιέω", "answers": ["ptc praes x act acc mv f"] },
 
 // Participium praesens activum onzijdig
