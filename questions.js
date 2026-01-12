@@ -488,9 +488,149 @@ export const qGreekVerb = [
 { "word": "λυθησομένοις", "cat": "λύω", "answers": ["fut x pass ptc dat mv n"] },
 { "word": "λυθησόμενα", "cat": "λύω", "answers": ["fut x pass ptc acc mv n"] },
 
-];
+	/ποιέω
+{ "word": "ποιῶ", "cat": "ποιέω", "answers": ["ind praes 1e-ev act"] },
+{ "word": "ποιεῖς", "cat": "ποιέω", "answers": ["ind praes 2e-ev act"] },
+{ "word": "ποιεῖ", "cat": "ποιέω", "answers": ["ind praes 3e-ev act"] },
+{ "word": "ποιοῦμεν", "cat": "ποιέω", "answers": ["ind praes 1e-mv act"] },
+{ "word": "ποιεῖτε", "cat": "ποιέω", "answers": ["ind praes 2e-mv act"] },
+{ "word": "ποιοῦσι(ν)", "cat": "ποιέω", "answers": ["ind praes 3e-mv act"] },
+
+{ "word": "ποιοῦμαι", "cat": "ποιέω", "answers": ["ind praes 1e-ev med"] },
+{ "word": "ποιῇ / ποιεῖ", "cat": "ποιέω", "answers": ["ind praes 2e-ev med"] },
+{ "word": "ποιεῖται", "cat": "ποιέω", "answers": ["ind praes 3e-ev med"] },
+{ "word": "ποιούμεθα", "cat": "ποιέω", "answers": ["ind praes 1e-mv med"] },
+{ "word": "ποιεῖσθε", "cat": "ποιέω", "answers": ["ind praes 2e-mv med"] },
+{ "word": "ποιοῦνται", "cat": "ποιέω", "answers": ["ind praes 3e-mv med"] },
 
 
+{ "word": "ἐποίουν", "cat": "ποιέω", "answers": ["ind impf 1e-ev act"] },
+{ "word": "ἐποίεις", "cat": "ποιέω", "answers": ["ind impf 2e-ev act"] },
+{ "word": "ἐποίει", "cat": "ποιέω", "answers": ["ind impf 3e-ev act"] },
+{ "word": "ἐποιοῦμεν", "cat": "ποιέω", "answers": ["ind impf 1e-mv act"] },
+{ "word": "ἐποιεῖτε", "cat": "ποιέω", "answers": ["ind impf 2e-mv act"] },
+{ "word": "ἐποίουν", "cat": "ποιέω", "answers": ["ind impf 3e-mv act"] }
+
+{ "word": "ἐποιούμην", "cat": "ποιέω", "answers": ["ind impf 1e-ev med"] },
+{ "word": "ἐποιοῦ", "cat": "ποιέω", "answers": ["ind impf 2e-ev med"] },
+{ "word": "ἐποιεῖτο", "cat": "ποιέω", "answers": ["ind impf 3e-ev med"] },
+{ "word": "ἐποιούμεθα", "cat": "ποιέω", "answers": ["ind impf 1e-mv med"] },
+{ "word": "ἐποιεῖσθε", "cat": "ποιέω", "answers": ["ind impf 2e-mv med"] },
+{ "word": "ἐποιοῦντο", "cat": "ποιέω", "answers": ["ind impf 3e-mv med"] }
+
+{ "word": "ποίει", "cat": "ποιέω", "answers": ["imp praes 2e-ev act"] },
+{ "word": "ποιεῖτε", "cat": "ποιέω", "answers": ["imp praes 2e-mv act"] },
+
+{ "word": "ποιεῖν", "cat": "ποιέω", "answers": ["inf praes act"] }
+// Participium praesens activum mannelijk
+{ "word": "ποιῶν", "cat": "ποιέω", "answers": ["ptc praes x act nom ev m"] },
+{ "word": "ποιοῦντος", "cat": "ποιέω", "answers": ["ptc praes x act gen ev m"] },
+{ "word": "ποιοῦνti", "cat": "ποιέω", "answers": ["ptc praes x act dat ev m"] },
+{ "word": "ποιοῦντα", "cat": "ποιέω", "answers": ["ptc praes x act acc ev m"] },
+{ "word": "ποιοῦντες", "cat": "ποιέω", "answers": ["ptc praes x act nom mv m"] },
+{ "word": "ποιούντων", "cat": "ποιέω", "answers": ["ptc praes x act gen mv m"] },
+{ "word": "ποιοῦσι(ν)", "cat": "ποιέω", "answers": ["ptc praes x act dat mv m"] },
+{ "word": "ποιοῦντας", "cat": "ποιέω", "answers": ["ptc praes x act acc mv m"] }];
+
+ // Participium praesens activum vrouwelijk
+{ "word": "ποιοῦσα", "cat": "ποιέω", "answers": ["ptc praes x act nom ev f"] },
+{ "word": "ποιούσης", "cat": "ποιέω", "answers": ["ptc praes x act gen ev f"] },
+{ "word": "ποιούσῃ", "cat": "ποιέω", "answers": ["ptc praes x act dat ev f"] },
+{ "word": "ποιοῦσαν", "cat": "ποιέω", "answers": ["ptc praes x act acc ev f"] },
+{ "word": "ποιοῦσαι", "cat": "ποιέω", "answers": ["ptc praes x act nom mv f"] },
+{ "word": "ποιουσῶν", "cat": "ποιέω", "answers": ["ptc praes x act gen mv f"] },
+{ "word": "ποιούσαιs", "cat": "ποιέω", "answers": ["ptc praes x act dat mv f"] },
+{ "word": "ποιούσας", "cat": "ποιέω", "answers": ["ptc praes x act acc mv f"] },
+
+// Participium praesens activum onzijdig
+{ "word": "ποιοῦν", "cat": "ποιέω", "answers": ["ptc praes x act nom ev n"] },
+{ "word": "ποιοῦντος", "cat": "ποιέω", "answers": ["ptc praes x act gen ev n"] },
+{ "word": "ποιοῦντι", "cat": "ποιέω", "answers": ["ptc praes x act dat ev n"] },
+{ "word": "ποιοῦν", "cat": "ποιέω", "answers": ["ptc praes x act acc ev n"] },
+{ "word": "ποιοῦντα", "cat": "ποιέω", "answers": ["ptc praes x act nom mv n"] },
+{ "word": "ποιούντων", "cat": "ποιέω", "answers": ["ptc praes x act gen mv n"] },
+{ "word": "ποιοῦσι(ν)", "cat": "ποιέω", "answers": ["ptc praes x act dat mv n"] },
+{ "word": "ποιοῦντα", "cat": "ποιέω", "answers": ["ptc praes x act acc mv n"] },
+
+// Participium praesens medium mannelijk
+{ "word": "ποιούμενος", "cat": "ποιέω", "answers": ["ptc praes x med nom ev m"] },
+{ "word": "ποιουμένου", "cat": "ποιέω", "answers": ["ptc praes x med gen ev m"] },
+{ "word": "ποιουμένῳ", "cat": "ποιέω", "answers": ["ptc praes x med dat ev m"] },
+{ "word": "ποιούμενον", "cat": "ποιέω", "answers": ["ptc praes x med acc ev m"] },
+{ "word": "ποιούμενοι", "cat": "ποιέω", "answers": ["ptc praes x med nom mv m"] },
+{ "word": "ποιουμένων", "cat": "ποιέω", "answers": ["ptc praes x med gen mv m"] },
+{ "word": "ποιουμένοις", "cat": "ποιέω", "answers": ["ptc praes x med dat mv m"] },
+{ "word": "ποιουμένους", "cat": "ποιέω", "answers": ["ptc praes x med acc mv m"] },
+
+// Participium praesens medium vrouwelijk
+{ "word": "ποιουμένη", "cat": "ποιέω", "answers": ["ptc praes x med nom ev f"] },
+{ "word": "ποιουμένης", "cat": "ποιέω", "answers": ["ptc praes x med gen ev f"] },
+{ "word": "ποιουμένῃ", "cat": "ποιέω", "answers": ["ptc praes x med dat ev f"] },
+{ "word": "ποιουμένην", "cat": "ποιέω", "answers": ["ptc praes x med acc ev f"] },
+{ "word": "ποιούμεναι", "cat": "ποιέω", "answers": ["ptc praes x med nom mv f"] },
+{ "word": "ποιουμένων", "cat": "ποιέω", "answers": ["ptc praes x med gen mv f"] },
+{ "word": "ποιουμέναις", "cat": "ποιέω", "answers": ["ptc praes x med dat mv f"] },
+{ "word": "ποιουμένας", "cat": "ποιέω", "answers": ["ptc praes x med acc mv f"] },
+
+// Participium praesens medium onzijdig
+{ "word": "ποιούμενον", "cat": "ποιέω", "answers": ["ptc praes x med nom ev n"] },
+{ "word": "ποιουμένου", "cat": "ποιέω", "answers": ["ptc praes x med gen ev n"] },
+{ "word": "ποιουμένῳ", "cat": "ποιέω", "answers": ["ptc praes x med dat ev n"] },
+{ "word": "ποιούμενον", "cat": "ποιέω", "answers": ["ptc praes x med acc ev n"] },
+{ "word": "ποιούμενα", "cat": "ποιέω", "answers": ["ptc praes x med nom mv n"] },
+{ "word": "ποιουμένων", "cat": "ποιέω", "answers": ["ptc praes x med gen mv n"] },
+{ "word": "ποιουμένοις", "cat": "ποιέω", "answers": ["ptc praes x med dat mv n"] },
+{ "word": "ποιούμενα", "cat": "ποιέω", "answers": ["ptc praes x med acc mv n"] } 
+
+ { "word": "εἰμί", "cat": "εἰμί", "answers": ["ind praes 1e-ev act"] },
+{ "word": "εἶ", "cat": "εἰμί", "answers": ["ind praes 2e-ev act"] },
+{ "word": "ἐστί(ν)", "cat": "εἰμί", "answers": ["ind praes 3e-ev act"] },
+{ "word": "ἐσμέν", "cat": "εἰμί", "answers": ["ind praes 1e-mv act"] },
+{ "word": "ἐστέ", "cat": "εἰμί", "answers": ["ind praes 2e-mv act"] },
+{ "word": "εἰσί(ν)", "cat": "εἰμί", "answers": ["ind praes 3e-mv act"] },
+
+{ "word": "ἦν", "cat": "εἰμί", "answers": ["ind impf 1e-ev act"] },
+{ "word": "ἦσθα", "cat": "εἰμί", "answers": ["ind impf 2e-ev act"] },
+{ "word": "ἦν", "cat": "εἰμί", "answers": ["ind impf 3e-ev act"] },
+{ "word": "ἦμεν", "cat": "εἰμί", "answers": ["ind impf 1e-mv act"] },
+{ "word": "ἦτε", "cat": "εἰμί", "answers": ["ind impf 2e-mv act"] },
+{ "word": "ἦσαν", "cat": "εἰμί", "answers": ["ind impf 3e-mv act"] }
+ 
+{ "word": "ἴσθι", "cat": "εἰμί", "answers": ["imp praes 2e-ev act"] },
+{ "word": "ἔστε", "cat": "εἰμί", "answers": ["imp praes 2e-mv act"] },
+
+{ "word": "εἶναι", "cat": "εἰμί", "answers": ["inf praes act"] } 
+
+ // Participium praesens activum mannelijk
+{ "word": "ὤν", "cat": "εἰμί", "answers": ["ptc praes x act nom ev m"] },
+{ "word": "ὄντος", "cat": "εἰμί", "answers": ["ptc praes x act gen ev m"] },
+{ "word": "ὄντι", "cat": "εἰμί", "answers": ["ptc praes x act dat ev m"] },
+{ "word": "ὄντα", "cat": "εἰμί", "answers": ["ptc praes x act acc ev m"] },
+{ "word": "ὄντες", "cat": "εἰμί", "answers": ["ptc praes x act nom mv m"] },
+{ "word": "ὄντων", "cat": "εἰμί", "answers": ["ptc praes x act gen mv m"] },
+{ "word": "οὖσι(ν)", "cat": "εἰμί", "answers": ["ptc praes x act dat mv m"] },
+{ "word": "ὄντας", "cat": "εἰμί", "answers": ["ptc praes x act acc mv m"] },
+
+// Participium praesens activum vrouwelijk
+{ "word": "οὖσα", "cat": "εἰμί", "answers": ["ptc praes x act nom ev f"] },
+{ "word": "οὔσης", "cat": "εἰμί", "answers": ["ptc praes x act gen ev f"] },
+{ "word": "οὔσῃ", "cat": "εἰμί", "answers": ["ptc praes x act dat ev f"] },
+{ "word": "οὖσαν", "cat": "εἰμί", "answers": ["ptc praes x act acc ev f"] },
+{ "word": "οὖσαι", "cat": "εἰμί", "answers": ["ptc praes x act nom mv f"] },
+{ "word": "οὐσῶν", "cat": "εἰμί", "answers": ["ptc praes x act gen mv f"] },
+{ "word": "οὔσαις", "cat": "εἰμί", "answers": ["ptc praes x act dat mv f"] },
+{ "word": "οὔσας", "cat": "εἰμί", "answers": ["ptc praes x act acc mv f"] },
+
+// Participium praesens activum onzijdig
+{ "word": "ὄν", "cat": "εἰμί", "answers": ["ptc praes x act nom ev n"] },
+{ "word": "ὄντος", "cat": "εἰμί", "answers": ["ptc praes x act gen ev n"] },
+{ "word": "ὄντι", "cat": "εἰμί", "answers": ["ptc praes x act dat ev n"] },
+{ "word": "ὄν", "cat": "εἰμί", "answers": ["ptc praes x act acc ev n"] },
+{ "word": "ὄντα", "cat": "εἰμί", "answers": ["ptc praes x act nom mv n"] },
+{ "word": "ὄντων", "cat": "εἰμί", "answers": ["ptc praes x act gen mv n"] },
+{ "word": "οὖσι(ν)", "cat": "εἰμί", "answers": ["ptc praes x act dat mv n"] },
+{ "word": "ὄντα", "cat": "εἰμί", "answers": ["ptc praes x act acc mv n"] }
+ ];
 export const qLatinVerb= [
 	{ "word": "voco", "cat": "vocare", "answers": ["ind praes 1e-ev act"] },
 	{ "word": "vocas", "cat": "vocare", "answers": ["ind praes 2e-ev act"] },
