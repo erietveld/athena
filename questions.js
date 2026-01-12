@@ -488,7 +488,7 @@ export const qGreekVerb = [
 { "word": "λυθησομένοις", "cat": "λύω", "answers": ["fut x pass ptc dat mv n"] },
 { "word": "λυθησόμενα", "cat": "λύω", "answers": ["fut x pass ptc acc mv n"] },
 
-	/ποιέω
+	//ποιέω
 { "word": "ποιῶ", "cat": "ποιέω", "answers": ["ind praes 1e-ev act"] },
 { "word": "ποιεῖς", "cat": "ποιέω", "answers": ["ind praes 2e-ev act"] },
 { "word": "ποιεῖ", "cat": "ποιέω", "answers": ["ind praes 3e-ev act"] },
@@ -509,19 +509,19 @@ export const qGreekVerb = [
 { "word": "ἐποίει", "cat": "ποιέω", "answers": ["ind impf 3e-ev act"] },
 { "word": "ἐποιοῦμεν", "cat": "ποιέω", "answers": ["ind impf 1e-mv act"] },
 { "word": "ἐποιεῖτε", "cat": "ποιέω", "answers": ["ind impf 2e-mv act"] },
-{ "word": "ἐποίουν", "cat": "ποιέω", "answers": ["ind impf 3e-mv act"] }
+{ "word": "ἐποίουν", "cat": "ποιέω", "answers": ["ind impf 3e-mv act"] },
 
 { "word": "ἐποιούμην", "cat": "ποιέω", "answers": ["ind impf 1e-ev med"] },
 { "word": "ἐποιοῦ", "cat": "ποιέω", "answers": ["ind impf 2e-ev med"] },
 { "word": "ἐποιεῖτο", "cat": "ποιέω", "answers": ["ind impf 3e-ev med"] },
 { "word": "ἐποιούμεθα", "cat": "ποιέω", "answers": ["ind impf 1e-mv med"] },
 { "word": "ἐποιεῖσθε", "cat": "ποιέω", "answers": ["ind impf 2e-mv med"] },
-{ "word": "ἐποιοῦντο", "cat": "ποιέω", "answers": ["ind impf 3e-mv med"] }
+{ "word": "ἐποιοῦντο", "cat": "ποιέω", "answers": ["ind impf 3e-mv med"] },
 
 { "word": "ποίει", "cat": "ποιέω", "answers": ["imp praes 2e-ev act"] },
 { "word": "ποιεῖτε", "cat": "ποιέω", "answers": ["imp praes 2e-mv act"] },
 
-{ "word": "ποιεῖν", "cat": "ποιέω", "answers": ["inf praes act"] }
+{ "word": "ποιεῖν", "cat": "ποιέω", "answers": ["inf praes act"] },
 // Participium praesens activum mannelijk
 { "word": "ποιῶν", "cat": "ποιέω", "answers": ["ptc praes x act nom ev m"] },
 { "word": "ποιοῦντος", "cat": "ποιέω", "answers": ["ptc praes x act gen ev m"] },
@@ -530,7 +530,7 @@ export const qGreekVerb = [
 { "word": "ποιοῦντες", "cat": "ποιέω", "answers": ["ptc praes x act nom mv m"] },
 { "word": "ποιούντων", "cat": "ποιέω", "answers": ["ptc praes x act gen mv m"] },
 { "word": "ποιοῦσι(ν)", "cat": "ποιέω", "answers": ["ptc praes x act dat mv m"] },
-{ "word": "ποιοῦντας", "cat": "ποιέω", "answers": ["ptc praes x act acc mv m"] }];
+{ "word": "ποιοῦντας", "cat": "ποιέω", "answers": ["ptc praes x act acc mv m"] },
 
  // Participium praesens activum vrouwelijk
 { "word": "ποιοῦσα", "cat": "ποιέω", "answers": ["ptc praes x act nom ev f"] },
@@ -580,7 +580,7 @@ export const qGreekVerb = [
 { "word": "ποιούμενα", "cat": "ποιέω", "answers": ["ptc praes x med nom mv n"] },
 { "word": "ποιουμένων", "cat": "ποιέω", "answers": ["ptc praes x med gen mv n"] },
 { "word": "ποιουμένοις", "cat": "ποιέω", "answers": ["ptc praes x med dat mv n"] },
-{ "word": "ποιούμενα", "cat": "ποιέω", "answers": ["ptc praes x med acc mv n"] } 
+{ "word": "ποιούμενα", "cat": "ποιέω", "answers": ["ptc praes x med acc mv n"] }, 
 
  { "word": "εἰμί", "cat": "εἰμί", "answers": ["ind praes 1e-ev act"] },
 { "word": "εἶ", "cat": "εἰμί", "answers": ["ind praes 2e-ev act"] },
@@ -594,12 +594,12 @@ export const qGreekVerb = [
 { "word": "ἦν", "cat": "εἰμί", "answers": ["ind impf 3e-ev act"] },
 { "word": "ἦμεν", "cat": "εἰμί", "answers": ["ind impf 1e-mv act"] },
 { "word": "ἦτε", "cat": "εἰμί", "answers": ["ind impf 2e-mv act"] },
-{ "word": "ἦσαν", "cat": "εἰμί", "answers": ["ind impf 3e-mv act"] }
+{ "word": "ἦσαν", "cat": "εἰμί", "answers": ["ind impf 3e-mv act"] },
  
 { "word": "ἴσθι", "cat": "εἰμί", "answers": ["imp praes 2e-ev act"] },
 { "word": "ἔστε", "cat": "εἰμί", "answers": ["imp praes 2e-mv act"] },
 
-{ "word": "εἶναι", "cat": "εἰμί", "answers": ["inf praes act"] } 
+{ "word": "εἶναι", "cat": "εἰμί", "answers": ["inf praes act"] },
 
  // Participium praesens activum mannelijk
 { "word": "ὤν", "cat": "εἰμί", "answers": ["ptc praes x act nom ev m"] },
@@ -1477,7 +1477,7 @@ export const qGreekNoun = [
 	{ "word": "σωτῆρες", "cat": "σωτήρ", "answers": ["nom mv m"] },
 	{ "word": "σωτήρων", "cat": "σωτήρ", "answers": ["gen mv m"] },
 	{ "word": "σωτῆρσι(ν)", "cat": "σωτήρ", "answers": ["dat mv m"] },
-	{ "word": "σωτῆρα", "cat": "σωτήρ", "answers": ["acc mv m"] },
+	{ "word": "σωτῆρας", "cat": "σωτήρ", "answers": ["acc mv m"] },
 	{ "word": "γυνή", "cat": "γυνή", "answers": ["nom ev f"] },
 	{ "word": "γυναικός", "cat": "γυνή", "answers": ["gen ev f"] },
 	{ "word": "γυναικί", "cat": "γυνή", "answers": ["dat ev f"] },
