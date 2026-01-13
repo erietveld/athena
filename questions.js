@@ -521,7 +521,7 @@ export const qGreekVerb = [
 { "word": "ποίει", "cat": "ποιέω", "answers": ["imp praes 2e-ev act"] },
 { "word": "ποιεῖτε", "cat": "ποιέω", "answers": ["imp praes 2e-mv act"] },
 
-{ "word": "ποιεῖν", "cat": "ποιέω", "answers": ["inf praes act"] },
+{ "word": "ποιεῖν", "cat": "ποιέω", "answers": ["inf praes x act"] },
 // Participium praesens activum mannelijk
 { "word": "ποιῶν", "cat": "ποιέω", "answers": ["ptc praes x act nom ev m"] },
 { "word": "ποιοῦντος", "cat": "ποιέω", "answers": ["ptc praes x act gen ev m"] },
@@ -599,7 +599,7 @@ export const qGreekVerb = [
 { "word": "ἴσθι", "cat": "εἰμί", "answers": ["imp praes 2e-ev act"] },
 { "word": "ἔστε", "cat": "εἰμί", "answers": ["imp praes 2e-mv act"] },
 
-{ "word": "εἶναι", "cat": "εἰμί", "answers": ["inf praes act"] },
+{ "word": "εἶναι", "cat": "εἰμί", "answers": ["inf praes x act"] },
 
  // Participium praesens activum mannelijk
 { "word": "ὤν", "cat": "εἰμί", "answers": ["ptc praes x act nom ev m"] },
