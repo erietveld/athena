@@ -238,6 +238,29 @@ function populateMenuItemsNaamwoorden() {
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', filterQuestions);
     });
+
+    //When the nounsHeader is clicked, toggle all noun checkboxes under it.
+    const nounceHeader = document.getElementById("nounsHeader");
+    const adjectivesHeader = document.getElementById("adjectivesHeader");
+    const pronounsHeader = document.getElementById("pronounsHeader");
+
+//For all three headers, do the same, but for their respective checkboxes.
+    nounceHeader.addEventListener('click', toggleAllCheckboxes(menuNouns));
+    adjectivesHeader.addEventListener('click', toggleAllCheckboxes(menuAdjectives));
+    pronounsHeader.addEventListener('click', toggleAllCheckboxes(menuPronouns));
+    
+
+
+    function toggleAllCheckboxes(menus) {
+        return function () {
+            const checkboxes = menus.querySelectorAll("input[type='checkbox']");
+            const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = !allChecked;
+            });
+            filterQuestions();
+        };
+    }
 }
 
 
@@ -263,9 +286,29 @@ export function selectNextQuestion() {
     const randomIndex = Math.floor(Math.random() * qbank.length);
     question = qbank[randomIndex];
     wordElement.textContent = question.word;
+    
     reset();
     preSelectSingleOptions();
+    renderNounGenderGroup();
+
 }
+function renderNounGenderGroup(){
+    if (question.cat === "1e/2e persoon"){
+        //Take the third option group under the naamwoorden and hide it.
+        const genderGroup = document.querySelector('.naamwoorden .option-group:nth-child(3)');
+        if (!genderGroup) return;
+    
+        //Disable all buttons in this option group
+        const genderButtons = genderGroup.querySelectorAll('button');
+
+        genderButtons.forEach(function (button, index) {
+                button.disabled = true;
+        });
+
+    }
+
+}
+
 
 export function prepNextQuestionBank(){
     if (trainingMode=="OneTime"){

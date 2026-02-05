@@ -1,6 +1,6 @@
 import { translateHtmlElements} from "./translate.js";
 import { verbLoad, nounLoad, setQuestions, selectNextQuestion, setRepitionList, filterQuestions, setTigerMode, showResults } from './initgame.js';
-import { qLatinVerb, qLatinNoun, qGreekVerb, qGreekNoun, qGreekAdjective, qLatinAdjectives, qLatinPronouns } from "./questions.js";
+import { qLatinVerb, qLatinNoun, qGreekVerb, qGreekNoun, qGreekAdjective, qLatinAdjectives, qLatinPronouns, qGreekPronouns } from "./questions.js";
 import { checkAnswer, resetScore,testScoring } from './scoring.js';
 import { validateAnswerComplete, extraFrame, resetFrames, removeLastFrame } from './logic.js';
 import { setQuiz,applyFilterStateFromParameter} from './urls.js';
@@ -120,7 +120,7 @@ function handleGreekNounsClick(){
     latinButtons.forEach(function (button) {
         button.parentNode.removeChild(button);
     });
-    nounLoad(qGreekNoun, qGreekAdjective);
+    nounLoad(qGreekNoun, qGreekAdjective, qGreekPronouns);
     setQuiz("d");
 }
 
