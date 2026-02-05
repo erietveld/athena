@@ -1599,3 +1599,40 @@ export const qGreekAdjective = [
 
 ]
 
+export const qGreekPronouns= [
+{ "word": "ἐγώ", "cat": "1e/2e persoon", "answers": ["nom ev"] },
+{ "word": "ἐμοῦ", "cat": "1e/2e persoon", "answers": ["gen ev"] },
+{ "word": "ἐμοί", "cat": "1e/2e persoon", "answers": ["dat ev"] },
+{ "word": "ἐμέ", "cat": "1e/2e persoon", "answers": ["acc ev"] },
+{ "word": "σύ", "cat": "1e/2e persoon", "answers": ["nom ev"] },
+{ "word": "σοῦ", "cat": "1e/2e persoon", "answers": ["gen ev"] },
+{ "word": "σοί", "cat": "1e/2e persoon", "answers": ["dat ev"] },
+{ "word": "σέ", "cat": "1e/2e persoon", "answers": ["acc ev"] },
+{ "word": "ἡμεῖς", "cat": "1e/2e persoon", "answers": ["nom mv"] },
+{ "word": "ἡμῶν", "cat": "1e/2e persoon", "answers": ["gen mv"] },
+{ "word": "ἡμῖν", "cat": "1e/2e persoon", "answers": ["dat mv"] },
+{ "word": "ἡμᾶς", "cat": "1e/2e persoon", "answers": ["acc mv"] },
+{ "word": "ὑμεῖς", "cat": "1e/2e persoon", "answers": ["nom mv"] },
+{ "word": "ὑμῶν", "cat": "1e/2e persoon", "answers": ["gen mv"] },
+{ "word": "ὑμῖν", "cat": "1e/2e persoon", "answers": ["dat mv"] },
+{ "word": "ὑμᾶς", "cat": "1e/2e persoon", "answers": ["acc mv"] },
+
+{ "word": "αὐτός", "cat": "αὐτός", "answers": ["nom ev m"] },
+{ "word": "αὐτοῦ", "cat": "αὐτός", "answers": ["gen ev m", "gen ev n"] },
+{ "word": "αὐτῷ", "cat": "αὐτός", "answers": ["dat ev m", "dat ev n"]},
+{ "word": "αὐτόν", "cat": "αὐτός", "answers": ["acc ev m"] },
+{ "word": "αὐτή", "cat": "αὐτός", "answers": ["nom ev f"] },
+{ "word": "αὐτῆς", "cat": "αὐτός", "answers": ["gen ev f"] },
+{ "word": "αὐτῇ", "cat": "αὐτός", "answers": ["dat ev f"] },
+{ "word": "αὐτήν", "cat": "αὐτός", "answers": ["acc ev f"] },
+{ "word": "αὐτό", "cat": "αὐτός", "answers": ["nom ev n", "acc ev n"] },
+
+{ "word": "αὐτοί", "cat": "αὐτός", "answers": ["nom mv m"] },
+{ "word": "αὐτῶν", "cat": "αὐτός", "answers": ["gen mv m", "gen mv f", "gen mv n"] },
+{ "word": "αὐτοῖς", "cat": "αὐτός", "answers": ["dat mv m", "dat mv n"] },
+{ "word": "αὐτούς", "cat": "αὐτός", "answers": ["acc mv m"] },
+{ "word": "αὐταί", "cat": "αὐτός", "answers": ["nom mv f"] },
+{ "word": "αὐταῖς", "cat": "αὐτός", "answers": ["dat mv f"] },
+{ "word": "αὐτάς", "cat": "αὐτός", "answers": ["acc mv f"] },
+{ "word": "αὐτά", "cat": "αὐτός", "answers": ["nom mv n", "acc mv n"] },
+]
